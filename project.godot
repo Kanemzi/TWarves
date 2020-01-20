@@ -1,0 +1,241 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "BaseEmotesCache",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/cache/base_emotes_cache.gd"
+}, {
+"base": "BaseEmotesCache",
+"class": "BttvEmotesCache",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/cache/bttv_emotes_cache.gd"
+}, {
+"base": "Node",
+"class": "ChatCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/ChatCommand.gd"
+}, {
+"base": "Reference",
+"class": "ChatList",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/chat_list.gd"
+}, {
+"base": "Reference",
+"class": "ChatUser",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/chat_user.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Dwarf",
+"language": "GDScript",
+"path": "res://characters/dwarf/Dwarf.gd"
+}, {
+"base": "Node2D",
+"class": "DwarfManager",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfManager.gd"
+}, {
+"base": "Node2D",
+"class": "DwarfQueue",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfQueue.gd"
+}, {
+"base": "BaseEmotesCache",
+"class": "FfzEmotesCache",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/cache/ffz_emotes_cache.gd"
+}, {
+"base": "Reference",
+"class": "HelperTools",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/tools.gd"
+}, {
+"base": "Object",
+"class": "HttpHeaders",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/http/http_headers.gd"
+}, {
+"base": "Node",
+"class": "HttpRequestQueue",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/http/http_request_queue.gd"
+}, {
+"base": "Reference",
+"class": "InteractiveCommands",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/interactive_commands.gd"
+}, {
+"base": "Reference",
+"class": "IrcChatMessage",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/irc_chat_message.gd"
+}, {
+"base": "Node",
+"class": "IrcClientEx",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/irc_client_ex.gd"
+}, {
+"base": "Node",
+"class": "IrcClientSecure",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/irc_client_scure.gd"
+}, {
+"base": "ChatCommand",
+"class": "JoinMineCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/JoinMine.gd"
+}, {
+"base": "Reference",
+"class": "MessageWrapper",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/message_wrapper.gd"
+}, {
+"base": "Reference",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/Player.gd"
+}, {
+"base": "Node",
+"class": "PlayersManagerSingleton",
+"language": "GDScript",
+"path": "res://utils/managers/game/PlayersManager.gd"
+}, {
+"base": "Object",
+"class": "Queue",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/queue.gd"
+}, {
+"base": "ChatCommand",
+"class": "QueueAdvanceCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/QueueAdvance.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://utils/state-machine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://utils/state-machine/StateMachine.gd"
+}, {
+"base": "IrcClientSecure",
+"class": "TwiCIL",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/godot_twicil.gd"
+}, {
+"base": "Object",
+"class": "TwitchApiWrapper",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/api/twitch_api_wrapper.gd"
+}, {
+"base": "BaseEmotesCache",
+"class": "TwitchEmotesCache",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/cache/twitch_emotes_cache.gd"
+}, {
+"base": "Reference",
+"class": "TwitchIrcServerMessage",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/twitch_irc_server_message.gd"
+}, {
+"base": "Reference",
+"class": "TwitchMessage",
+"language": "GDScript",
+"path": "res://addons/godot-twicil/helpers/twitch_message_wrapper.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Vein",
+"language": "GDScript",
+"path": "res://environment/vein/Vein.gd"
+} ]
+_global_script_class_icons={
+"BaseEmotesCache": "",
+"BttvEmotesCache": "",
+"ChatCommand": "",
+"ChatList": "",
+"ChatUser": "",
+"Dwarf": "",
+"DwarfManager": "",
+"DwarfQueue": "",
+"FfzEmotesCache": "",
+"HelperTools": "",
+"HttpHeaders": "",
+"HttpRequestQueue": "",
+"InteractiveCommands": "",
+"IrcChatMessage": "",
+"IrcClientEx": "",
+"IrcClientSecure": "",
+"JoinMineCommand": "",
+"MessageWrapper": "",
+"Player": "",
+"PlayersManagerSingleton": "",
+"Queue": "",
+"QueueAdvanceCommand": "",
+"State": "",
+"StateMachine": "",
+"TwiCIL": "",
+"TwitchApiWrapper": "",
+"TwitchEmotesCache": "",
+"TwitchIrcServerMessage": "",
+"TwitchMessage": "",
+"Vein": ""
+}
+
+[application]
+
+config/name="TWarves"
+run/main_scene="res://Scene.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+ConfigManager="*res://utils/managers/config/ConfigManager.gd"
+PlayersManager="*res://utils/managers/game/PlayersManager.gd"
+
+[display]
+
+window/size/width=920
+window/size/height=720
+window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "godot-twicil" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
