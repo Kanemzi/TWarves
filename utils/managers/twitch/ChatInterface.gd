@@ -1,27 +1,31 @@
-extends Node
+extends Gift
 
-onready var cil = $TwiCIL
-onready var commands = $Commands
-
-var command_handlers := []
+onready var command_list = $Commands.get_children()
 
 func _ready() -> void:
 	# register all commands
-	_start()
-	for command in commands.get_children() :
-		print("register " + command.command_name)
-		cil.commands.add("!" + command.command_name, command, "_action", 1, true)
+	for command in command_list :
+		print("register " + command.name.to_lower())
+		add_command(command.name.to_lower(), command, "_action",
+				command.max_args, 
+				command.min_args, 
+				command.permission_level, 
+				command.where)
+
 
 """
 Se connecte au chat twitch avec les credentials entrés dans la popup
 """
-func _start() -> void:
-	cil.set_logging(false)
-	cil.connect_to_twitch_chat()
-	cil.connect_to_channel(
-		ConfigManager.get_setting("credentials", "channel_name"),
-		ConfigManager.get_setting("credentials", "client_id"),
-		ConfigManager.get_setting("credentials", "oauth"),
-		ConfigManager.get_setting("credentials", "bot_nick")
-	)
-	cil.send_message("Bienvenue !")
+func start() -> void:
+	var channel : String = ConfigManager.get_setting("credentials", "channel_name")
+	var oauth : String = ConfigManager.get_setting("credentials", "oauth")
+	var bot_nick : String = ConfigManager.get_setting("credentials", "bot_nick")
+	print(oauth)
+	if channel == "" or oauth == "" or bot_nick == "" :
+		return
+	
+	connect_to_twitch()
+	yield(self, "twitch_connected")
+	authenticate_oauth(bot_nick, oauth)
+	join_channel(channel)
+	chat("Bienvenue !")

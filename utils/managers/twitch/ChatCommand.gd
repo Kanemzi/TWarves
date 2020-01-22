@@ -2,12 +2,13 @@ extends Node
 
 class_name ChatCommand
 
-export(String) var command_name : String
-
-var root : Node
+export(int) var max_args := -1
+export(int) var min_args := 0
+export(Gift.PermissionFlag) var permission_level := Gift.PermissionFlag.EVERYONE
+export(Gift.WhereFlag) var where := Gift.WhereFlag.CHAT
 
 func _ready() -> void:
-	root = get_tree().get_root()
+	pass
 
 func _action(params) -> void:
 	return

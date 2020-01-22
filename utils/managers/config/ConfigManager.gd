@@ -1,5 +1,7 @@
 extends Node
 
+signal config_loaded
+
 const SAVE_PATH := "res://data/config.cfg"
 
 var _config_file := ConfigFile.new()
@@ -29,11 +31,14 @@ func load_settings() -> void:
 	var error := _config_file.load(SAVE_PATH)
 	if error != OK:
 		print("Error loading settings. Error code : %s" % error)
+		return
 
 	for section in _settings.keys():
 		for key in _settings[section].keys():
 			var default = _settings[section][key]
 			_settings[section][key] = _config_file.get_value(section, key, default)
+	
+	emit_signal("config_loaded")
 
 func get_setting(category: String, key: String):
     return _settings[category][key]
