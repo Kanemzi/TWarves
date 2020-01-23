@@ -1,22 +1,23 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
-[ext_resource path="res://characters/dwarf/dwarf-back.png" type="Texture" id=3]
-[ext_resource path="res://characters/dwarf/cosmetics/beard/1.png" type="Texture" id=4]
-[ext_resource path="res://characters/dwarf/dwarf-front.png" type="Texture" id=5]
-[ext_resource path="res://characters/dwarf/tools/pickaxe/1.png" type="Texture" id=6]
-[ext_resource path="res://characters/dwarf/particles/stun.png" type="Texture" id=7]
-[ext_resource path="res://characters/dwarf/animations/bend-down.tres" type="Animation" id=8]
-[ext_resource path="res://characters/dwarf/animations/dig.tres" type="Animation" id=9]
-[ext_resource path="res://characters/dwarf/animations/idle.tres" type="Animation" id=10]
-[ext_resource path="res://characters/dwarf/animations/punch.tres" type="Animation" id=11]
-[ext_resource path="res://characters/dwarf/animations/run.tres" type="Animation" id=12]
-[ext_resource path="res://characters/dwarf/animations/stun.tres" type="Animation" id=13]
-[ext_resource path="res://utils/state-machine/StateMachine.gd" type="Script" id=14]
-[ext_resource path="res://characters/dwarf/states/queue.gd" type="Script" id=15]
-[ext_resource path="res://characters/dwarf/states/idle.gd" type="Script" id=16]
-[ext_resource path="res://characters/dwarf/states/dig.gd" type="Script" id=17]
+[ext_resource path="res://characters/dwarf/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://characters/dwarf/dwarf-back.png" type="Texture" id=4]
+[ext_resource path="res://characters/dwarf/cosmetics/beard/1.png" type="Texture" id=5]
+[ext_resource path="res://characters/dwarf/dwarf-front.png" type="Texture" id=6]
+[ext_resource path="res://characters/dwarf/tools/pickaxe/1.png" type="Texture" id=7]
+[ext_resource path="res://characters/dwarf/particles/stun.png" type="Texture" id=8]
+[ext_resource path="res://characters/dwarf/animations/bend-down.tres" type="Animation" id=9]
+[ext_resource path="res://characters/dwarf/animations/dig.tres" type="Animation" id=10]
+[ext_resource path="res://characters/dwarf/animations/idle.tres" type="Animation" id=11]
+[ext_resource path="res://characters/dwarf/animations/punch.tres" type="Animation" id=12]
+[ext_resource path="res://characters/dwarf/animations/run.tres" type="Animation" id=13]
+[ext_resource path="res://characters/dwarf/animations/stun.tres" type="Animation" id=14]
+[ext_resource path="res://utils/state-machine/StateMachine.gd" type="Script" id=15]
+[ext_resource path="res://characters/dwarf/states/queue.gd" type="Script" id=16]
+[ext_resource path="res://characters/dwarf/states/idle.gd" type="Script" id=17]
+[ext_resource path="res://characters/dwarf/states/dig.gd" type="Script" id=18]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -116,10 +117,11 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Node2D" parent="."]
 material = SubResource( 1 )
 z_index = 1
+script = ExtResource( 3 )
 
 [node name="Back" type="Sprite" parent="Sprite"]
 use_parent_material = true
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
 frame = 10
@@ -130,7 +132,7 @@ position = Vector2( 0, -1 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, -10 )
 __meta__ = {
 "_edit_lock_": true
@@ -138,7 +140,7 @@ __meta__ = {
 
 [node name="Front" type="Sprite" parent="Sprite"]
 use_parent_material = true
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
 frame = 10
@@ -150,7 +152,7 @@ rotation = 0.349066
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
 z_index = -1
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 2.5, 0 )
 __meta__ = {
 "_edit_lock_": true
@@ -160,18 +162,18 @@ __meta__ = {
 visible = false
 
 [node name="Stun" type="Sprite" parent="Sprite/Particles"]
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -1, -12 )
 hframes = 3
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/bend-down = ExtResource( 8 )
-anims/dig = ExtResource( 9 )
-anims/idle = ExtResource( 10 )
-anims/punch = ExtResource( 11 )
-anims/run = ExtResource( 12 )
-anims/stun = ExtResource( 13 )
+anims/bend-down = ExtResource( 9 )
+anims/dig = ExtResource( 10 )
+anims/idle = ExtResource( 11 )
+anims/punch = ExtResource( 12 )
+anims/run = ExtResource( 13 )
+anims/stun = ExtResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 25 )
@@ -183,36 +185,25 @@ visible = false
 position = Vector2( 0, -7 )
 shape = SubResource( 27 )
 
-[node name="States" type="Node" parent="."]
-script = ExtResource( 14 )
-INITIAL_STATE = NodePath("Queue")
-states = {
-"dig": NodePath("Dig"),
-"exit": NodePath("Exit"),
-"idle": NodePath("Idle"),
-"pickup": NodePath("PickUp"),
-"punch": NodePath("Punch"),
-"queue": NodePath("Queue"),
-"stuned": NodePath("Stuned"),
-"trap": NodePath("Trap")
-}
-pushed_states = [ "\"stuned\"" ]
-
-[node name="Queue" type="Node" parent="States"]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
+initial_state = NodePath("../StateMachine/Queue")
 
-[node name="Idle" type="Node" parent="States"]
+[node name="Queue" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )
 
-[node name="Dig" type="Node" parent="States"]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 17 )
 
-[node name="Trap" type="Node" parent="States"]
+[node name="Dig" type="Node" parent="StateMachine"]
+script = ExtResource( 18 )
 
-[node name="Punch" type="Node" parent="States"]
+[node name="Trap" type="Node" parent="StateMachine"]
 
-[node name="PickUp" type="Node" parent="States"]
+[node name="Punch" type="Node" parent="StateMachine"]
 
-[node name="Stuned" type="Node" parent="States"]
+[node name="PickUp" type="Node" parent="StateMachine"]
 
-[node name="Exit" type="Node" parent="States"]
+[node name="Stuned" type="Node" parent="StateMachine"]
+
+[node name="Exit" type="Node" parent="StateMachine"]

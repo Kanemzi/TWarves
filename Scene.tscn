@@ -1,34 +1,51 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scene.gd" type="Script" id=1]
 [ext_resource path="res://interface/credentials-form/CredentialsPopup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://utils/managers/twitch/ChatInterface.gd" type="Script" id=3]
-[ext_resource path="res://utils/managers/twitch/commands/JoinMine.gd" type="Script" id=4]
-[ext_resource path="res://characters/dwarf/Dwarf.tscn" type="PackedScene" id=5]
-[ext_resource path="res://utils/managers/twitch/commands/QueueAdvance.gd" type="Script" id=6]
-[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=7]
+[ext_resource path="res://utils/managers/game/PlayersManager.gd" type="Script" id=3]
+[ext_resource path="res://utils/managers/twitch/ChatInterface.gd" type="Script" id=4]
+[ext_resource path="res://utils/managers/twitch/UserIds.gd" type="Script" id=5]
+[ext_resource path="res://utils/managers/twitch/commands/JoinMine.gd" type="Script" id=6]
+[ext_resource path="res://utils/managers/twitch/commands/DwarfMove.gd" type="Script" id=7]
+[ext_resource path="res://utils/managers/twitch/commands/Mine.gd" type="Script" id=8]
+[ext_resource path="res://utils/managers/twitch/commands/QueueAdvance.gd" type="Script" id=9]
+[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-SHOW_CONFIG = true
 
 [node name="CredentialsPopup" parent="." instance=ExtResource( 2 )]
 
-[node name="ChatInterface" type="Node" parent="."]
+[node name="Players" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="ChatInterface" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="UserIds" type="Node" parent="ChatInterface"]
+pause_mode = 1
+script = ExtResource( 5 )
+API_ENDPOINT = "https://api.twitch.tv/helix/users"
 
 [node name="Commands" type="Node" parent="ChatInterface"]
 
 [node name="JoinMine" type="Node" parent="ChatInterface/Commands"]
-script = ExtResource( 4 )
-dwarf_manager = NodePath("../../../SceneContainer/Scene/Cave/Objects/Dwarfs")
-dwarf_scene = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="DwarfMove" type="Node" parent="ChatInterface/Commands"]
+script = ExtResource( 7 )
+max_args = 1
+min_args = 1
+
+[node name="Mine" type="Node" parent="ChatInterface/Commands"]
+script = ExtResource( 8 )
+max_args = 1
 
 [node name="QueueAdvance" type="Node" parent="ChatInterface/Commands"]
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 dwarf_manager = NodePath("../../../SceneContainer/Scene/Cave/Objects/Dwarfs")
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -37,22 +54,16 @@ dwarf_manager = NodePath("../../../SceneContainer/Scene/Cave/Objects/Dwarfs")
 margin_right = 920.0
 margin_bottom = 720.0
 rect_scale = Vector2( 4, 4 )
-stretch_shrink = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Scene" type="Viewport" parent="SceneContainer"]
-size = Vector2( 306, 240 )
+size = Vector2( 920, 720 )
 handle_input_locally = false
 usage = 1
 render_target_update_mode = 3
 gui_disable_input = true
 
-[node name="Cave" parent="SceneContainer/Scene" groups=[
-"cave",
-] instance=ExtResource( 7 )]
-editor/display_folded = true
+[node name="Cave" parent="SceneContainer/Scene" instance=ExtResource( 10 )]
 [connection signal="popup_hide" from="CredentialsPopup" to="ChatInterface" method="_start"]
-
-[editable path="SceneContainer/Scene/Cave"]

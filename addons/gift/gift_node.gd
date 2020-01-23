@@ -25,7 +25,7 @@ signal cmd_no_permission(cmd_name, sender_data, cmd_data, arg_ary)
 signal pong
 
 # Messages starting with one of these symbols are handled. '/' will be ignored, reserved by Twitch.
-export(PoolStringArray) var command_prefixes : Array = ["!"]
+export(Array) var command_prefixes : Array = ["!"]
 # Time to wait after each sent chat message. Values below ~0.31 will lead to a disconnect after 100 messages.
 export(float) var chat_timeout = 0.32
 
@@ -207,10 +207,10 @@ func handle_command(sender_data : SenderData, msg : PoolStringArray, whisper : b
 					emit_signal("cmd_no_permission", command, sender_data, cmd_data, arg_ary)
 					print_debug("No Permission for command!")
 					return
-			if(arg_ary.size() == 0):
-				cmd_data.func_ref.call_func(CommandInfo.new(sender_data, command, whisper))
-			else:
-				cmd_data.func_ref.call_func(CommandInfo.new(sender_data, command, whisper), arg_ary)
+#			if(arg_ary.size() == 0):
+#!				cmd_data.func_ref.call_func(CommandInfo.new(sender_data, command, whisper))
+#			else:
+			cmd_data.func_ref.call_func(CommandInfo.new(sender_data, command, whisper), arg_ary)
 
 func get_perm_flag_from_tags(tags : Dictionary) -> int:
 	var flag = 0

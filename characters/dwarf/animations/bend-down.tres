@@ -102,7 +102,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "method"
-tracks/8/path = NodePath("States")
+tracks/8/path = NodePath("StateMachine")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false

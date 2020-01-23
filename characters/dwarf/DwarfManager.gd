@@ -7,11 +7,6 @@ signal queue_advanced(dwarf)
 onready var queue := $Queue
 onready var active := $Active
 
-func _ready() -> void:
-#	for place in places:
-#		print(str(place) + " " + place.name) 
-	pass
-
 """
 Ajoute un nouveau nain dans la file d'attente
 """

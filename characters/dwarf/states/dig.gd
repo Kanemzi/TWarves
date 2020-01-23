@@ -1,19 +1,26 @@
 extends State
 
-var count = 0
+var vein: Vein
 
-func _enter(parameters: Dictionary = {}) -> void:
-	var vein_index: int = clamp(parameters.tier, 1, 3) - 1 
-	var vein: Vein = get_tree().get_nodes_in_group("vein")[vein_index]
-	owner.position.x = vein.position.x - 12
+func physics_process(delta: float) -> void:
+	pass
+
+func enter(params := {}) -> void:
+	var vein_index: int = clamp(params.spot, 1, 3) - 1 
+	var veins = get_tree().get_nodes_in_group("vein")
+	vein = veins[vein_index]
+	if vein == null :
+		#TODO find nearest vein
+		pass
+	var offset = rand_range(-vein.mining_distance, vein.mining_distance)
+	owner.target(vein.position + Vector2(offset, 0))
+	owner.connect("target_reached", self, "_on_Dwarf_target_reached")
+	owner.animator.play("run")
+
+func exit() -> void:
+	owner.disconnect("target_reached", self, "_on_Dwarf_target_reached")
+	
+func _on_Dwarf_target_reached() -> void:
 	owner.animator.play("dig")
-	return
-
-func _exit() -> void:
-	return
-
-func _update(delta: float) -> void:
-	return
-
-func _on_animation_finished(animation_name: String) -> void:
-	return
+	owner.sprite.set_direction(vein.position.x - owner.position.x)
+		

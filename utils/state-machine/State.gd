@@ -1,20 +1,23 @@
+extends Node
+class_name State
 """
 Interface de base d'un état générique
 """
-extends Node
 
-class_name State
+var _state_machine : Node
 
-signal finished(next_state_name, parameters)
+func _ready() -> void:
+	yield(owner, "ready")
+	_state_machine = get_parent()
 
-func _enter(parameters: Dictionary = {}) -> void:
-	return
+func unhandled_input(event: InputEvent) -> void:
+	pass
 
-func _exit() -> void:
-	return
+func physics_process(delta: float) -> void:
+	pass
 
-func _update(delta: float) -> void:
-	return
+func enter(params := {}) -> void:
+	pass
 
-func _on_animation_finished(animation_name: String) -> void:
-	return
+func exit() -> void:
+	pass

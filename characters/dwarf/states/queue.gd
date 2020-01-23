@@ -1,17 +1,18 @@
 extends State
 
-func _enter(parameters: Dictionary = {}) -> void:
+func enter(params: Dictionary = {}) -> void:
+	return
 	owner.animator.play("idle")
-	print("queued : " + owner.player_name)
+	print("queued : " + owner.display_name)
 	# TEMP
 	var time := randf()
 	owner.animator.advance(time)
 	return
 
-func _exit() -> void:
+func exit() -> void:
 	return
 
-func _update(delta: float) -> void:
+func update(delta: float) -> void:
 	return
 
 func _on_queue_advanced(dwarf) -> void :
