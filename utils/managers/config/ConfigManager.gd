@@ -12,12 +12,14 @@ var _settings := {
 		"client_id": "",
 		"channel_name": "",
 		"oauth": ""
+	},
+	"gameplay" : {
+		"max_time_in_caves": 20.0
 	}
 }
 
 func _ready() -> void:
 	load_settings()
-	print("settings : %s" % _settings)
 
 func save_settings() -> void:
 	for section in _settings.keys():

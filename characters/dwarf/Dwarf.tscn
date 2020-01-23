@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -15,9 +15,11 @@
 [ext_resource path="res://characters/dwarf/animations/run.tres" type="Animation" id=13]
 [ext_resource path="res://characters/dwarf/animations/stun.tres" type="Animation" id=14]
 [ext_resource path="res://utils/state-machine/StateMachine.gd" type="Script" id=15]
-[ext_resource path="res://characters/dwarf/states/queue.gd" type="Script" id=16]
-[ext_resource path="res://characters/dwarf/states/idle.gd" type="Script" id=17]
-[ext_resource path="res://characters/dwarf/states/dig.gd" type="Script" id=18]
+[ext_resource path="res://characters/dwarf/states/Move.gd" type="Script" id=16]
+[ext_resource path="res://characters/dwarf/states/Queue.gd" type="Script" id=17]
+[ext_resource path="res://characters/dwarf/states/Dig.gd" type="Script" id=18]
+[ext_resource path="res://characters/dwarf/states/Exit.gd" type="Script" id=19]
+[ext_resource path="res://characters/dwarf/states/Idle.gd" type="Script" id=20]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -187,16 +189,22 @@ shape = SubResource( 27 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
-initial_state = NodePath("../StateMachine/Queue")
+initial_state = NodePath("Idle")
 
-[node name="Queue" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Queue" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 17 )
 
-[node name="Dig" type="Node" parent="StateMachine"]
+[node name="Dig" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 18 )
+
+[node name="Exit" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 19 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 20 )
 
 [node name="Trap" type="Node" parent="StateMachine"]
 
@@ -206,4 +214,6 @@ script = ExtResource( 18 )
 
 [node name="Stuned" type="Node" parent="StateMachine"]
 
-[node name="Exit" type="Node" parent="StateMachine"]
+[node name="ExitTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="ExitTimer" to="." method="_on_ExitTimer_timeout"]

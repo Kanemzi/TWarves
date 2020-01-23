@@ -28,7 +28,8 @@ Se charge de lier les events
 """
 func create_dwarf() -> Dwarf:
 	dwarf = DwarfScene.instance()
-	dwarf._init(display_name)
+	dwarf.init(display_name)
+	dwarf.connect("caves_exited", self, "remove_dwarf")
 	return dwarf
 
 """
@@ -36,5 +37,6 @@ Supprime le nain associé au joueur
 """
 func remove_dwarf() -> void:
 	dwarf.queue_free()
+	dwarf = null
 	# TODO : save points
 	pass

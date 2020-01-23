@@ -1,6 +1,6 @@
 extends ChatCommand
 
-class_name MineCommand
+class_name ExitMineCommand
 
 func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	
@@ -21,7 +21,4 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	elif player.dwarf.must_exit:
 		return
 	else:
-		var params = {}
-		if args.size() > 0:
-			params.spot = int(args[0])
-		player.dwarf.state_machine.transition_to("Move/Dig", params)
+		player.dwarf.state_machine.transition_to("Move/Exit")

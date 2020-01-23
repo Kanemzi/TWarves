@@ -58,21 +58,18 @@ __meta__ = {
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 68, 0 )
-mining_distance = 12
 
 [node name="2" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 116, 0 )
 tier = 2
-mining_distance = 12
 
 [node name="3" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 164, 0 )
 tier = 3
-mining_distance = 12
 
 [node name="Dwarfs" type="YSort" parent="Objects"]
 script = ExtResource( 5 )

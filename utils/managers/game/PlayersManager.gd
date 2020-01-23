@@ -1,6 +1,8 @@
 extends Node
 class_name PlayersManager
 
+export(float) var max_time_in_caves := 20.0
+
 """
 Retourne true si le joueur joueur a déjà joué au jeu
 """

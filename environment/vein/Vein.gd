@@ -4,7 +4,7 @@ extends Area2D
 class_name Vein
 
 export(int, 1, 3, 1) var tier: int = 1 setget set_tier
-export(int) var mining_distance = 12
+export(int) var mining_distance = 16
 
 onready var sprite: Sprite = $Sprite
 

@@ -1,55 +1,29 @@
 extends KinematicBody2D
-
 class_name Dwarf
 
-signal target_reached
-
-const MAX_SPEED := 24.0
+signal caves_exited
 
 onready var animator: AnimationPlayer = $AnimationPlayer
 onready var state_machine: StateMachine = $StateMachine
 onready var sprite : Sprite = $Sprite
+onready var exit_timer : Timer = $ExitTimer
 
-var _target : Vector2 = Vector2.INF
 var display_name : String
-var velocity := Vector2.ZERO
+var must_exit := false
 
-func _init(_display_name : String = "___dummy___") -> void :
+
+func init(_display_name : String = "___dummy___") -> void :
 	self.display_name = _display_name
 
 
-"""
-Indique un point vers lequel le nain va se déplacer
-Lorsque le point cible est atteint, un signal target_reached est lancé
-"""
-func target(target : Vector2) -> void :
-	self._target = target
+func _ready() -> void:
+	var max_time := float(ConfigManager.get_setting("gameplay", "max_time_in_caves"))
+	print("max time : " + str(max_time))
+	exit_timer.wait_time = max_time
+	exit_timer.start()
 
 
-"""
-Le nain oublie le point qu'il cible et arrête de bouger
-"""
-func forget_target() -> void:
-	self._target = Vector2.INF
-
-
-"""
-Le nain se déplace vers son point cible à la vitesse qui lui est définie
-"""
-func move_to_target(delta: float) -> void:
-	if _target == Vector2.INF:
-		return
-	
-	var diff = (_target - position)
-	var direction = diff.normalized()
-	if diff.length() <= MAX_SPEED * delta:
-		position = _target
-		velocity = Vector2.ZERO
-		emit_signal("target_reached")
-		forget_target()
-	else:
-		velocity = direction * MAX_SPEED
-	move_and_slide(velocity)
-
-func _physics_process(delta: float) -> void:
-	move_to_target(delta)
+func _on_ExitTimer_timeout() -> void:
+	self.must_exit = true
+	state_machine.transition_to("Move/Exit")
+	print(display_name + " must exit")
