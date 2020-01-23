@@ -4,9 +4,15 @@ class_name StateMachine
 Interface de base d'une machine à états générique
 """
 
+signal transitioned(state)
+
 export(NodePath) var initial_state := NodePath()
 
 onready var state: State = get_node(initial_state)
+
+func _init() -> void:
+	add_to_group("state_machine")
+
 
 func _ready() -> void:
 	yield(owner, "ready")
@@ -33,3 +39,4 @@ func transition_to(target_state: String, params := {}) -> void:
 	state.exit()
 	self.state = new_state
 	state.enter(params)
+	emit_signal("transitioned", target_state)
