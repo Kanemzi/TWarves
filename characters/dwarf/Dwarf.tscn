@@ -2,7 +2,7 @@
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
-[ext_resource path="res://characters/dwarf/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://characters/dwarf/DwarfSprite.gd" type="Script" id=3]
 [ext_resource path="res://characters/dwarf/dwarf-back.png" type="Texture" id=4]
 [ext_resource path="res://characters/dwarf/cosmetics/beard/1.png" type="Texture" id=5]
 [ext_resource path="res://characters/dwarf/dwarf-front.png" type="Texture" id=6]
@@ -126,11 +126,10 @@ use_parent_material = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 10
+frame = 7
 
 [node name="Cosmetics" type="Node2D" parent="Sprite"]
 use_parent_material = true
-position = Vector2( 0, -1 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
@@ -145,15 +144,13 @@ use_parent_material = true
 texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 10
+frame = 7
 
 [node name="Tool" type="Node2D" parent="Sprite"]
 editor/display_folded = true
-position = Vector2( 4, -5 )
-rotation = 0.349066
+position = Vector2( 5, -5 )
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
-z_index = -1
 texture = ExtResource( 7 )
 offset = Vector2( 2.5, 0 )
 __meta__ = {
@@ -167,7 +164,7 @@ visible = false
 texture = ExtResource( 8 )
 offset = Vector2( -1, -12 )
 hframes = 3
-frame = 1
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bend-down = ExtResource( 9 )

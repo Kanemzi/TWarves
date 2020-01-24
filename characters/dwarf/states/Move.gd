@@ -1,5 +1,4 @@
 extends DwarfState
-
 signal target_reached
 
 const MAX_SPEED := 24.0
@@ -50,3 +49,4 @@ func move_to_target(delta: float) -> void:
 	else:
 		velocity = direction * MAX_SPEED
 	dwarf.move_and_slide(velocity)
+	dwarf.emit_signal("moved", dwarf.position)

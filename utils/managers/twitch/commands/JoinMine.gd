@@ -12,5 +12,11 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	if not player.is_in_cave() :
 		var dwarf := player.create_dwarf()
 		dwarf_queue.add(dwarf)
+		
+		# création du label de pseudo
+		var pseudo := DisplayNameLabel.new(display_name)
+		dwarf.connect("moved", pseudo, "_on_Dwarf_moved")
+		dwarf.connect("caves_exited", pseudo, "_on_Dwarf_caves_exited")
+		(owner as Game).gui.get_node("DisplayNames").add_child(pseudo)
 	else:
 		(owner as Game).chat_interface.chat("Vous êtes déjà dans la mine " + display_name)

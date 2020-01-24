@@ -21,4 +21,4 @@ func exit() -> void:
 S'exécute lorsque le nain vient de sortir de la mine
 """
 func _on_Dwarf_target_reached() -> void:
-	owner.emit_signal("caves_exited")
+	dwarf.emit_signal("caves_exited")

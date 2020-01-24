@@ -7,6 +7,7 @@ onready var credentials_popup := $CredentialsPopup as WindowDialog
 onready var chat_interface := $ChatInterface as ChatInterface
 onready var players_manager := $Players as PlayersManager
 onready var cave_scene := $SceneContainer/Scene/Cave as Cave
+onready var gui := $GUI as CanvasLayer
 
 func _ready() -> void:
 	if SHOW_CONFIG:

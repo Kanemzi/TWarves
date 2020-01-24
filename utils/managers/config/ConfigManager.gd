@@ -13,6 +13,9 @@ var _settings := {
 		"channel_name": "",
 		"oauth": ""
 	},
+	"graphics" : {
+		"scene_scale_factor": 4
+	},
 	"gameplay" : {
 		"max_time_in_caves": 60.0
 	}

@@ -50,6 +50,9 @@ dwarf_manager = NodePath("../../../SceneContainer/Scene/Cave/Objects/Dwarfs")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
+[node name="DisplayNames" type="Node2D" parent="GUI"]
+position = Vector2( 64, 688 )
+
 [node name="SceneContainer" type="ViewportContainer" parent="."]
 margin_right = 920.0
 margin_bottom = 720.0

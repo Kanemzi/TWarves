@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Dwarf
 
+signal moved(new_position)
 signal caves_exited
 
 onready var animator := $AnimationPlayer as AnimationPlayer
