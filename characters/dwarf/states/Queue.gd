@@ -1,12 +1,12 @@
-extends State
+extends DwarfState
 
 func enter(params: Dictionary = {}) -> void:
 	return
-	owner.animator.play("idle")
-	print("queued : " + owner.display_name)
+	dwarf.animator.play("idle")
+	print("queued : " + dwarf.display_name)
 	# TEMP
 	var time := randf()
-	owner.animator.advance(time)
+	dwarf.animator.advance(time)
 	return
 
 func exit() -> void:
@@ -15,8 +15,8 @@ func exit() -> void:
 func update(delta: float) -> void:
 	return
 
-func _on_queue_advanced(dwarf) -> void :
-	print("queue advance : " + dwarf.player_name)
+func _on_queue_advanced(dwarf : Dwarf) -> void :
+	print("queue advance : " + str(dwarf.player_name))
 	return
 	if self == dwarf :
 		emit_signal("finished", "idle", {})

@@ -1,4 +1,4 @@
-extends State
+extends DwarfState
 
 signal target_reached
 
@@ -40,13 +40,13 @@ func move_to_target(delta: float) -> void:
 	if _target == Vector2.INF:
 		return
 	
-	var diff = (_target - owner.position)
-	var direction = diff.normalized()
+	var diff := _target - dwarf.position
+	var direction := diff.normalized()
 	if diff.length() <= MAX_SPEED * delta:
-		owner.position = _target
+		dwarf.position = _target
 		velocity = Vector2.ZERO
 		emit_signal("target_reached")
 		forget_target()
 	else:
 		velocity = direction * MAX_SPEED
-	owner.move_and_slide(velocity)
+	dwarf.move_and_slide(velocity)

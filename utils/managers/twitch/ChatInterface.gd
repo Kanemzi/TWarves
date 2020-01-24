@@ -11,9 +11,9 @@ Se connecte au chat twitch avec les credentials entrés dans la popup
 func start() -> void:
 	_register_all_commands()
 	
-	var channel : String = ConfigManager.get_setting("credentials", "channel_name")
-	var oauth : String = ConfigManager.get_setting("credentials", "oauth")
-	var bot_nick : String = ConfigManager.get_setting("credentials", "bot_nick")
+	var channel := ConfigManager.get_setting("credentials", "channel_name")
+	var oauth := ConfigManager.get_setting("credentials", "oauth")
+	var bot_nick := ConfigManager.get_setting("credentials", "bot_nick")
 	
 	if channel == "" or oauth == "" or bot_nick == "" :
 		return

@@ -1,5 +1,4 @@
 extends Node
-
 class_name ChatCommand
 
 export(int) var max_args := -1
@@ -15,6 +14,7 @@ func _ready() -> void:
 
 func prepare(cmd : CommandInfo, args : PoolStringArray) -> void:
 	_action(cmd, args)
+
 
 func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	return

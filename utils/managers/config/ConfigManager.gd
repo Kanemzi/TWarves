@@ -14,7 +14,7 @@ var _settings := {
 		"oauth": ""
 	},
 	"gameplay" : {
-		"max_time_in_caves": 20.0
+		"max_time_in_caves": 60.0
 	}
 }
 
@@ -42,8 +42,8 @@ func load_settings() -> void:
 	
 	emit_signal("config_loaded")
 
-func get_setting(category: String, key: String):
-    return _settings[category][key]
+func get_setting(category: String, key: String) -> String:
+    return str(_settings[category][key])
 
 func set_setting(category: String, key: String, value) -> void:
     _settings[category][key] = value

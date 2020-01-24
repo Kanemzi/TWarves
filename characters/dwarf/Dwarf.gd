@@ -3,14 +3,13 @@ class_name Dwarf
 
 signal caves_exited
 
-onready var animator: AnimationPlayer = $AnimationPlayer
-onready var state_machine: StateMachine = $StateMachine
-onready var sprite : Sprite = $Sprite
-onready var exit_timer : Timer = $ExitTimer
+onready var animator := $AnimationPlayer as AnimationPlayer
+onready var state_machine := $StateMachine as StateMachine
+onready var sprite := $Sprite as DwarfSprite
+onready var exit_timer := $ExitTimer as Timer
 
 var display_name : String
 var must_exit := false
-
 
 func init(_display_name : String = "___dummy___") -> void :
 	self.display_name = _display_name

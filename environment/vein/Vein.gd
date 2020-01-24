@@ -1,17 +1,16 @@
 tool
 extends Area2D
-
 class_name Vein
 
-export(int, 1, 3, 1) var tier: int = 1 setget set_tier
-export(int) var mining_distance = 16
+export(int, 1, 3, 1) var tier := 1 setget set_tier
+export(float) var mining_distance := 16.0
 
-onready var sprite: Sprite = $Sprite
+onready var sprite := $Sprite as Sprite
 
 func _ready() -> void:
 	update_texture()
 
-func set_tier(value) -> void:
+func set_tier(value: int) -> void:
 	if tier != value:
 		tier = value
 		if sprite:

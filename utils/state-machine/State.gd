@@ -5,7 +5,7 @@ Interface de base d'un état générique
 """
 
 var _state_machine := _get_state_machine(self)
-var _parent: State = null
+var _parent: State
 
 func _ready() -> void:
 	yield(owner, "ready")

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://environment/cave/Cave.gd" type="Script" id=1]
 [ext_resource path="res://environment/cave/background.png" type="Texture" id=2]
 [ext_resource path="res://characters/dwarf/DwarfQueue.gd" type="Script" id=3]
 [ext_resource path="res://environment/vein/Vein.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/dwarf/DwarfManager.gd" type="Script" id=5]
-[ext_resource path="res://environment/cave/foreground.png" type="Texture" id=6]
+[ext_resource path="res://environment/cave/foreground.png" type="Texture" id=5]
 
 [node name="Cave" type="Node2D"]
 position = Vector2( 0, 140 )
@@ -58,25 +57,27 @@ __meta__ = {
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 68, 0 )
+mining_distance = 16.0
 
 [node name="2" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 116, 0 )
 tier = 2
+mining_distance = 16.0
 
 [node name="3" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 164, 0 )
 tier = 3
+mining_distance = 16.0
 
 [node name="Dwarfs" type="YSort" parent="Objects"]
-script = ExtResource( 5 )
 
 [node name="Foreground" type="Sprite" parent="."]
 z_index = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 centered = false
 __meta__ = {
 "_edit_lock_": true

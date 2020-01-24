@@ -1,11 +1,10 @@
 extends Node2D
-
 class_name DwarfQueue
 
 onready var places := $Places.get_children()
 onready var start_place : Position2D = places.front()
 
-var dwarf_pool : DwarfManager = null
+var dwarf_pool : YSort
 
 """
 Ajoute un nouveau nain dans la file d'attente

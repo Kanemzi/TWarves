@@ -24,7 +24,4 @@ func add(user_id: String, display_name: String) -> Player :
 Retourne un joueur du jeu en fonction de son user id
 """
 func get(user_id: String) -> Player :
-	print_tree()
-	print("id : " + user_id)
-	print("node : " + str(get_node(user_id)))
 	return get_node(user_id) as Player
