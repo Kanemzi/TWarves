@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scene.gd" type="Script" id=1]
 [ext_resource path="res://interface/credentials-form/CredentialsPopup.tscn" type="PackedScene" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://utils/managers/twitch/commands/DwarfMove.gd" type="Script" id=7]
 [ext_resource path="res://utils/managers/twitch/commands/Mine.gd" type="Script" id=8]
 [ext_resource path="res://utils/managers/twitch/commands/QueueAdvance.gd" type="Script" id=9]
-[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=10]
+[ext_resource path="res://utils/managers/twitch/commands/ExitMine.gd" type="Script" id=10]
+[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=11]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,6 +49,9 @@ max_args = 1
 script = ExtResource( 9 )
 dwarf_manager = NodePath("../../../SceneContainer/Scene/Cave/Objects/Dwarfs")
 
+[node name="ExitMine" type="Node" parent="ChatInterface/Commands"]
+script = ExtResource( 10 )
+
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="DisplayNames" type="Node2D" parent="GUI"]
@@ -68,5 +72,5 @@ usage = 1
 render_target_update_mode = 3
 gui_disable_input = true
 
-[node name="Cave" parent="SceneContainer/Scene" instance=ExtResource( 10 )]
+[node name="Cave" parent="SceneContainer/Scene" instance=ExtResource( 11 )]
 [connection signal="popup_hide" from="CredentialsPopup" to="ChatInterface" method="_start"]
