@@ -21,10 +21,11 @@ func enter(params := {}) -> void:
 	dwarf.animator.play("run")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
 
+	dwarf.connect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
 
 func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
-
+	dwarf.disconnect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
 
 """
 Retourne l'ensemble des veine de la map
@@ -66,3 +67,10 @@ S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
 func _on_Dwarf_target_reached() -> void:
 	dwarf.animator.play("dig")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
+
+
+"""
+S'exécute lorsque la pioche du nain frappe un filon
+"""
+func _on_Dwarf_pickaxe_used() -> void:
+	print(dwarf.display_name + " : poc !")

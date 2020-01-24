@@ -54,22 +54,25 @@ __meta__ = {
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 68, 0 )
-tier = 1
-mining_distance = 16.0
+mining_drop_rate = 0.5
+mining_nugget_max = 1
 
 [node name="2" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 116, 0 )
 tier = 2
-mining_distance = 16.0
+mining_drop_rate = 0.6
+mining_nugget_max = 3
 
 [node name="3" parent="Objects/Veins" groups=[
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 164, 0 )
 tier = 3
-mining_distance = 16.0
+mining_drop_rate = 0.3
+mining_nugget_min = 10
+mining_nugget_max = 15
 
 [node name="Dwarfs" type="YSort" parent="Objects"]
 

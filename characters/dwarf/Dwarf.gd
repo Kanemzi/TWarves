@@ -3,6 +3,7 @@ class_name Dwarf
 
 signal moved(new_position)
 signal caves_exited
+signal pickaxe_used
 
 onready var animator := $AnimationPlayer as AnimationPlayer
 onready var state_machine := $StateMachine as StateMachine
@@ -21,6 +22,13 @@ func _ready() -> void:
 	print("max time : " + str(max_time))
 	exit_timer.wait_time = max_time
 	exit_timer.start()
+
+
+"""
+Fonction exécutée lorsque la pioche du nain frappe un filon
+"""
+func _pickaxe_animation_hit() -> void:
+	emit_signal("pickaxe_used")
 
 
 func _on_ExitTimer_timeout() -> void:
