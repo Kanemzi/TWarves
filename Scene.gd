@@ -1,5 +1,5 @@
 extends Node2D
-class_name Scene
+class_name Game
 
 export(bool) var SHOW_CONFIG := false
 
