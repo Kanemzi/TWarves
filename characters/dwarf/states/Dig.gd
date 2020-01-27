@@ -56,16 +56,13 @@ func _find_nearest_vein() -> Vein:
 	return nearest
 
 
-"""
-S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
-"""
+
+# S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
 func _on_Dwarf_target_reached() -> void:
 	dwarf.animator.play("dig")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
 
 
-"""
-S'exécute lorsque la pioche du nain frappe un filon
-"""
+# S'exécute lorsque la pioche du nain frappe un filon
 func _on_Dwarf_pickaxe_used() -> void:
 	print(dwarf.display_name + " : poc !")

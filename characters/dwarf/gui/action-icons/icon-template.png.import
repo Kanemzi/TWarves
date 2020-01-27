@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-stun.png-0ecc2d3e637ea33ae825b87c5114f581.stex"
+path="res://.import/icon-template.png-101dc812962b341037b1ff398a226ed3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/action-icons/icon-stun.png"
-dest_files=[ "res://.import/icon-stun.png-0ecc2d3e637ea33ae825b87c5114f581.stex" ]
+source_file="res://characters/dwarf/gui/action-icons/icon-template.png"
+dest_files=[ "res://.import/icon-template.png-101dc812962b341037b1ff398a226ed3.stex" ]
 
 [params]
 

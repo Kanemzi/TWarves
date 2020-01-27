@@ -55,7 +55,10 @@ script = ExtResource( 10 )
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="DisplayNames" type="Node2D" parent="GUI"]
-position = Vector2( 96, 432 )
+position = Vector2( 96, 300 )
+
+[node name="ActionIcons" type="Node2D" parent="GUI"]
+position = Vector2( 96, 310 )
 
 [node name="SceneContainer" type="ViewportContainer" parent="."]
 margin_right = 1380.0

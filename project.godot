@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "ActionIcon",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/ActionIcon.gd"
+}, {
 "base": "Node",
 "class": "BaseEmotesCache",
 "language": "GDScript",
@@ -220,6 +225,7 @@ _global_script_classes=[ {
 "path": "res://environment/vein/Vein.gd"
 } ]
 _global_script_class_icons={
+"ActionIcon": "",
 "BaseEmotesCache": "",
 "BttvEmotesCache": "",
 "Cave": "",

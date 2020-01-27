@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-exit.png-5c7224c073b8c2567f96cf861d22aa2b.stex"
+path="res://.import/action-icons.png-5dcdd43112ca4c7fcf29886737be8f26.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/action-icons/icon-exit.png"
-dest_files=[ "res://.import/icon-exit.png-5c7224c073b8c2567f96cf861d22aa2b.stex" ]
+source_file="res://characters/dwarf/gui/action-icons/action-icons.png"
+dest_files=[ "res://.import/action-icons.png-5dcdd43112ca4c7fcf29886737be8f26.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

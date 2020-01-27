@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-mine.png-ce0334b952853eb9704dd741fd23740e.stex"
+path="res://.import/icon-trap.png-db0e9d729195645cf0534f22cd2999aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://interface/action-icons/icon-mine.png"
-dest_files=[ "res://.import/icon-mine.png-ce0334b952853eb9704dd741fd23740e.stex" ]
+source_file="res://characters/dwarf/gui/action-icons/icon-trap.png"
+dest_files=[ "res://.import/icon-trap.png-db0e9d729195645cf0534f22cd2999aa.stex" ]
 
 [params]
 

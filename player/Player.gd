@@ -23,7 +23,7 @@ func is_in_cave() -> bool:
 # Crée le nain associé au joueur
 # Se charge de lier les events
 func create_dwarf() -> Dwarf:
-	dwarf = DwarfScene.instance()
+	dwarf = DwarfScene.instance() as Dwarf
 	dwarf.init(display_name)
 	dwarf.connect("caves_exited", self, "remove_dwarf")
 	return dwarf
@@ -31,5 +31,6 @@ func create_dwarf() -> Dwarf:
 
 # Supprime le nain associé au joueur
 func remove_dwarf() -> void:
+	# save golds to player
 	dwarf.queue_free()
 	dwarf = null

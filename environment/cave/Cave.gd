@@ -5,4 +5,3 @@ onready var dwarf_queue : DwarfQueue = $DwarfQueue as DwarfQueue
 
 func _ready():
 	dwarf_queue.dwarf_pool = $Objects/Dwarfs
-	

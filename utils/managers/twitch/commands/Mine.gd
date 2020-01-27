@@ -1,6 +1,8 @@
 extends ChatCommand
 class_name MineCommand
 
+const ActionIconScene = preload("res://characters/dwarf/gui/ActionIcon.tscn")
+
 func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	var players_manager := (owner as Game).players_manager as PlayersManager
 	
@@ -19,6 +21,13 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	elif player.dwarf.must_exit:
 		return
 	else:
+		# création de l'icon d'action
+		var icon := ActionIconScene.instance() as ActionIcon
+		player.dwarf.connect("moved", icon, "_on_Dwarf_moved")
+		player.dwarf.connect("caves_exited", icon, "_on_Dwarf_caves_exited")
+		(owner as Game).gui.get_node("ActionIcons").add_child(icon)
+		icon.set_icon("mine")
+		
 		var params := {}
 		if args.size() > 0:
 			params.spot = int(args[0])
