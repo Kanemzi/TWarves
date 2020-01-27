@@ -268,6 +268,7 @@ _global_script_class_icons={
 
 config/name="TWarves"
 run/main_scene="res://Scene.tscn"
+boot_splash/image="res://banner.png"
 config/icon="res://icon.png"
 
 [autoload]
@@ -279,9 +280,10 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 
 [display]
 
-window/size/width=920
-window/size/height=720
-window/size/always_on_top=true
+window/size/width=1380
+window/size/height=540
+window/size/resizable=false
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [editor_plugins]
@@ -313,4 +315,5 @@ texture={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

@@ -14,7 +14,7 @@ var _settings := {
 		"oauth": ""
 	},
 	"graphics" : {
-		"scene_scale_factor": 4
+		"scene_scale_factor": 6
 	},
 	"gameplay" : {
 		"max_time_in_caves": 60.0
