@@ -56,7 +56,6 @@ func _find_nearest_vein() -> Vein:
 	return nearest
 
 
-
 # S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
 func _on_Dwarf_target_reached() -> void:
 	dwarf.animator.play("dig")
@@ -65,4 +64,6 @@ func _on_Dwarf_target_reached() -> void:
 
 # S'exécute lorsque la pioche du nain frappe un filon
 func _on_Dwarf_pickaxe_used() -> void:
-	print(dwarf.display_name + " : poc !")
+	var nuggets_amount := vein.get_nugget_amount()
+	dwarf.give_nuggets(nuggets_amount)
+	print(dwarf.display_name + " : poc ! " + str(nuggets_amount))
