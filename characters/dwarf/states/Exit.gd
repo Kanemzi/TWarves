@@ -17,8 +17,6 @@ func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 
 
-"""
-S'exécute lorsque le nain vient de sortir de la mine
-"""
+# S'exécute lorsque le nain vient de sortir de la mine
 func _on_Dwarf_target_reached() -> void:
 	dwarf.emit_signal("caves_exited")

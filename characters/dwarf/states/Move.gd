@@ -17,24 +17,18 @@ func exit() -> void:
 	pass
 
 
-"""
-Indique un point vers lequel le nain va se déplacer
-Lorsque le point cible est atteint, un signal target_reached est lancé
-"""
+# Indique un point vers lequel le nain va se déplacer
+# Lorsque le point cible est atteint, un signal target_reached est lancé
 func target(target : Vector2) -> void :
 	self._target = target
 
 
-"""
-Le nain oublie le point qu'il cible et arrête de bouger
-"""
+# Le nain oublie le point qu'il cible et arrête de bouger
 func forget_target() -> void:
 	self._target = Vector2.INF
 
 
-"""
-Le nain se déplace vers son point cible à la vitesse qui lui est définie
-"""
+# Le nain se déplace vers son point cible à la vitesse qui lui est définie
 func move_to_target(delta: float) -> void:
 	if _target == Vector2.INF:
 		return

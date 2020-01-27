@@ -1,8 +1,6 @@
 extends Node
 class_name StateMachine
-"""
-Interface de base d'une machine à états générique
-"""
+# Interface de base d'une machine à états générique
 
 signal transitioned(state)
 
@@ -27,9 +25,7 @@ func _physics_process(delta: float) -> void:
 	state.physics_process(delta)
 
 
-"""
-Change l'état actuel de la machine à états
-"""
+# Change l'état actuel de la machine à états
 func transition_to(target_state: String, params := {}) -> void:
 	if not has_node(target_state):
 		return

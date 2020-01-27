@@ -24,13 +24,12 @@ func _ready() -> void:
 	exit_timer.start()
 
 
-"""
-Fonction exécutée lorsque la pioche du nain frappe un filon
-"""
+# Fonction exécutée lorsque la pioche du nain frappe un filon
 func _pickaxe_animation_hit() -> void:
 	emit_signal("pickaxe_used")
 
 
+# Fonction exécutée lorsque le nain a terminé son temps autorisé dans la mine
 func _on_ExitTimer_timeout() -> void:
 	self.must_exit = true
 	state_machine.transition_to("Move/Exit")

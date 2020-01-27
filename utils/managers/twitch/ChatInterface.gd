@@ -5,9 +5,8 @@ onready var command_list := $Commands.get_children()
 
 # onready var user_ids := $UserIds
 
-"""
-Se connecte au chat twitch avec les credentials entrés dans la popup
-"""
+
+# Se connecte au chat twitch avec les credentials entrés dans la popup
 func start() -> void:
 	_register_all_commands()
 	

@@ -27,25 +27,20 @@ func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.disconnect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
 
-"""
-Retourne l'ensemble des veine de la map
-"""
+
+# Retourne l'ensemble des veine de la map
 func _get_veins() -> Array:
 	return get_tree().get_nodes_in_group("vein")
 
 
-"""
-Retourne un emplacement aléatoire autour de la veine passée en paramètres
-"""
+# Retourne un emplacement aléatoire autour de la veine passée en paramètres
 func _find_place_around_vein(vein : Vein) -> Vector2:
 	var offset := rand_range(vein.mining_distance / 2, vein.mining_distance)
 	var side := pow(-1, randi() % 2)
 	return vein.position + Vector2(offset * side, 0)
 
 
-"""
-Retourne la veine la plus proche du nain
-"""
+# Retourne la veine la plus proche du nain
 func _find_nearest_vein() -> Vein:
 	var veins := _get_veins()
 	if veins.size() == 0:

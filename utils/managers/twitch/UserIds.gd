@@ -4,9 +4,8 @@ export(String) var API_ENDPOINT := ""
 
 var _cache := {}
 
-"""
-Cherche l'userid correspondant au pseudo d'un utilisateur du chat
-"""
+
+# Cherche l'userid correspondant au pseudo d'un utilisateur du chat
 func find(display_name: String) -> String :
 	if not display_name in _cache:
 		var http := HTTPRequest.new()
@@ -20,17 +19,14 @@ func find(display_name: String) -> String :
 	return str(_cache[display_name])
 
 
-"""
-Ajoute une requête à la queue des requêtes
-"""
+# Ajoute une requête à la queue des requêtes
 func _build_request(display_name : String) -> String:
 	var request := API_ENDPOINT + "?login=" + display_name
 	return request
 
 
-"""
-Déclenche la prochaine requête de la queue
-"""
+
+# Déclenche la prochaine requête de la queue
 func _send_userid_request(http : HTTPRequest, display_name: String) -> void:
 	var client_id := ConfigManager.get_setting("credentials", "client_id")
 	if client_id == "":
