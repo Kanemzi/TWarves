@@ -24,8 +24,8 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
   - [ ] Création d'un objet *"Drop"*
      - [ ] Physique du drop
 - [ ] Minage
-  - [ ] **Affichage du nombre de pépites sur l'UI du nain**
-  - [ ] **Animer la récolte de pépites sur l'UI**
+  - [x] Affichage du nombre de pépites sur l'UI du nain
+  - [x] Animer la récolte de pépites sur l'UI
   - [ ] Balance des différents filons
   - [ ] Créer la classe *"Treasure"* (extends Drop)
   - [ ] Ajout des probabilités de drop des trésors dans les filons

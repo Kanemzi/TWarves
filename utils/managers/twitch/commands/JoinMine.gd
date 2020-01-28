@@ -16,5 +16,8 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 		# création du label de pseudo
 		var display_names_layer := (owner as Game).gui.get_node("DisplayNames") as GUIDisplayNames
 		display_names_layer.add_display_name_for(dwarf)
+		
+		var gold_counters_layer := (owner as Game).gui.get_node("GoldCounters") as GUIGoldCounters
+		gold_counters_layer.add_gold_counter_for(dwarf)
 	else:
 		(owner as Game).chat_interface.chat("Vous êtes déjà dans la mine " + display_name)

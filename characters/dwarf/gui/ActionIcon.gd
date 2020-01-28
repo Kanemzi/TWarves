@@ -8,11 +8,11 @@ const icon_indexes := {
 	"trap": 3
 }
 
+var _scale : int
+
 onready var sprite := $Sprite as Sprite
 onready var animator := $AnimationPlayer as AnimationPlayer
 onready var timer := $Timer as Timer
-
-var _scale : int
 
 func _ready():
 	animator.play("open")
