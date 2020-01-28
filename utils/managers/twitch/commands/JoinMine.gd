@@ -14,9 +14,7 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 		dwarf_queue.add(dwarf)
 		
 		# création du label de pseudo
-		var pseudo := DisplayNameLabel.new(display_name)
-		dwarf.connect("moved", pseudo, "_on_Dwarf_moved")
-		dwarf.connect("caves_exited", pseudo, "_on_Dwarf_caves_exited")
-		(owner as Game).gui.get_node("DisplayNames").add_child(pseudo)
+		var display_names_layer := (owner as Game).gui.get_node("DisplayNames") as GUIDisplayNames
+		display_names_layer.add_display_name_for(dwarf)
 	else:
 		(owner as Game).chat_interface.chat("Vous êtes déjà dans la mine " + display_name)

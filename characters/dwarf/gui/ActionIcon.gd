@@ -21,6 +21,8 @@ func _ready():
 
 
 func set_icon(icon_name : String) -> void:
+	if not icon_name in icon_indexes:
+		icon_name = "mine"
 	sprite.frame = icon_indexes[icon_name]
 
 

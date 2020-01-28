@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scene.gd" type="Script" id=1]
 [ext_resource path="res://interface/credentials-form/CredentialsPopup.tscn" type="PackedScene" id=2]
@@ -10,7 +10,9 @@
 [ext_resource path="res://utils/managers/twitch/commands/Mine.gd" type="Script" id=8]
 [ext_resource path="res://utils/managers/twitch/commands/QueueAdvance.gd" type="Script" id=9]
 [ext_resource path="res://utils/managers/twitch/commands/ExitMine.gd" type="Script" id=10]
-[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=11]
+[ext_resource path="res://characters/dwarf/gui/DisplayNames.gd" type="Script" id=11]
+[ext_resource path="res://characters/dwarf/gui/ActionIcons.gd" type="Script" id=12]
+[ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=13]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -56,9 +58,11 @@ script = ExtResource( 10 )
 
 [node name="DisplayNames" type="Node2D" parent="GUI"]
 position = Vector2( 96, 300 )
+script = ExtResource( 11 )
 
 [node name="ActionIcons" type="Node2D" parent="GUI"]
 position = Vector2( 96, 310 )
+script = ExtResource( 12 )
 
 [node name="SceneContainer" type="ViewportContainer" parent="."]
 margin_right = 1380.0
@@ -75,7 +79,7 @@ usage = 1
 render_target_update_mode = 3
 gui_disable_input = true
 
-[node name="Cave" parent="SceneContainer/Scene" instance=ExtResource( 11 )]
+[node name="Cave" parent="SceneContainer/Scene" instance=ExtResource( 13 )]
 position = Vector2( 0, 40 )
 
 [node name="BottomOverlayMargin" type="ColorRect" parent="."]
