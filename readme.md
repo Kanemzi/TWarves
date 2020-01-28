@@ -1,0 +1,39 @@
+## To do
+
+- [ ] Global
+  - [ ] Implémentation du système de queue
+  - [ ] Création d'un objet *"Drop"*
+     - [ ] Physique du drop
+- [ ] Minage
+  - [ ] Affichage du nombre de pépites sur l'UI du nain
+  - [ ] Animer la récolte de pépites sur l'UI
+  - [ ] Balance des différents filons
+  - [ ] Créer la classe *"Treasure"* (extends Drop)
+  - [ ] Ajout des probabilités de drop des trésors dans les filons
+  - [ ] Création d'un classe listant tous les trésors non obtenus pour le moment
+  - [ ] Les trésors ne sont pas collectés immédiatement mais droppés au sol
+- [ ] Combat
+  - [ ] Animer la perte de pépites sur l'UI
+  - [ ] Créer l'état d'attaque d'un autre nain
+    - [ ] Déplacement rapide vers la cible
+    - [ ] Création de particules de poussière aux pieds du nain
+    - [ ] Animer l'attaque du nain
+    - [ ] Le nain n'a qu'une attaque par session dans la mine
+    - [ ] Transition vers l'état de fatigue quand la cible est ratée
+  - [ ] Créer l'état de stun du nain
+    - [ ] Animation du stun
+    - [ ] Sauvegarde de l'état précédent pour y retourner après la période de stun
+  - [ ] Etat de fatigue
+    - [ ] Créer l'animation de fatigue
+    - [ ] Particules de fatigue
+    - [ ] Si une action est demandée pendant la fatigue, elle est prise en compte à la fin de la fatigue
+  - [ ] Créer l'objet *"GoldNugget"* (extends Drop)
+    - [ ] Sprite aléatoire pour chaque pépite
+  - [ ] *Augmentation progressive de la force d'attaque pendant que le nain mine*
+- [ ] Joueur
+  - [ ] Sauver les pépites récoltées par le nain lorsqu'il sort de la mine
+  - [ ] Sauver les trésors trouvés par le nain lorsqu'il sort de la mine
+  - [ ] Sauvegarde des données des joueurs lorsque le jeu est quitté (ou qu'un bouton de sauvegarde est pressé)
+  - [ ] Chargement des données des joueurs lorsque le jeu est lancé
+- [ ] Customisation
+- [ ] Commandes MJ
