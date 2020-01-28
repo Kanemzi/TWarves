@@ -7,3 +7,4 @@ func add_display_name_for(dwarf: Dwarf) -> void:
 	dwarf.connect("moved", label, "_on_Dwarf_moved")
 	dwarf.connect("caves_exited", label, "_on_Dwarf_caves_exited")
 	add_child(label)
+	label.update_position(dwarf.position)

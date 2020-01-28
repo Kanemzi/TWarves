@@ -10,7 +10,6 @@ func _init(display_name: String) -> void:
 	text = display_name
 	add_font_override("font", FONT)
 	_scale = int(ConfigManager.get_setting("graphics", "scene_scale_factor"))
-	visible = false
 
 func update_position(position: Vector2) -> void:
 	margin_left = (position.x + OFFSET.x) * _scale - (rect_size.x / 2)
@@ -20,5 +19,4 @@ func _on_Dwarf_caves_exited() -> void:
 	queue_free()
 
 func _on_Dwarf_moved(new_position: Vector2) -> void:
-	visible = true
 	update_position(new_position)

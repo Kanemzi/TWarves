@@ -10,3 +10,4 @@ func spawn_action_icon_for(dwarf: Dwarf, type: String) -> void:
 	dwarf.connect("caves_exited", icon, "_on_Dwarf_caves_exited")
 	add_child(icon)
 	icon.set_icon(type)
+	icon.update_position(dwarf.position)
