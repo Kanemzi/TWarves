@@ -4,6 +4,7 @@ class_name Game
 const SAVE_PATH := "res://data/save.cfg"
 
 export(bool) var SHOW_CONFIG := false
+export(float) var AUTOSAVE_DELAY := 30.0
 
 var _save_file : File
 
@@ -12,6 +13,7 @@ onready var chat_interface := $ChatInterface as ChatInterface
 onready var players_manager := $Players as PlayersManager
 onready var cave_scene := $SceneContainer/Scene/Cave as Cave
 onready var gui := $GUI as CanvasLayer
+onready var autosave_timer := $AutosaveTimer as Timer
 
 func _ready() -> void:
 	if SHOW_CONFIG:
@@ -19,6 +21,8 @@ func _ready() -> void:
 		yield(credentials_popup, "popup_hide")
 	chat_interface.start()
 	load_game()
+	autosave_timer.wait_time = AUTOSAVE_DELAY
+	autosave_timer.start()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -26,6 +30,7 @@ func _notification(what):
 		get_tree().quit()
 
 func save_game() -> void:
+	print("SAVE GAME !")
 	_save_file = File.new()
 	_save_file.open(SAVE_PATH, File.WRITE)
 	
