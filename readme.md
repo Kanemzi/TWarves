@@ -58,9 +58,9 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
     - [ ] Sprite aléatoire pour chaque pépite
   - [ ] *Augmentation progressive de la force d'attaque pendant que le nain mine*
 - [ ] Joueur
-  - [ ] **Sauver les pépites récoltées par le nain lorsqu'il sort de la mine**
+  - [x] Sauver les pépites récoltées par le nain lorsqu'il sort de la mine
   - [ ] Sauver les trésors trouvés par le nain lorsqu'il sort de la mine
-  - [ ] Sauvegarde des données des joueurs lorsque le jeu est quitté (ou qu'un bouton de sauvegarde est pressé)
-  - [ ] Chargement des données des joueurs lorsque le jeu est lancé
+  - [x] Sauvegarde des données des joueurs lorsque le jeu est quitté (ou qu'un bouton de sauvegarde est pressé)
+  - [x] Chargement des données des joueurs lorsque le jeu est lancé
 - [ ] Customisation
 - [ ] Commandes MJ

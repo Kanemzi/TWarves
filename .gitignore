@@ -1,4 +1,4 @@
-data/config.cfg
+data/
 bin/
 git_api.gdnlib
 git_api.gdns
