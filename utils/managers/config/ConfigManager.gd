@@ -46,7 +46,7 @@ func load_settings() -> void:
 	emit_signal("config_loaded")
 
 func get_setting(category: String, key: String) -> String:
-    return str(_settings[category][key])
+	return str(_settings[category][key])
 
 func set_setting(category: String, key: String, value) -> void:
-    _settings[category][key] = value
+	_settings[category][key] = value
