@@ -16,7 +16,7 @@ func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
 	if not player.is_in_cave() :
 		(owner as Game).chat_interface.chat("Entrez d'abord dans la mine " + display_name + "!")
 		return
-	elif player.dwarf.must_exit:
+	elif not player.dwarf.can_action:
 		return
 	else:
 		var dwarf := player.dwarf

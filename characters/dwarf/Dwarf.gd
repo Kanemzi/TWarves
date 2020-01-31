@@ -4,6 +4,7 @@ class_name Dwarf
 
 signal moved(new_position)
 signal caves_exited
+signal queue_exited
 signal pickaxe_used
 
 signal nuggets_got(amount)
@@ -15,7 +16,7 @@ onready var sprite := $Sprite as DwarfSprite
 onready var exit_timer := $ExitTimer as Timer
 
 var display_name : String
-var must_exit := false
+var can_action := true # = true quand le nain peut recevoir des ordres du joueur
 var golden_nuggets := 0
 
 func init(_display_name : String = "___dummy___") -> void :
@@ -54,6 +55,6 @@ func _pickaxe_animation_hit() -> void:
 
 # Fonction exécutée lorsque le nain a terminé son temps autorisé dans la mine
 func _on_ExitTimer_timeout() -> void:
-	self.must_exit = true
+	self.can_action = false
 	state_machine.transition_to("Move/Exit")
 	print(display_name + " must exit")

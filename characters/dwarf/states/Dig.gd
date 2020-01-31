@@ -1,10 +1,10 @@
 extends DwarfState
+class_name DwarfDigState
 
 var vein: Vein
 
 func physics_process(delta: float) -> void:
 	_parent.move_to_target(delta)
-
 
 func enter(params := {}) -> void:
 	var veins := _get_veins()
@@ -17,6 +17,7 @@ func enter(params := {}) -> void:
 	
 	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
 	_parent.target(_find_place_around_vein(vein))
+	print("target " + str(_parent._target))
 
 	dwarf.animator.play("run")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)

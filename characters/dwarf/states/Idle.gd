@@ -1,14 +1,8 @@
-extends State
+extends DwarfState
+class_name DwarfIdleState
 
-func _enter(parameters: Dictionary = {}) -> void:
-	owner.animator.play("idle")
-	return
+func enter(params := {}) -> void:
+	dwarf.animator.play("idle")
 
-func _exit() -> void:
-	return
-
-func _update(delta: float) -> void:
-	return
-	
-func _on_animation_finished(animation_name: String) -> void:
-	return
+func exit() -> void:
+	pass

@@ -1,4 +1,5 @@
 extends DwarfState
+class_name DwarfExitState
 
 func physics_process(delta: float) -> void:
 	_parent.move_to_target(delta)

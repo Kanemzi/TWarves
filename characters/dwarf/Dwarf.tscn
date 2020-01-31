@@ -148,7 +148,6 @@ hframes = 29
 frame = 14
 
 [node name="Tool" type="Node2D" parent="Sprite"]
-editor/display_folded = true
 position = Vector2( 5, -5 )
 rotation = 5.93412
 

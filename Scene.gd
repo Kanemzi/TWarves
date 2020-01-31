@@ -30,7 +30,6 @@ func _notification(what):
 		get_tree().quit()
 
 func save_game() -> void:
-	print("SAVE GAME !")
 	_save_file = File.new()
 	_save_file.open(SAVE_PATH, File.WRITE)
 	

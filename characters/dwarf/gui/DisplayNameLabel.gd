@@ -1,19 +1,22 @@
-extends Label
+extends Node2D
 class_name DisplayNameLabel
-
-const OFFSET := Vector2(0, 0)
-const FONT := preload("res://interface/fonts/display_name_font.tres")
 
 var _scale : int
 
-func _init(display_name: String) -> void:
-	text = display_name
-	add_font_override("font", FONT)
+onready var label := $Center/Label as Label
+
+func _ready() -> void:
 	_scale = int(ConfigManager.get_setting("graphics", "scene_scale_factor"))
 
-func update_position(position: Vector2) -> void:
-	margin_left = (position.x + OFFSET.x) * _scale - (rect_size.x / 2)
-	margin_top = (position.y + OFFSET.y) * _scale
+
+func set_display_name(display_name: String) -> void:
+	label.text = display_name
+
+
+func update_position(pos: Vector2) -> void:
+	position.x = pos.x * _scale
+	position.y = pos.y * _scale
+
 
 func _on_Dwarf_caves_exited() -> void:
 	queue_free()
