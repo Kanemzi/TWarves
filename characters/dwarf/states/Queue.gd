@@ -15,7 +15,7 @@ func enter(params := {}) -> void:
 	queue = params.queue as DwarfQueue
 	queue_index = params.index
 	queue.connect("advanced", self, "_on_DwarfQueue_advanced")
-	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
+	_parent.connect("target_reached", self, "_on_Dwarf_target_reached", [], CONNECT_DEFERRED)
 	print(dwarf.display_name + " enters in Queue at position " + str(queue_index))
 	
 	var place := _get_queue_position()

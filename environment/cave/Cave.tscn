@@ -64,10 +64,7 @@ __meta__ = {
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 68, 0 )
-tier = 1
-mining_distance = 16.0
 mining_drop_rate = 0.25
-mining_nugget_min = 1
 mining_nugget_max = 3
 
 [node name="2" parent="Objects/Veins" groups=[
@@ -75,7 +72,6 @@ mining_nugget_max = 3
 ] instance=ExtResource( 4 )]
 position = Vector2( 116, 0 )
 tier = 2
-mining_distance = 16.0
 mining_drop_rate = 0.3
 mining_nugget_min = 2
 mining_nugget_max = 5
@@ -85,7 +81,6 @@ mining_nugget_max = 5
 ] instance=ExtResource( 4 )]
 position = Vector2( 164, 0 )
 tier = 3
-mining_distance = 16.0
 mining_drop_rate = 0.3
 mining_nugget_min = 4
 mining_nugget_max = 8
