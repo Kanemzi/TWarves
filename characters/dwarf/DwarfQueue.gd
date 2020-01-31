@@ -31,6 +31,7 @@ func add(dwarf : Dwarf) -> void:
 func _on_Dwarf_queue_exited() -> void:
 	counter -= 1
 	current_in_mine += 1
+	emit_signal("advanced")
 
 # S'exécute lorsqu'un nain quitte la mine
 func _on_Dwarf_caves_exited() -> void:

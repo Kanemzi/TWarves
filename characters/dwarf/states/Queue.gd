@@ -40,14 +40,12 @@ func _on_Dwarf_target_reached() -> void:
 func _on_DwarfQueue_advanced() -> void:
 	
 	# Si le nain est déjà en train d'attendre en tête de file
-	if queue_index == 0:
+	if queue_index != 0:
+		queue_index -= 1
 		# On sait qu'une place vient d'être libérée donc
 		# on peut quitter la queue immédiatement sans tester le nombre de
 		# nains présents dans la mine
-		_exit_mine()
-		return
-	
-	queue_index -= 1
+		
 	if queue_index < queue.places.size():
 		var place := _get_queue_position()
 		_parent.target(place)

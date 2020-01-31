@@ -67,4 +67,3 @@ func _on_Dwarf_target_reached() -> void:
 func _on_Dwarf_pickaxe_used() -> void:
 	var nuggets_amount := vein.get_nugget_amount()
 	dwarf.give_nuggets(nuggets_amount)
-	print(dwarf.display_name + " : poc ! " + str(nuggets_amount))
