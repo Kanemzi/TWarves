@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "ActionIcon",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/ActionIcon.gd"
+"path": "res://characters/dwarf/gui/action-icons/ActionIcon.gd"
 }, {
 "base": "Node",
 "class": "BaseEmotesCache",
@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "DisplayNameLabel",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/DisplayNameLabel.gd"
+"path": "res://characters/dwarf/gui/display-names/DisplayNameLabel.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Dwarf",
@@ -122,17 +122,17 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "GUIActionIcons",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/ActionIcons.gd"
+"path": "res://characters/dwarf/gui/action-icons/ActionIcons.gd"
 }, {
 "base": "Node2D",
 "class": "GUIDisplayNames",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/DisplayNames.gd"
+"path": "res://characters/dwarf/gui/display-names/DisplayNames.gd"
 }, {
 "base": "Node2D",
 "class": "GUIGoldCounters",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/GoldCounters.gd"
+"path": "res://characters/dwarf/gui/gold-counters/GoldCounters.gd"
 }, {
 "base": "Node2D",
 "class": "Game",
@@ -147,7 +147,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "GoldCounter",
 "language": "GDScript",
-"path": "res://characters/dwarf/gui/GoldCounter.gd"
+"path": "res://characters/dwarf/gui/gold-counters/GoldCounter.gd"
 }, {
 "base": "Reference",
 "class": "HelperTools",

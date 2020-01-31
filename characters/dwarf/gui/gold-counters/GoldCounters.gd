@@ -1,7 +1,7 @@
 extends Node2D
 class_name GUIGoldCounters
 
-const GoldCounterScene = preload("res://characters/dwarf/gui/GoldCounter.tscn")
+const GoldCounterScene = preload("GoldCounter.tscn")
 
 # Ajoute un compteur de pépites pour le nain passé en paramètre
 func add_gold_counter_for(dwarf: Dwarf) -> void:

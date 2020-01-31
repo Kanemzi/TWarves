@@ -1,7 +1,7 @@
 extends Node2D
 class_name GUIActionIcons
 
-const ActionIconScene = preload("res://characters/dwarf/gui/ActionIcon.tscn")
+const ActionIconScene = preload("ActionIcon.tscn")
 
 # Ajoute un icon d'action pour le nain passé en paramètre
 func spawn_action_icon_for(dwarf: Dwarf, type: String) -> void:

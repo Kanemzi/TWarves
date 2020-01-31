@@ -10,9 +10,9 @@
 [ext_resource path="res://utils/managers/twitch/commands/Mine.gd" type="Script" id=8]
 [ext_resource path="res://utils/managers/twitch/commands/QueueAdvance.gd" type="Script" id=9]
 [ext_resource path="res://utils/managers/twitch/commands/ExitMine.gd" type="Script" id=10]
-[ext_resource path="res://characters/dwarf/gui/DisplayNames.gd" type="Script" id=11]
-[ext_resource path="res://characters/dwarf/gui/ActionIcons.gd" type="Script" id=12]
-[ext_resource path="res://characters/dwarf/gui/GoldCounters.gd" type="Script" id=13]
+[ext_resource path="res://characters/dwarf/gui/display-names/DisplayNames.gd" type="Script" id=11]
+[ext_resource path="res://characters/dwarf/gui/action-icons/ActionIcons.gd" type="Script" id=12]
+[ext_resource path="res://characters/dwarf/gui/gold-counters/GoldCounters.gd" type="Script" id=13]
 [ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=14]
 
 [node name="Game" type="Node2D"]

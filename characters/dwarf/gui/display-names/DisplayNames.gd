@@ -1,8 +1,7 @@
 extends Node2D
 class_name GUIDisplayNames
 
-const DisplayNameLabelScene = preload("res://characters/dwarf/gui/DisplayNameLabel.tscn")
-
+const DisplayNameLabelScene = preload("DisplayNameLabel.tscn")
 
 # Ajoute un nouveau pseudo au layer d'ui
 func add_display_name_for(dwarf: Dwarf) -> void:

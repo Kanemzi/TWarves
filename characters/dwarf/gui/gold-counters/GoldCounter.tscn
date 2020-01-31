@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://characters/dwarf/gui/GoldCounter.gd" type="Script" id=1]
-[ext_resource path="res://characters/dwarf/gui/golden-nuggets.png" type="Texture" id=2]
-[ext_resource path="res://interface/fonts/display_name_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://interface/fonts/display_name_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://characters/dwarf/gui/gold-counters/golden-nuggets.png" type="Texture" id=2]
+[ext_resource path="res://characters/dwarf/gui/gold-counters/GoldCounter.gd" type="Script" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -39,7 +39,7 @@ anim_offset = 1.0
 anim_offset_random = 1.0
 
 [node name="GoldCounter" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Increment" type="Tween" parent="."]
 
@@ -64,7 +64,7 @@ margin_bottom = 31.0
 margin_left = 100.0
 margin_right = 100.0
 margin_bottom = 31.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.635294, 0.0784314, 1 )
 align = 1
 valign = 1
