@@ -3,7 +3,7 @@ class_name DwarfQueue
 
 signal advanced
 
-const MAX_ALLOWED_IN_MINE := 1
+export(int) var MAX_ALLOWED_IN_MINE := 1
 
 var counter : int # compte le nombre de nains actuellement dans la file
 var current_in_mine : int # compte le nombre de nains actuellement dans la mine

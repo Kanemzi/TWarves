@@ -27,7 +27,6 @@ func _ready() -> void:
 	var max_time := float(ConfigManager.get_setting("gameplay", "max_time_in_caves"))
 	print("max time : " + str(max_time))
 	exit_timer.wait_time = max_time
-	exit_timer.start()
 
 
 # Donne un certain nombre de pépites d'or à un joueur

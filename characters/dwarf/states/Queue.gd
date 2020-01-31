@@ -27,6 +27,8 @@ func exit() -> void:
 	queue.disconnect("advanced", self, "_on_DwarfQueue_advanced")
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.can_action = true
+	# On compte le temps passé de la mine seulement une fois sorti de la file d'attente
+	dwarf.exit_timer.start()
 
 
 # S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
