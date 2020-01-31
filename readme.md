@@ -20,7 +20,7 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
 *(de nouveaux points peuvent être ajoutés au fur et à mesure des idées ou des bugs trouvés)*
 
 - [ ] Global
-  - [ ] Implémentation du système de queue
+  - [x] Implémentation du système de queue
   - [ ] Création d'un objet *"Drop"*
      - [ ] Physique du drop
 - [ ] Minage

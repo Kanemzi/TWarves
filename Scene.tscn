@@ -64,13 +64,13 @@ script = ExtResource( 10 )
 position = Vector2( 96, 300 )
 script = ExtResource( 11 )
 
-[node name="ActionIcons" type="Node2D" parent="GUI"]
-position = Vector2( 96, 310 )
-script = ExtResource( 12 )
-
 [node name="GoldCounters" type="Node2D" parent="GUI"]
 position = Vector2( 96, 280 )
 script = ExtResource( 13 )
+
+[node name="ActionIcons" type="Node2D" parent="GUI"]
+position = Vector2( 96, 310 )
+script = ExtResource( 12 )
 
 [node name="SceneContainer" type="ViewportContainer" parent="."]
 margin_right = 1380.0

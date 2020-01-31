@@ -18,6 +18,7 @@ centered = false
 position = Vector2( 16, 32 )
 z_index = 1
 script = ExtResource( 3 )
+MAX_ALLOWED_IN_MINE = 2
 
 [node name="Places" type="Node2D" parent="DwarfQueue"]
 __meta__ = {
@@ -25,28 +26,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="4" type="Position2D" parent="DwarfQueue/Places" groups=[
-"queue_place",
-]]
+[node name="4" type="Position2D" parent="DwarfQueue/Places"]
 
-[node name="3" type="Position2D" parent="DwarfQueue/Places" groups=[
-"queue_place",
-]]
+[node name="3" type="Position2D" parent="DwarfQueue/Places"]
 position = Vector2( -7, -6 )
 
-[node name="2" type="Position2D" parent="DwarfQueue/Places" groups=[
-"queue_place",
-]]
+[node name="2" type="Position2D" parent="DwarfQueue/Places"]
 position = Vector2( -14, -12 )
 
-[node name="1" type="Position2D" parent="DwarfQueue/Places" groups=[
-"queue_place",
-]]
+[node name="1" type="Position2D" parent="DwarfQueue/Places"]
 position = Vector2( -21, -18 )
 
-[node name="0" type="Position2D" parent="DwarfQueue/Places" groups=[
-"queue_place",
-]]
+[node name="0" type="Position2D" parent="DwarfQueue/Places"]
 position = Vector2( -28, -24 )
 
 [node name="Objects" type="Node2D" parent="."]
