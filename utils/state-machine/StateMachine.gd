@@ -32,6 +32,7 @@ func transition_to(target_state: String, params := {}) -> void:
 	
 	var new_state := get_node(target_state) as State
 	
+	yield(get_tree(),"idle_frame")
 	state.exit()
 	self.state = new_state
 	state.enter(params)
