@@ -28,6 +28,11 @@ func _ready() -> void:
 	randomize()
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_up"):
+		get_tree().reload_current_scene()
+
+
 func _notification(what: int):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save_game()

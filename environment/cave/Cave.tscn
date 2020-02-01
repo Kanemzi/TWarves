@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://environment/cave/Cave.gd" type="Script" id=1]
 [ext_resource path="res://environment/cave/background.png" type="Texture" id=2]
 [ext_resource path="res://characters/dwarf/DwarfQueue.gd" type="Script" id=3]
 [ext_resource path="res://environment/vein/Vein.tscn" type="PackedScene" id=4]
 [ext_resource path="res://environment/cave/foreground.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 118, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 24 )
 
 [node name="Cave" type="Node2D"]
 position = Vector2( 0, 140 )
@@ -13,12 +19,14 @@ script = ExtResource( 1 )
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DwarfQueue" type="Node2D" parent="."]
 position = Vector2( 16, 32 )
 z_index = 1
 script = ExtResource( 3 )
-MAX_ALLOWED_IN_MINE = 2
 
 [node name="Places" type="Node2D" parent="DwarfQueue"]
 __meta__ = {
@@ -77,6 +85,34 @@ mining_nugget_min = 4
 mining_nugget_max = 8
 
 [node name="Dwarfs" type="YSort" parent="Objects"]
+
+[node name="Items" type="Node2D" parent="Objects"]
+position = Vector2( -16, -32 )
+z_index = 1
+
+[node name="CollisionsZones" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 112, 36 )
+shape = SubResource( 1 )
+
+[node name="Ceiling" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 112, -4 )
+shape = SubResource( 1 )
+
+[node name="Stairs" type="CollisionPolygon2D" parent="CollisionsZones"]
+position = Vector2( 7, 22 )
+polygon = PoolVector2Array( -7, -5, 8, 10, -7, 10 )
+
+[node name="RightWall" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 227, 16 )
+shape = SubResource( 2 )
+
+[node name="LeftWall" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( -3, 16 )
+shape = SubResource( 2 )
 
 [node name="Foreground" type="Sprite" parent="."]
 z_index = 1
