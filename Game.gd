@@ -13,7 +13,7 @@ var _save_file : File
 onready var credentials_popup := $CredentialsPopup as WindowDialog
 onready var chat_interface := $ChatInterface as ChatInterface
 onready var players_manager := $Players as PlayersManager
-onready var cave_scene := $SceneContainer/Scene/Cave as Cave
+onready var cave := $SceneContainer/Scene/Cave as Cave
 onready var gui := $GUI as CanvasLayer
 onready var autosave_timer := $AutosaveTimer as Timer
 
@@ -43,7 +43,7 @@ func save_game() -> void:
 	_save_file = File.new()
 	_save_file.open(SAVE_PATH, File.WRITE)
 	
-	var players := get_tree().get_nodes_in_group("Players")
+	var players := get_tree().get_nodes_in_group("players")
 	for o in players:
 		var player := o as Player
 		var save_data := to_json(player.get_save_data())

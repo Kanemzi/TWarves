@@ -16,7 +16,7 @@ func _init(user_id: String, display_name: String) -> void:
 
 
 func _ready() -> void:
-	add_to_group("Players")
+	add_to_group("players")
 
 
 # Retourne true si le nain du joueur est actuellement dans la mine, false sinon

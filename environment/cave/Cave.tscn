@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://environment/cave/Cave.gd" type="Script" id=1]
 [ext_resource path="res://environment/cave/background.png" type="Texture" id=2]
 [ext_resource path="res://characters/dwarf/DwarfQueue.gd" type="Script" id=3]
 [ext_resource path="res://environment/vein/Vein.tscn" type="PackedScene" id=4]
 [ext_resource path="res://environment/cave/foreground.png" type="Texture" id=5]
+[ext_resource path="res://environment/items/nugget/GoldenNugget.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/items/ItemsPool.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 118, 4 )
@@ -27,6 +29,7 @@ __meta__ = {
 position = Vector2( 16, 32 )
 z_index = 1
 script = ExtResource( 3 )
+max_allowed_in_mine = 2
 
 [node name="Places" type="Node2D" parent="DwarfQueue"]
 __meta__ = {
@@ -87,12 +90,16 @@ mining_nugget_max = 8
 [node name="Dwarfs" type="YSort" parent="Objects"]
 
 [node name="Items" type="Node2D" parent="Objects"]
-position = Vector2( -16, -32 )
 z_index = 1
+script = ExtResource( 7 )
+GoldenNuggetScene = ExtResource( 6 )
 
 [node name="CollisionsZones" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Ground" type="CollisionShape2D" parent="CollisionsZones"]
 position = Vector2( 112, 36 )

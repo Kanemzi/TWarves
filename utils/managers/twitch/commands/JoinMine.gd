@@ -9,7 +9,7 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 	var player := _players.add(user_id, display_name)
 	
 	if not player.is_in_cave():
-		var dwarf_queue := _game.cave_scene.dwarf_queue as DwarfQueue
+		var dwarf_queue := _game.cave.dwarf_queue as DwarfQueue
 		var dwarf := player.create_dwarf()
 		var names := _game.gui.get_node("DisplayNames") as GUIDisplayNames
 		var gold_counters := _game.gui.get_node("GoldCounters") as GUIGoldCounters

@@ -9,6 +9,7 @@ export(int) var max_allowed_in_mine := 1
 var counter: int # compte le nombre de nains actuellement dans la file
 var current_in_mine: int # compte le nombre de nains actuellement dans la mine
 var dwarf_pool: YSort
+var items_pool: Node2D # lisaison des signaux pour l'apparition des items
 
 onready var places := $Places.get_children()
 onready var start_place := places.back() as Position2D

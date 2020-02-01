@@ -1,6 +1,6 @@
 extends DwarfState
-class_name DwarfDigState
-# Etat dans lequel le nain se déplacer vers un filon et commence à miner
+class_name DwarfPickState
+# Etat dans lequel le nain cherche et ramasse des pépites au sol
 
 var vein: Vein
 
@@ -23,13 +23,11 @@ func enter(params := {}) -> void:
 	dwarf.animator.play("run")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
 	dwarf.connect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
-	dwarf.connect("pickaxe_used", vein, "_on_Dwarf_pickaxe_used")
 
 
 func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.disconnect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
-	dwarf.disconnect("pickaxe_used", vein, "_on_Dwarf_pickaxe_used")
 
 
 # Retourne l'ensemble des veine de la map

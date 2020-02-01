@@ -3,6 +3,8 @@ extends Area2D
 class_name Vein
 # Classe représentant un filon d'or
 
+signal dropped_nugget(position, amount) # Le filon vient de drop une pépite d'or
+
 export(int, 1, 3, 1) var tier := 1 setget set_tier
 export(float) var mining_distance := 16.0
 export(float) var mining_drop_rate := 1.0
@@ -42,3 +44,10 @@ func get_nugget_amount() -> int:
 # Retourne l'espérence de gain par coup de pioche sur le filon
 func get_expected_value() -> float:
 	return (mining_nugget_max + mining_nugget_min) / 2 * mining_drop_rate
+
+
+# Appelé lorsqu'un nain donne un coup de pioche dans la mine
+func _on_Dwarf_pickaxe_used() -> void:
+	var offset := Vector2(rand_range(-mining_distance / 2, mining_distance / 2),
+			randf() * 5)
+	emit_signal("dropped_nugget", position + offset , 1)
