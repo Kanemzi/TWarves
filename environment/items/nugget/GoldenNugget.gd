@@ -9,3 +9,8 @@ func _ready():
 	var speed := rand_range(0.0, min_speed + spread)
 	var vel := Vector2(cos(angle), sin(angle)) * speed
 	apply_impulse(Vector2.ZERO, vel)
+	add_to_group("golden_nugget")
+
+
+func _on_VisibilityNotifier_screen_exited() -> void:
+	queue_free()

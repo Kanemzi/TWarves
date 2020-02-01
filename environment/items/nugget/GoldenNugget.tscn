@@ -30,8 +30,14 @@ spread = 50.0
 position = Vector2( 0, -1 )
 texture = ExtResource( 1 )
 hframes = 5
-frame = 4
 script = SubResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 4 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( -2, -1, 4, 2 )
+__meta__ = {
+"_editor_description_": "Permet de supprimer les pépites qui pourraient sortir de l'écran par un bug de collision, afin de ne pas bloquer les nains dans l'état de pickup"
+}
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
