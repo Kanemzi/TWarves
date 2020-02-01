@@ -21,8 +21,8 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
 
 - [ ] Global
   - [x] Implémentation du système de queue
-  - [ ] Création d'un objet *"Drop"*
-     - [ ] Physique du drop
+  - [x] Création d'un objet *"Drop"*
+     - [x] Physique du drop
 - [ ] Minage
   - [x] Affichage du nombre de pépites sur l'UI du nain
   - [x] Animer la récolte de pépites sur l'UI
@@ -31,8 +31,8 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
   - [ ] Ajout des probabilités de drop des trésors dans les filons
   - [ ] Création d'une classe listant tous les trésors non obtenus pour le moment
   - [ ] Les trésors ne sont pas collectés immédiatement mais droppés au sol
-- [ ] Collecte (état)
-  - [ ] Les nains peuvent ramasser les pépites au sol
+- [ ] **Collecte (état)**
+  - [ ] **Les nains peuvent ramasser les pépites au sol**
   - [ ] Lorsque toutes les pépites ont été prises, le nain part miner sur le filon le plus proche
   - [ ] Les nains peuvent ramasser les trésors au sol
 - [ ] Combat
@@ -54,8 +54,8 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
     - [ ] Créer l'animation de fatigue
     - [ ] Particules de fatigue
     - [ ] Si une action est demandée pendant la fatigue, elle est prise en compte à la fin de la fatigue
-  - [ ] Créer l'objet *"GoldNugget"* (extends Drop)
-    - [ ] Sprite aléatoire pour chaque pépite
+  - [x] Créer l'objet *"GoldNugget"* (extends Drop)
+    - [x] Sprite aléatoire pour chaque pépite
   - [ ] *Augmentation progressive de la force d'attaque pendant que le nain mine*
 - [ ] Joueur
   - [x] Sauver les pépites récoltées par le nain lorsqu'il sort de la mine
