@@ -25,6 +25,7 @@ func _ready() -> void:
 	load_game()
 	autosave_timer.wait_time = _autosave_delay
 	autosave_timer.start()
+	randomize()
 
 
 func _notification(what: int):

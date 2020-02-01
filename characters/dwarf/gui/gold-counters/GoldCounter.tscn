@@ -68,5 +68,4 @@ custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.635294, 0.0784314, 1 )
 align = 1
 valign = 1
-[connection signal="tween_completed" from="Increment" to="." method="_on_Increment_tween_completed"]
 [connection signal="tween_step" from="Increment" to="." method="_on_Increment_tween_step"]

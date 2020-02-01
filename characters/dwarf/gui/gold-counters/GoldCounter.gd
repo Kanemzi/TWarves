@@ -37,6 +37,5 @@ func _on_Dwarf_moved(new_position: Vector2) -> void:
 	update_position(new_position)
 
 
-func _on_Increment_tween_step() -> void:
+func _on_Increment_tween_step(object: Object, key: NodePath, elapsed: float, value: Object) -> void:
 	label.text = str(int(displayed_counter))
-
