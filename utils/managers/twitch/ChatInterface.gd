@@ -1,10 +1,9 @@
 extends Gift
 class_name ChatInterface
+# Cette classe donne accès à toutes les fonctionnalités du chat
+# et permet d'enregistrer les différentes commandes du jeu
 
-onready var command_list := $Commands.get_children()
-
-# onready var user_ids := $UserIds
-
+onready var _command_list := $Commands.get_children()
 
 # Se connecte au chat twitch avec les credentials entrés dans la popup
 func start() -> void:
@@ -14,7 +13,7 @@ func start() -> void:
 	var oauth := ConfigManager.get_setting("credentials", "oauth")
 	var bot_nick := ConfigManager.get_setting("credentials", "bot_nick")
 	
-	if channel == "" or oauth == "" or bot_nick == "" :
+	if channel == "" or oauth == "" or bot_nick == "":
 		return
 	
 	connect_to_twitch()
@@ -25,7 +24,7 @@ func start() -> void:
 
 
 func _register_all_commands() -> void:
-	for command in command_list :
+	for command in _command_list:
 		add_command(command.name.to_lower(), command, "prepare",
 				command.max_args, 
 				command.min_args, 

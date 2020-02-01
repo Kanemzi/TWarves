@@ -187,7 +187,7 @@ shape = SubResource( 27 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
-initial_state = NodePath("Idle")
+_initial_state = NodePath("Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 16 )

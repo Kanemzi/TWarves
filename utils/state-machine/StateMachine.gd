@@ -4,9 +4,9 @@ class_name StateMachine
 
 signal transitioned(state)
 
-export(NodePath) var initial_state : NodePath
+export(NodePath) var _initial_state: NodePath
 
-onready var state := get_node(initial_state) as State
+onready var state := get_node(_initial_state) as State
 
 func _init() -> void:
 	add_to_group("state_machine")
@@ -31,7 +31,6 @@ func transition_to(target_state: String, params := {}) -> void:
 		return
 	
 	var new_state := get_node(target_state) as State
-	
 	state.exit()
 	self.state = new_state
 	state.enter(params)

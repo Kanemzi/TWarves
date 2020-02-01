@@ -1,5 +1,6 @@
 extends Node2D
 class_name GUIDisplayNames
+# Permet de gérer le layer d'ui affichant le pseudo des nains
 
 const DisplayNameLabelScene = preload("DisplayNameLabel.tscn")
 

@@ -1,10 +1,10 @@
 tool
 extends Area2D
 class_name Vein
+# Classe représentant un filon d'or
 
 export(int, 1, 3, 1) var tier := 1 setget set_tier
 export(float) var mining_distance := 16.0
-
 export(float) var mining_drop_rate := 1.0
 export(int) var mining_nugget_min := 1
 export(int) var mining_nugget_max := 2
@@ -28,14 +28,14 @@ func update_texture() -> void:
 
 # Retourne une quantité aléatoire de pépites d'or en fonction
 # des probabilités de drop définies dans l'éditeur
-func get_nugget_amount() -> int :
-	if randf() > mining_drop_rate:
-		return 0
-	var amount : int
-	if mining_nugget_min == mining_nugget_max:
-		amount = mining_nugget_min
-	else:
-		amount = randi() % (mining_nugget_max - mining_nugget_min + 1) + mining_nugget_min
+func get_nugget_amount() -> int:
+	var amount = 0
+	if randf() < mining_drop_rate:
+		if mining_nugget_min == mining_nugget_max:
+			amount = mining_nugget_min
+		else:
+			var amout_range := (mining_nugget_max - mining_nugget_min + 1)
+			amount = randi() % amout_range + mining_nugget_min
 	return amount
 
 

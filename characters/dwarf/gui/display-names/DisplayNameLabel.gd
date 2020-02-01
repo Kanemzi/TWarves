@@ -1,7 +1,8 @@
 extends Node2D
 class_name DisplayNameLabel
+# Classe représentant un label de pseudo de nain
 
-var _scale : int
+var _scale: int
 
 onready var label := $Center/Label as Label
 
@@ -20,6 +21,7 @@ func update_position(pos: Vector2) -> void:
 
 func _on_Dwarf_caves_exited() -> void:
 	queue_free()
+
 
 func _on_Dwarf_moved(new_position: Vector2) -> void:
 	update_position(new_position)

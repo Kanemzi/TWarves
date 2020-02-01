@@ -1,14 +1,15 @@
 extends Node2D
 class_name ActionIcon
+# Classe représentant une icone d'action
 
-const icon_indexes := {
+const ICON_INDEXES := {
 	"exit": 0,
 	"mine": 1,
 	"stun": 2,
 	"trap": 3
 }
 
-var _scale : int
+var _scale: int
 
 onready var sprite := $Sprite as Sprite
 onready var animator := $AnimationPlayer as AnimationPlayer
@@ -20,10 +21,10 @@ func _ready():
 	_scale = int(ConfigManager.get_setting("graphics", "scene_scale_factor"))
 
 
-func set_icon(icon_name : String) -> void:
-	if not icon_name in icon_indexes:
+func set_icon(icon_name: String) -> void:
+	if not icon_name in ICON_INDEXES:
 		icon_name = "mine"
-	sprite.frame = icon_indexes[icon_name]
+	sprite.frame = ICON_INDEXES[icon_name]
 
 
 func update_position(pos: Vector2) -> void:

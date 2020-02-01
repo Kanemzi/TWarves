@@ -1,5 +1,7 @@
 extends Node2D
 class_name GUIGoldCounters
+# Permet de gérer le layer d'ui affichant les compteurs
+# de pépites d'or des nains
 
 const GoldCounterScene = preload("GoldCounter.tscn")
 

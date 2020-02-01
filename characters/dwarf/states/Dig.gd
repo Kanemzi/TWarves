@@ -1,10 +1,12 @@
 extends DwarfState
 class_name DwarfDigState
+# Etat dans lequel le nain se déplacer vers un filon et commence à miner
 
 var vein: Vein
 
 func physics_process(delta: float) -> void:
 	_parent.move_to_target(delta)
+
 
 func enter(params := {}) -> void:
 	var veins := _get_veins()
@@ -15,14 +17,13 @@ func enter(params := {}) -> void:
 		var index := int(clamp(int(params.spot), 1, veins.size()) - 1)
 		vein = veins[index]
 	
-	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
 	_parent.target(_find_place_around_vein(vein))
-	print("target " + str(_parent._target))
+	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
 
 	dwarf.animator.play("run")
 	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
-
 	dwarf.connect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
+
 
 func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
@@ -35,7 +36,7 @@ func _get_veins() -> Array:
 
 
 # Retourne un emplacement aléatoire autour de la veine passée en paramètres
-func _find_place_around_vein(vein : Vein) -> Vector2:
+func _find_place_around_vein(vein: Vein) -> Vector2:
 	var offset := rand_range(vein.mining_distance / 2, vein.mining_distance)
 	var side := pow(-1, randi() % 2)
 	return vein.position + Vector2(offset * side, 0)

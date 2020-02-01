@@ -5,8 +5,7 @@ const DwarfScene := preload("res://characters/dwarf/Dwarf.tscn")
 
 var user_id: String
 var display_name: String
-var dwarf : Dwarf
-
+var dwarf: Dwarf
 var golden_nuggets_total: int
 
 func _init(user_id: String, display_name: String) -> void:
@@ -18,6 +17,7 @@ func _init(user_id: String, display_name: String) -> void:
 
 func _ready() -> void:
 	add_to_group("Players")
+
 
 # Retourne true si le nain du joueur est actuellement dans la mine, false sinon
 func is_in_cave() -> bool:
@@ -40,6 +40,7 @@ func remove_dwarf() -> void:
 	print("total : " + str(golden_nuggets_total))
 	dwarf.queue_free()
 	dwarf = null
+
 
 func get_save_data() -> Dictionary:
 	return {

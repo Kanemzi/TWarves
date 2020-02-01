@@ -1,9 +1,11 @@
 extends DwarfState
 signal target_reached
+# Super-Etat permettant de définir un point vers lequel le nain 
+# doit se déplacer
 
 const MAX_SPEED := 24.0
 
-var _target : Vector2 = Vector2.INF
+var _target: Vector2 = Vector2.INF
 var velocity := Vector2.ZERO
 
 func physics_process(delta: float) -> void:
@@ -19,13 +21,14 @@ func exit() -> void:
 
 # Indique un point vers lequel le nain va se déplacer
 # Lorsque le point cible est atteint, un signal target_reached est lancé
-func target(target : Vector2) -> void :
+func target(target: Vector2) -> void:
 	self._target = target
 
 
 # Le nain oublie le point qu'il cible et arrête de bouger
 func forget_target() -> void:
 	self._target = Vector2.INF
+
 
 # Le nain se déplace vers son point cible à la vitesse qui lui est définie
 func move_to_target(delta: float) -> void:

@@ -1,9 +1,9 @@
 extends DwarfState
 class_name DwarfExitState
+# Etat dans lequel le nain se déplace vers la sortie de la mine
 
 func physics_process(delta: float) -> void:
 	_parent.move_to_target(delta)
-
 
 func enter(params := {}) -> void:
 	

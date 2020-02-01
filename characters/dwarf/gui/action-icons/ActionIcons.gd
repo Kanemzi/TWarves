@@ -1,5 +1,6 @@
 extends Node2D
 class_name GUIActionIcons
+# Permet de gérer le layer d'ui affichant les icons d'action des nains
 
 const ActionIconScene = preload("ActionIcon.tscn")
 

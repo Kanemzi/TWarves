@@ -1,27 +1,22 @@
 extends ChatCommand
 class_name ExitMineCommand
+# commande : !exitmine
+# description : permet de quitter la mine avant la fin du temps limite
 
-func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
-	var players_manager := (owner as Game).players_manager as PlayersManager
-	
+func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 	var user_id := str(cmd.sender_data.tags['user-id'])
 	var display_name := str(cmd.sender_data.tags['display-name'])
 	
-	if not players_manager.exists(user_id):
-		(owner as Game).chat_interface.chat("Entrez d'abord dans la mine " + display_name + "!")
+	if not _players.exists(user_id):
+		_chat.chat(Strings.Bot.ERROR_NOT_IN_MINE % display_name)
 		return
 	
-	var player := players_manager.get(user_id)
-	
-	if not player.is_in_cave() :
-		(owner as Game).chat_interface.chat("Entrez d'abord dans la mine " + display_name + "!")
-		return
-	elif not player.dwarf.can_action:
-		return
-	else:
+	var player := _players.get(user_id)
+
+	if not player.is_in_cave():
+		_chat.chat(Strings.Bot.ERROR_NOT_IN_MINE % display_name)
+	elif player.dwarf.can_action:
 		var dwarf := player.dwarf
-		# création de l'icon d'action
-		var action_icons_layer := (owner as Game).gui.get_node("ActionIcons") as GUIActionIcons
-		action_icons_layer.spawn_action_icon_for(dwarf, "mine")
-		
-		player.dwarf.state_machine.transition_to("Move/Exit")
+		var icons := _game.gui.get_node("ActionIcons") as GUIActionIcons
+		icons.spawn_action_icon_for(dwarf, "exit")
+		dwarf.state_machine.transition_to("Move/Exit")

@@ -1,23 +1,20 @@
 extends ChatCommand
 class_name JoinMineCommand
+# commande : !joinmine
+# description : permet de faire la queue pour entrer dans la mine
 
-func _action(cmd : CommandInfo, args : PoolStringArray) -> void:
-	var players_manager := (owner as Game).players_manager as PlayersManager
-	var dwarf_queue := (owner as Game).cave_scene.dwarf_queue as DwarfQueue
-	
+func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 	var user_id := str(cmd.sender_data.tags['user-id'])
 	var display_name := str(cmd.sender_data.tags['display-name'])
-	var player := players_manager.add(user_id, display_name)
+	var player := _players.add(user_id, display_name)
 	
-	if not player.is_in_cave() :
+	if not player.is_in_cave():
+		var dwarf_queue := _game.cave_scene.dwarf_queue as DwarfQueue
 		var dwarf := player.create_dwarf()
+		var names := _game.gui.get_node("DisplayNames") as GUIDisplayNames
+		var gold_counters := _game.gui.get_node("GoldCounters") as GUIGoldCounters
 		dwarf_queue.add(dwarf)
-		
-		# création du label de pseudo
-		var display_names_layer := (owner as Game).gui.get_node("DisplayNames") as GUIDisplayNames
-		display_names_layer.add_display_name_for(dwarf)
-		
-		var gold_counters_layer := (owner as Game).gui.get_node("GoldCounters") as GUIGoldCounters
-		gold_counters_layer.add_gold_counter_for(dwarf)
+		names.add_display_name_for(dwarf)
+		gold_counters.add_gold_counter_for(dwarf)
 	else:
-		(owner as Game).chat_interface.chat("Vous êtes déjà dans la mine " + display_name)
+		_game.chat_interface.chat(Strings.Bot.ERROR_ALREADY_IN_MINE % display_name)

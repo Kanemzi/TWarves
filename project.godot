@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://characters/dwarf/states/Idle.gd"
 }, {
-"base": "ChatCommand",
-"class": "DwarfMoveCommand",
-"language": "GDScript",
-"path": "res://utils/managers/twitch/commands/DwarfMove.gd"
-}, {
 "base": "Node2D",
 "class": "DwarfQueue",
 "language": "GDScript",
@@ -137,7 +132,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Game",
 "language": "GDScript",
-"path": "res://Scene.gd"
+"path": "res://Game.gd"
 }, {
 "base": "Node",
 "class": "Gift",
@@ -214,11 +209,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-twicil/helpers/queue.gd"
 }, {
-"base": "ChatCommand",
-"class": "QueueAdvanceCommand",
-"language": "GDScript",
-"path": "res://utils/managers/twitch/commands/QueueAdvance.gd"
-}, {
 "base": "Reference",
 "class": "SenderData",
 "language": "GDScript",
@@ -280,7 +270,6 @@ _global_script_class_icons={
 "DwarfDigState": "",
 "DwarfExitState": "",
 "DwarfIdleState": "",
-"DwarfMoveCommand": "",
 "DwarfQueue": "",
 "DwarfQueueState": "",
 "DwarfSprite": "",
@@ -306,7 +295,6 @@ _global_script_class_icons={
 "Player": "",
 "PlayersManager": "",
 "Queue": "",
-"QueueAdvanceCommand": "",
 "SenderData": "",
 "State": "",
 "StateMachine": "",
@@ -328,6 +316,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ConfigManager="*res://utils/managers/config/ConfigManager.gd"
+Strings="*res://utils/managers/game/Strings.gd"
 
 [display]
 

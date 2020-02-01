@@ -2,7 +2,6 @@ extends Node
 class_name State
 # Interface de base d'un état générique
 
-
 var _state_machine := _get_state_machine(self)
 var _parent: State
 
