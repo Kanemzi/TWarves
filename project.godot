@@ -209,6 +209,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utils/managers/twitch/commands/Mine.gd"
 }, {
+"base": "ChatCommand",
+"class": "PickCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Pick.gd"
+}, {
 "base": "Node",
 "class": "Player",
 "language": "GDScript",
@@ -310,6 +315,7 @@ _global_script_class_icons={
 "JoinMineCommand": "",
 "MessageWrapper": "",
 "MineCommand": "",
+"PickCommand": "",
 "Player": "",
 "PlayersManager": "",
 "Queue": "",

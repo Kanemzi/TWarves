@@ -3,7 +3,6 @@
 [resource]
 resource_name = "bend-down"
 length = 0.8
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite/Back:frame")
@@ -102,13 +101,16 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "method"
-tracks/8/path = NodePath("StateMachine")
+tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_dwarf_bend_down"
+} ]
 }

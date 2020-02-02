@@ -6,6 +6,7 @@ signal moved(new_position) # le nain vient de se déplacer
 signal caves_exited # le nain vient de quitter la mine
 signal queue_exited # le nain vient de sortir de la file d'attente
 signal pickaxe_used # le nain vient d'utiliser sa pioche
+signal bend_down # le nain est en position baissée
 signal nuggets_got(amount) # le nain vient de trouver des pépites
 signal nuggets_lost(amount) # le nain vient de perdre des pépites
 
@@ -49,6 +50,11 @@ func drop_nuggets(amount: int) -> void:
 # Fonction exécutée lorsque la pioche du nain frappe un filon
 func _pickaxe_animation_hit() -> void:
 	emit_signal("pickaxe_used")
+
+
+# Fonction exécutée lorsque le nain est en position baissée
+func _dwarf_bend_down() -> void:
+	emit_signal("bend_down")
 
 
 # Fonction exécutée lorsque le nain a terminé son temps autorisé dans la mine
