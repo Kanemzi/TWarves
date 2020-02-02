@@ -31,9 +31,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
-"transitions": PoolRealArray( 0.406126, 2.73208, 3.03143, 1 ),
+"transitions": PoolRealArray( 0.406126, 0.517633, 0.574348, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0.3, 1.2 ), Vector2( 1.2, 0.5 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0.3, 1.2 ), Vector2( 1.4, 0.7 ), Vector2( 1, 1 ) ]
 }
 
 [node name="ActionIcon" type="Node2D"]

@@ -58,7 +58,7 @@ position = Vector2( 96, 300 )
 script = ExtResource( 11 )
 
 [node name="GoldCounters" type="Node2D" parent="GUI"]
-position = Vector2( 96, 275 )
+position = Vector2( 96, 270 )
 script = ExtResource( 13 )
 
 [node name="ActionIcons" type="Node2D" parent="GUI"]
