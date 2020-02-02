@@ -9,7 +9,7 @@ A tout moment, un spectateur du stream pourra décider de rejoindre la partie et
 
 ## Développement
 
-Le jeu est développé en utilisant le moteur [Godot Engine 3.1](https://github.com/godotengine/godot) et les assets réalisés avec [Aseprite](https://github.com/aseprite/aseprite).
+Le jeu est développé en utilisant le moteur [Godot Engine 3.2](https://github.com/godotengine/godot) et les assets réalisés avec [Aseprite](https://github.com/aseprite/aseprite).
 
 Il est possible de suivre le développement du jeu et de participer aux tests sur la chaîne Twitch [https://www.twitch.tv/kanemzi](https://www.twitch.tv/kanemzi).
 
@@ -31,9 +31,9 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
   - [ ] Ajout des probabilités de drop des trésors dans les filons
   - [ ] Création d'une classe listant tous les trésors non obtenus pour le moment
   - [ ] Les trésors ne sont pas collectés immédiatement mais droppés au sol
-- [ ] **Collecte (état)**
-  - [ ] **Les nains peuvent ramasser les pépites au sol**
-  - [ ] Lorsque toutes les pépites ont été prises, le nain part miner sur le filon le plus proche
+- [ ] Collecte (état)
+  - [x] Les nains peuvent ramasser les pépites au sol
+  - [x] Lorsque toutes les pépites ont été prises, le nain part miner sur le filon le plus proche
   - [ ] Les nains peuvent ramasser les trésors au sol
 - [ ] Combat
   - [ ] Animer la perte de pépites sur l'UI
