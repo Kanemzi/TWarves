@@ -7,7 +7,8 @@ const ICON_INDEXES := {
 	"mine": 1,
 	"stun": 2,
 	"trap": 3,
-	"pick": 4
+	"pick": 4,
+	"punch": 5
 }
 
 var _scale: int
