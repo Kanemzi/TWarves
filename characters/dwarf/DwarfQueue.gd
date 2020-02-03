@@ -26,6 +26,7 @@ func add(dwarf: Dwarf) -> void:
 	dwarf_pool.add_child(dwarf)
 	dwarf.connect("queue_exited", self, "_on_Dwarf_queue_exited")
 	dwarf.connect("caves_exited", self, "_on_Dwarf_caves_exited")
+	dwarf.connect("nuggets_dropped", items_pool, "spawn_golden_nuggets")
 	dwarf.state_machine.transition_to("Move/Queue", 
 			{"queue": self, "index": counter})
 	counter += 1

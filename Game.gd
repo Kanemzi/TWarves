@@ -3,7 +3,7 @@ class_name Game
 # Classe de base du jeu
 # Gère en particulier la sauvegarde et le chargement des données du jeu
 
-const SAVE_PATH := "res://data/save.cfg"
+const SAVE_PATH := "res://data/save.dat"
 
 export(bool) var _show_config := false
 export(float) var _autosave_delay := 30.0

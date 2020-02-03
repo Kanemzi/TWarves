@@ -111,6 +111,6 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "_dwarf_bend_down"
+"method": "_dwarf_animation_bend_down"
 } ]
 }

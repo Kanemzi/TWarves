@@ -19,7 +19,7 @@ func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.disconnect("bend_down", self, "_on_Dwarf_bend_down")
 	dwarf.animator.disconnect("animation_finished", self, "_on_Dwarf_animation_finished")
-	if nugget.get_ref():
+	if nugget != null and nugget.get_ref():
 		nugget.get_ref().disconnect("tree_exited", self, "_target_nearest_nugget")
 
 

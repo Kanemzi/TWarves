@@ -8,8 +8,11 @@ signal exit_forced # le nain vient d'écouler son temps dans la mine
 signal queue_exited # le nain vient de sortir de la file d'attente
 signal pickaxe_used # le nain vient d'utiliser sa pioche
 signal bend_down # le nain est en position baissée
+signal punched # le nain vient de donner un coup
 signal nuggets_got(amount) # le nain vient de trouver des pépites
-signal nuggets_lost(amount) # le nain vient de perdre des pépites
+signal nuggets_lost(amount) # le nain vient de trouver des pépites
+signal nuggets_dropped(position, amount) # le nain vient de perdre des pépites
+signal dwarf_touched(other) # le nain est entré en contact avec un autre nain
 
 var display_name: String
 var can_action := true # = true quand le nain peut recevoir des ordres du joueur
@@ -22,6 +25,8 @@ onready var exit_timer := $ExitTimer as Timer
 
 func init(display_name: String = "___dummy___") -> void:
 	self.display_name = display_name
+	name = display_name
+	add_to_group("dwarves")
 
 
 func _ready() -> void:
@@ -45,6 +50,7 @@ func drop_nuggets(amount: int) -> void:
 		if golden_nuggets < 0:
 			overflow = abs(golden_nuggets)
 			golden_nuggets = 0
+		emit_signal("nuggets_dropped", position, amount - overflow)
 		emit_signal("nuggets_lost", amount - overflow)
 	
 
@@ -54,8 +60,12 @@ func _pickaxe_animation_hit() -> void:
 
 
 # Fonction exécutée lorsque le nain est en position baissée
-func _dwarf_bend_down() -> void:
+func _dwarf_animation_bend_down() -> void:
 	emit_signal("bend_down")
+
+
+func _dwarf_animation_punch() -> void:
+	emit_signal("punched")
 
 
 # Fonction exécutée lorsque le nain a terminé son temps autorisé dans la mine
@@ -63,3 +73,8 @@ func _on_ExitTimer_timeout() -> void:
 	self.can_action = false
 	state_machine.transition_to("Move/Exit")
 	emit_signal("exit_forced")
+
+
+func _on_Punchbox_body_entered(body: Dwarf) -> void:
+	if body != self :
+		emit_signal("dwarf_touched", body)

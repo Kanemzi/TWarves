@@ -9,7 +9,7 @@
 [ext_resource path="res://environment/items/ItemsPool.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 118, 4 )
+extents = Vector2( 104, 4 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 24 )
@@ -29,7 +29,7 @@ __meta__ = {
 position = Vector2( 16, 32 )
 z_index = 1
 script = ExtResource( 3 )
-max_allowed_in_mine = 2
+max_allowed_in_mine = 3
 
 [node name="Places" type="Node2D" parent="DwarfQueue"]
 __meta__ = {
@@ -66,7 +66,10 @@ __meta__ = {
 "vein",
 ] instance=ExtResource( 4 )]
 position = Vector2( 68, 0 )
-mining_drop_rate = 0.25
+tier = 1
+mining_distance = 16.0
+mining_drop_rate = 0.0
+mining_nugget_min = 1
 mining_nugget_max = 3
 
 [node name="2" parent="Objects/Veins" groups=[
@@ -74,6 +77,7 @@ mining_nugget_max = 3
 ] instance=ExtResource( 4 )]
 position = Vector2( 116, 0 )
 tier = 2
+mining_distance = 16.0
 mining_drop_rate = 0.3
 mining_nugget_min = 2
 mining_nugget_max = 5
@@ -83,6 +87,7 @@ mining_nugget_max = 5
 ] instance=ExtResource( 4 )]
 position = Vector2( 164, 0 )
 tier = 3
+mining_distance = 16.0
 mining_drop_rate = 0.3
 mining_nugget_min = 4
 mining_nugget_max = 8
@@ -105,23 +110,19 @@ __meta__ = {
 }
 
 [node name="Ground" type="CollisionShape2D" parent="CollisionsZones"]
-position = Vector2( 112, 36 )
+position = Vector2( 126, 36 )
 shape = SubResource( 1 )
 
 [node name="Ceiling" type="CollisionShape2D" parent="CollisionsZones"]
-position = Vector2( 112, -4 )
+position = Vector2( 126, -4 )
 shape = SubResource( 1 )
-
-[node name="Stairs" type="CollisionPolygon2D" parent="CollisionsZones"]
-position = Vector2( 7, 22 )
-polygon = PoolVector2Array( -7, -5, 8, 10, -7, 10 )
 
 [node name="RightWall" type="CollisionShape2D" parent="CollisionsZones"]
 position = Vector2( 227, 16 )
 shape = SubResource( 2 )
 
 [node name="LeftWall" type="CollisionShape2D" parent="CollisionsZones"]
-position = Vector2( -3, 16 )
+position = Vector2( 25, 16 )
 shape = SubResource( 2 )
 
 [node name="Foreground" type="Sprite" parent="."]

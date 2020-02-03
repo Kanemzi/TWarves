@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://interface/credentials-form/CredentialsPopup.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://utils/managers/twitch/commands/JoinMine.gd" type="Script" id=6]
 [ext_resource path="res://utils/managers/twitch/commands/Pick.gd" type="Script" id=7]
 [ext_resource path="res://utils/managers/twitch/commands/Mine.gd" type="Script" id=8]
+[ext_resource path="res://utils/managers/twitch/commands/Punch.gd" type="Script" id=9]
 [ext_resource path="res://utils/managers/twitch/commands/ExitMine.gd" type="Script" id=10]
 [ext_resource path="res://characters/dwarf/gui/display-names/DisplayNames.gd" type="Script" id=11]
 [ext_resource path="res://characters/dwarf/gui/action-icons/ActionIcons.gd" type="Script" id=12]
@@ -44,6 +45,9 @@ script = ExtResource( 6 )
 [node name="Mine" type="Node" parent="ChatInterface/Commands"]
 script = ExtResource( 8 )
 max_args = 1
+
+[node name="Punch" type="Node" parent="ChatInterface/Commands"]
+script = ExtResource( 9 )
 
 [node name="Pick" type="Node" parent="ChatInterface/Commands"]
 script = ExtResource( 7 )

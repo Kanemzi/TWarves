@@ -149,11 +149,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gift/gift_node.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "Node2D",
 "class": "GoldCounter",
 "language": "GDScript",
@@ -234,6 +229,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utils/managers/game/PlayersManager.gd"
 }, {
+"base": "ChatCommand",
+"class": "PunchCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Punch.gd"
+}, {
 "base": "Object",
 "class": "Queue",
 "language": "GDScript",
@@ -313,7 +313,6 @@ _global_script_class_icons={
 "GUIGoldCounters": "",
 "Game": "",
 "Gift": "",
-"GitAPI": "",
 "GoldCounter": "",
 "GoldenNugget": "",
 "HelperTools": "",
@@ -330,6 +329,7 @@ _global_script_class_icons={
 "PickCommand": "",
 "Player": "",
 "PlayersManager": "",
+"PunchCommand": "",
 "Queue": "",
 "SenderData": "",
 "State": "",
@@ -368,7 +368,7 @@ enabled=PoolStringArray( "gift" )
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 
 [importer_defaults]
 

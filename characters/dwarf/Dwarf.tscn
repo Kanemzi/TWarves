@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -114,6 +114,9 @@ graph_offset = Vector2( 156, -98 )
 [sub_resource type="RectangleShape2D" id=27]
 extents = Vector2( 4, 7 )
 
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 4, 7 )
+
 [node name="Dwarf" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 1 )
@@ -128,10 +131,11 @@ use_parent_material = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 3
+frame = 20
 
 [node name="Cosmetics" type="Node2D" parent="Sprite"]
 use_parent_material = true
+position = Vector2( 0, 1 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
@@ -146,13 +150,14 @@ use_parent_material = true
 texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 3
+frame = 20
 
 [node name="Tool" type="Node2D" parent="Sprite"]
-position = Vector2( 5, -5 )
-rotation = 0.436332
+position = Vector2( 6, -7 )
+rotation = 4.36332
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
+z_index = -1
 texture = ExtResource( 7 )
 offset = Vector2( 2.5, 0 )
 __meta__ = {
@@ -185,6 +190,14 @@ visible = false
 position = Vector2( 0, -7 )
 shape = SubResource( 27 )
 
+[node name="Punchbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="DetectionArea" type="CollisionShape2D" parent="Punchbox"]
+position = Vector2( 0, -7 )
+shape = SubResource( 28 )
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
 _initial_state = NodePath("Idle")
@@ -207,6 +220,9 @@ script = ExtResource( 21 )
 [node name="Punch" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 22 )
 
+[node name="AttackDelay" type="Timer" parent="StateMachine/Move/Punch"]
+one_shot = true
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 20 )
 
@@ -216,4 +232,5 @@ script = ExtResource( 20 )
 
 [node name="ExitTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="body_entered" from="Punchbox" to="." method="_on_Punchbox_body_entered"]
 [connection signal="timeout" from="ExitTimer" to="." method="_on_ExitTimer_timeout"]

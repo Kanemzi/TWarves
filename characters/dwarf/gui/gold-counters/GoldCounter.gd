@@ -15,9 +15,23 @@ func _ready() -> void:
 	_scale = int(ConfigManager.get_setting("graphics", "scene_scale_factor"))
 
 func _on_Dwarf_nuggets_got(amount: float) -> void:
+	if amount <= 0:
+		return
+	
 	counter += amount
 	particles.amount = amount
 	particles.emitting = true
+	increment.interpolate_property(self, "displayed_counter", 
+			displayed_counter, counter, amount * 0.05, 
+			Tween.TRANS_CUBIC, Tween.EASE_IN)
+	increment.start()
+
+
+func _on_Dwarf_nuggets_lost(amount: float) -> void:
+	if amount <= 0:
+		return
+	
+	counter -= amount
 	increment.interpolate_property(self, "displayed_counter", 
 			displayed_counter, counter, amount * 0.05, 
 			Tween.TRANS_CUBIC, Tween.EASE_IN)
