@@ -3,13 +3,14 @@ signal target_reached
 # Super-Etat permettant de définir un point vers lequel le nain 
 # doit se déplacer
 
-const MAX_SPEED := 24.0
+const SPEED := 24.0
 
 var _target: Vector2 = Vector2.INF
 var velocity := Vector2.ZERO
 
 func physics_process(delta: float) -> void:
 	pass
+
 
 func enter(params := {}) -> void:
 	pass
@@ -31,18 +32,18 @@ func forget_target() -> void:
 
 
 # Le nain se déplace vers son point cible à la vitesse qui lui est définie
-func move_to_target(delta: float) -> void:
+func move_to_target(delta: float, speed := SPEED) -> void:
 	if _target == Vector2.INF:
 		return
 	
 	var diff := _target - dwarf.position
 	var direction := diff.normalized()
-	if diff.length() <= MAX_SPEED * delta:
+	if diff.length() <= SPEED * delta:
 		dwarf.position = _target
 		velocity = Vector2.ZERO
 		emit_signal("target_reached")
 		forget_target()
 	else:
-		velocity = direction * MAX_SPEED
+		velocity = direction * SPEED
 	dwarf.move_and_slide(velocity)
 	dwarf.emit_signal("moved", dwarf.position)

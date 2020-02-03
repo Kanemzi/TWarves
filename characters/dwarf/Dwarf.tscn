@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://characters/dwarf/states/Exit.gd" type="Script" id=19]
 [ext_resource path="res://characters/dwarf/states/Idle.gd" type="Script" id=20]
 [ext_resource path="res://characters/dwarf/states/Pick.gd" type="Script" id=21]
+[ext_resource path="res://characters/dwarf/states/Punch.gd" type="Script" id=22]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -203,12 +204,13 @@ script = ExtResource( 19 )
 [node name="Pick" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 21 )
 
+[node name="Punch" type="Node" parent="StateMachine/Move"]
+script = ExtResource( 22 )
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 20 )
 
 [node name="Trap" type="Node" parent="StateMachine"]
-
-[node name="Punch" type="Node" parent="StateMachine"]
 
 [node name="Stuned" type="Node" parent="StateMachine"]
 
