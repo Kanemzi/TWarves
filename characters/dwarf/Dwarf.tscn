@@ -127,11 +127,10 @@ use_parent_material = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 17
+frame = 3
 
 [node name="Cosmetics" type="Node2D" parent="Sprite"]
 use_parent_material = true
-position = Vector2( 3, 3 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
@@ -146,11 +145,11 @@ use_parent_material = true
 texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 17
+frame = 3
 
 [node name="Tool" type="Node2D" parent="Sprite"]
-position = Vector2( 10, -5 )
-rotation = 1.6057
+position = Vector2( 5, -5 )
+rotation = 0.436332
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
 texture = ExtResource( 7 )

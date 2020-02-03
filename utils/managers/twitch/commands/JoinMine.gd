@@ -13,8 +13,11 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 		var dwarf := player.create_dwarf()
 		var names := _game.gui.get_node("DisplayNames") as GUIDisplayNames
 		var gold_counters := _game.gui.get_node("GoldCounters") as GUIGoldCounters
+		var action_icons := _game.gui.get_node("ActionIcons") as GUIActionIcons
 		dwarf_queue.add(dwarf)
 		names.add_display_name_for(dwarf)
 		gold_counters.add_gold_counter_for(dwarf)
+		dwarf.connect("exit_forced", action_icons, "spawn_action_icon_for",
+				[dwarf, "exit"], CONNECT_ONESHOT)
 	else:
 		_game.chat_interface.chat(Strings.Bot.ERROR_ALREADY_IN_MINE % display_name)

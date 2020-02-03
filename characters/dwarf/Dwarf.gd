@@ -4,6 +4,7 @@ class_name Dwarf
 
 signal moved(new_position) # le nain vient de se déplacer
 signal caves_exited # le nain vient de quitter la mine
+signal exit_forced # le nain vient d'écouler son temps dans la mine
 signal queue_exited # le nain vient de sortir de la file d'attente
 signal pickaxe_used # le nain vient d'utiliser sa pioche
 signal bend_down # le nain est en position baissée
@@ -61,3 +62,4 @@ func _dwarf_bend_down() -> void:
 func _on_ExitTimer_timeout() -> void:
 	self.can_action = false
 	state_machine.transition_to("Move/Exit")
+	emit_signal("exit_forced")
