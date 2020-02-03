@@ -2,7 +2,7 @@ extends DwarfState
 class_name DwarfPickState
 # Etat dans lequel le nain cherche et ramasse des pépites au sol
 
-var nugget: GoldenNugget
+var nugget: WeakRef
 
 func physics_process(delta: float) -> void:
 	_parent.move_to_target(delta)
@@ -19,8 +19,8 @@ func exit() -> void:
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.disconnect("bend_down", self, "_on_Dwarf_bend_down")
 	dwarf.animator.disconnect("animation_finished", self, "_on_Dwarf_animation_finished")
-	if nugget != null:
-		nugget.disconnect("tree_exited", self, "_target_nearest_nugget")
+	if nugget.get_ref():
+		nugget.get_ref().disconnect("tree_exited", self, "_target_nearest_nugget")
 
 
 # Retourne l'ensemble des pépites sur la map
@@ -48,16 +48,17 @@ func _find_nearest_nugget() -> GoldenNugget:
 
 # Ordonne au nain de se déplacer jusqu'à la pépite la plus proche
 func _target_nearest_nugget() -> void:
-	nugget = _find_nearest_nugget()
-	if nugget == null:
+	var n := _find_nearest_nugget()
+	if n == null:
 		dwarf.state_machine.transition_to("Move/Dig")
 		return
 	
+	nugget = weakref(n)
 	# si la pépite est prise avant, on veut chercher une nouvelle pépite
-	nugget.connect("tree_exited", self, "_target_nearest_nugget", [], CONNECT_ONESHOT)
-	_parent.target(nugget.position)
+	n.connect("tree_exited", self, "_target_nearest_nugget", [], CONNECT_ONESHOT)
+	_parent.target(n.position)
 	
-	dwarf.sprite.set_direction(nugget.position.x - dwarf.position.x)
+	dwarf.sprite.set_direction(n.position.x - dwarf.position.x)
 	dwarf.animator.play("run")
 
 
@@ -69,8 +70,8 @@ func _on_Dwarf_target_reached() -> void:
 # S'exécute lorsque le nain est baissé pour attraper la pépite
 func _on_Dwarf_bend_down() -> void:
 	dwarf.give_nuggets(1)
-	nugget.disconnect("tree_exited", self, "_target_nearest_nugget")
-	nugget.queue_free()
+	nugget.get_ref().disconnect("tree_exited", self, "_target_nearest_nugget")
+	nugget.get_ref().queue_free()
 
 
 # S'exécute lorsque le nain se relève après avoir attrapé la pépite
