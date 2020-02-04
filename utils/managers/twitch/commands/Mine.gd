@@ -17,10 +17,15 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 		_chat.chat(Strings.Bot.ERROR_NOT_IN_MINE % display_name)
 	elif player.dwarf.can_action:
 		var dwarf := player.dwarf
+		var state := dwarf.state_machine.state
 		var icons := _game.gui.get_node("ActionIcons") as GUIActionIcons
 		var params := {}
 		
 		icons.spawn_action_icon_for(dwarf, "mine")
 		if args.size() > 0:
 			params.spot = int(args[0])
-		dwarf.state_machine.transition_to("Move/Dig", params)
+		
+		if not state.is_in_group("locking_state"):
+			dwarf.state_machine.transition_to("Move/Dig", params)
+		else:
+			(state as DwarfLockingState).will_transition_to("Move/Dig", params)

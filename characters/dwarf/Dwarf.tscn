@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://characters/dwarf/states/Idle.gd" type="Script" id=20]
 [ext_resource path="res://characters/dwarf/states/Pick.gd" type="Script" id=21]
 [ext_resource path="res://characters/dwarf/states/Punch.gd" type="Script" id=22]
+[ext_resource path="res://characters/dwarf/states/Locked.gd" type="Script" id=23]
+[ext_resource path="res://characters/dwarf/states/Stuned.gd" type="Script" id=24]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -131,11 +133,11 @@ use_parent_material = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 20
+frame = 24
 
 [node name="Cosmetics" type="Node2D" parent="Sprite"]
 use_parent_material = true
-position = Vector2( 0, 1 )
+position = Vector2( -2, -1 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
@@ -150,14 +152,13 @@ use_parent_material = true
 texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 20
+frame = 24
 
 [node name="Tool" type="Node2D" parent="Sprite"]
-position = Vector2( 6, -7 )
-rotation = 4.36332
+position = Vector2( 5, -12 )
+rotation = 5.49779
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
-z_index = -1
 texture = ExtResource( 7 )
 offset = Vector2( 2.5, 0 )
 __meta__ = {
@@ -171,6 +172,7 @@ visible = false
 texture = ExtResource( 8 )
 offset = Vector2( -1, -12 )
 hframes = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bend-down = ExtResource( 9 )
@@ -223,12 +225,16 @@ script = ExtResource( 22 )
 [node name="AttackDelay" type="Timer" parent="StateMachine/Move/Punch"]
 one_shot = true
 
+[node name="Locked" type="Node" parent="StateMachine"]
+script = ExtResource( 23 )
+
+[node name="Stuned" type="Node" parent="StateMachine/Locked"]
+script = ExtResource( 24 )
+
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 20 )
 
 [node name="Trap" type="Node" parent="StateMachine"]
-
-[node name="Stuned" type="Node" parent="StateMachine"]
 
 [node name="ExitTimer" type="Timer" parent="."]
 one_shot = true

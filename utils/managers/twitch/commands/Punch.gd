@@ -17,6 +17,7 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 		_chat.chat(Strings.Bot.ERROR_NOT_IN_MINE % display_name)
 	elif player.dwarf.can_action:
 		var dwarf := player.dwarf
+		var state := dwarf.state_machine.state
 		var icons := _game.gui.get_node("ActionIcons") as GUIActionIcons
 		var params := {}
 		
@@ -41,7 +42,11 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 		
 		params.target = target
 		icons.spawn_action_icon_for(dwarf, "punch")
-		dwarf.state_machine.transition_to("Move/Punch", params)
+		
+		if not state.is_in_group("locking_state"):
+			dwarf.state_machine.transition_to("Move/Punch", params)
+		else:
+			(state as DwarfLockingState).will_transition_to("Move/Punch", params)
 
 
 # Retourne le nain le plus riche actuellement dans la mine

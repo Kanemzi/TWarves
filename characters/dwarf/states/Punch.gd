@@ -12,14 +12,14 @@ class_name DwarfPunchState
 #		- Shader de glow pour l'icone
 # x Une fois assez proche de la cible, le nain s'arrête et frappe
 #	x (Area2D de proximité pour la détection de la cible)
-#	- Si la cible entre en contact avec la hitbox, il entre en état de stun
+#	x Si la cible entre en contact avec la hitbox, il entre en état de stun
 #	x Si la cible entre en contact avec la hitbox, elle droppe des pépites
 #	- Définition du nombre de pépites droppées en fonction de la richesse et de la force
 # x Pour attaquer, le nain se déplace au max jusqu'à la cible + une distance définie
 # 	- Si la distance max est atteinte le nain entre en état de fatigue et arrête d'attaquer
 
 # Points bonus :
-# - Si deux nains s'attaquent entre eux, il devraient tous les deux être stun
+# x Si deux nains s'attaquent entre eux, il devraient tous les deux être stun
 # x En frappant le nain, les pépites sont droppées en respectant le sens du coup
 # - Système de force définissant la durée du stun de la cible et la quantité de pépites droppées
 
@@ -59,7 +59,7 @@ func enter(params := {}) -> void:
 		dwarf.animator.play("run")
 	
 	dwarf.sprite.set_direction(target.get_ref().position.x - dwarf.position.x)
-	dwarf.connect("punched", self, "_on_Dwarf_punched")
+	dwarf.connect("punched", self, "_on_Dwarf_punched", [], CONNECT_DEFERRED)
 	dwarf.animator.connect("animation_finished", self, "_on_Dwarf_animation_finished")
 
 
@@ -84,9 +84,12 @@ func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:
 
 # S'exécute lorsque coup du nain atteint sa cible
 func _on_Dwarf_punched() -> void:
-	var direction = Vector2(dwarf.sprite.direction, 0)
+	var direction := Vector2(dwarf.sprite.direction, 0)
+	var params := {
+		direction = direction.x
+	}
 	target.get_ref().drop_nuggets(5, direction)
-
+	target.get_ref().state_machine.transition_to("Locked/Stuned", params)
 
 
 # S'exécute lorsque le nain a terminé son attaque

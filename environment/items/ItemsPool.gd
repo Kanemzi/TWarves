@@ -3,7 +3,7 @@ extends Node2D
 
 export(PackedScene) var GoldenNuggetScene : PackedScene
 
-func _ready():
+func _ready() -> void:
 	pass
 
 
