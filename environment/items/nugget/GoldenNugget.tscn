@@ -25,7 +25,7 @@ physics_material_override = SubResource( 1 )
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 2 )
-min_speed = 15.0
+min_speed = 25.0
 spread = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]

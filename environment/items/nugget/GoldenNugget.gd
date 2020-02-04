@@ -11,11 +11,18 @@ export(float) var spread := 0.0
 var safe_to_pick := false
 var _bounces := 0
 
-func _ready():
-	var angle := rand_range(-5*PI/6, -PI/6)
+func init(direction: Vector2):
+#	var angle := rand_range(-2*PI/3, -PI/3)
+	var angle := -PI/2
 	var speed := rand_range(0.0, min_speed + spread)
-	var vel := Vector2(cos(angle), sin(angle)) * speed
+	# la version du vecteur de direction de la pépite affectée par la direction
+	# passée en paramètres
+	var directed := (Vector2(cos(angle), sin(angle)) + direction).normalized()
+	var vel = directed * speed
 	apply_impulse(Vector2.ZERO, vel)
+
+
+func _ready():
 	add_to_group("golden_nugget")
 
 

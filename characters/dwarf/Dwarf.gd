@@ -43,14 +43,16 @@ func give_nuggets(amount: int) -> void:
 
 # Le nain lache [amount] pépites d'or au sol
 # Si le nain possède moins de [amount] pépites, il lache toutes ses pépites
-func drop_nuggets(amount: int) -> void:
+# direction permet de donner une direction au jet de pépites
+func drop_nuggets(amount: int, direction := Vector2.ZERO) -> void:
 	golden_nuggets -= amount
 	if amount != 0:
 		var overflow := 0
 		if golden_nuggets < 0:
 			overflow = abs(golden_nuggets)
 			golden_nuggets = 0
-		emit_signal("nuggets_dropped", position, amount - overflow)
+		emit_signal("nuggets_dropped", position + Vector2(0, -4), 
+				amount - overflow, direction)
 		emit_signal("nuggets_lost", amount - overflow)
 	
 

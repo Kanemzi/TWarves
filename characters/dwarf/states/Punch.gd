@@ -20,7 +20,7 @@ class_name DwarfPunchState
 
 # Points bonus :
 # - Si deux nains s'attaquent entre eux, il devraient tous les deux être stun
-# - En frappant le nain, les pépites sont droppées en respectant le sens du coup
+# x En frappant le nain, les pépites sont droppées en respectant le sens du coup
 # - Système de force définissant la durée du stun de la cible et la quantité de pépites droppées
 
 export(float) var chase_speed := 48.0
@@ -82,7 +82,8 @@ func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:
 
 # S'exécute lorsque coup du nain atteint sa cible
 func _on_Dwarf_punched() -> void:
-	target.get_ref().drop_nuggets(5)
+	var direction = Vector2(dwarf.sprite.direction, 0)
+	target.get_ref().drop_nuggets(5, direction)
 
 
 
