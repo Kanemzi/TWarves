@@ -42,17 +42,21 @@ func enter(params := {}) -> void:
 	else:
 		target = weakref(params.target)
 		print(target.get_ref().display_name + " : " + str(target.get_ref().golden_nuggets))
+	dwarf.animator.play("idle")
 	attack_delay.start()
 	yield(attack_delay, "timeout")
 	
-	var chase_point := _get_max_chase_point(dwarf.position, target.get_ref().position)
-	_parent.target(chase_point, chase_speed)
-	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
+	if _is_colliding_target():
+		_punch_target()
+	else :
+		var chase_point := _get_max_chase_point(dwarf.position, target.get_ref().position)
+		_parent.target(chase_point, chase_speed)
+		_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
+		dwarf.connect("dwarf_touched", self, "_on_Dwarf_dwarf_touched")
 
-	dwarf.animator.play("run")
+		dwarf.animator.play("run")
+	
 	dwarf.sprite.set_direction(target.get_ref().position.x - dwarf.position.x)
-
-	dwarf.connect("dwarf_touched", self, "_on_Dwarf_dwarf_touched")
 	dwarf.connect("punched", self, "_on_Dwarf_punched")
 	dwarf.animator.connect("animation_finished", self, "_on_Dwarf_animation_finished")
 
@@ -72,9 +76,7 @@ func _on_Dwarf_target_reached() -> void:
 func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:
 	if other != target.get_ref():
 		return
-	
-	_parent.forget_target()
-	dwarf.animator.play("punch")
+	_punch_target()
 
 
 
@@ -90,8 +92,21 @@ func _on_Dwarf_animation_finished(anim_name: String) -> void:
 		dwarf.state_machine.transition_to("Move/Pick")
 
 
+# Retourne la position jusqu'à laquelle le nain peut poursuivre sa cible
 func _get_max_chase_point(pos : Vector2, target_pos: Vector2) -> Vector2:
 	var chase_point = Vector2(target_pos.x, target_pos.y)
 	chase_point.x += sign(target_pos.x - pos.x) * max_chase_distance
 	chase_point.x = clamp(chase_point.x, min_chase_position, max_chase_position)
 	return chase_point
+
+
+# Retourne true si le nain est actuellement en contact avec sa cible
+func _is_colliding_target() -> bool:
+	var colliding_dwarfs = (dwarf.get_node("Punchbox") as Area2D).get_overlapping_bodies()
+	return target.get_ref() in colliding_dwarfs
+
+
+# Donne un coup au nain pris pour cible
+func _punch_target() -> void:
+	_parent.forget_target()
+	dwarf.animator.play("punch")

@@ -17,7 +17,7 @@ var _settings := {
 		"scene_scale_factor": 6
 	},
 	"gameplay" : {
-		"max_time_in_caves": 30.0
+		"max_time_in_caves": 1000.0
 	}
 }
 
