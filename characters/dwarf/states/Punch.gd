@@ -42,6 +42,8 @@ func enter(params := {}) -> void:
 	else:
 		target = weakref(params.target)
 		print(target.get_ref().display_name + " : " + str(target.get_ref().golden_nuggets))
+	
+	_parent.forget_target()
 	dwarf.animator.play("idle")
 	attack_delay.start()
 	yield(attack_delay, "timeout")
