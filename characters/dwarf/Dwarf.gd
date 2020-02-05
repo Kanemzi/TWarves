@@ -22,6 +22,7 @@ onready var animator := $AnimationPlayer as AnimationPlayer
 onready var state_machine := $StateMachine as StateMachine
 onready var sprite := $Sprite as DwarfSprite
 onready var exit_timer := $ExitTimer as Timer
+onready var dust_particles := $Sprite/Particles/Dust as Particles2D
 
 func init(display_name: String = "___dummy___") -> void:
 	self.display_name = display_name

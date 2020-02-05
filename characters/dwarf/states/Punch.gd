@@ -56,7 +56,7 @@ func enter(params := {}) -> void:
 		_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
 		dwarf.connect("dwarf_touched", self, "_on_Dwarf_dwarf_touched")
 
-		dwarf.animator.play("run")
+		_start_running()
 	
 	dwarf.sprite.set_direction(target.get_ref().position.x - dwarf.position.x)
 	dwarf.connect("punched", self, "_on_Dwarf_punched", [], CONNECT_DEFERRED)
@@ -64,6 +64,8 @@ func enter(params := {}) -> void:
 
 
 func exit() -> void:
+	_stop_running()
+	
 	_parent.disconnect("target_reached", self, "_on_Dwarf_target_reached")
 	dwarf.disconnect("dwarf_touched", self, "_on_Dwarf_dwarf_touched")
 	dwarf.disconnect("punched", self, "_on_Dwarf_punched")
@@ -72,10 +74,11 @@ func exit() -> void:
 
 # S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
 func _on_Dwarf_target_reached() -> void:
-	dwarf.animator.play("idle")
+	_stop_running("idle")
 
 
 func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:
+	_stop_running()
 	if other != target.get_ref():
 		return
 	_punch_target()
@@ -114,5 +117,22 @@ func _is_colliding_target() -> bool:
 
 # Donne un coup au nain pris pour cible
 func _punch_target() -> void:
-	_parent.forget_target()
 	dwarf.animator.play("punch")
+
+
+# Gestion de l'animation et des particules de course
+func _start_running() -> void:
+	dwarf.animator.play("run")
+	dwarf.animator.playback_speed = 2
+	dwarf.dust_particles.emitting = true
+
+
+# Réinitialisation des paramètres d'animation de la course
+# et le nain s'arrête
+# Le nom de l'animation suivante peut être donné en paramètre
+func _stop_running(next_animation := "") -> void:
+	_parent.forget_target()
+	if next_animation != "":
+		dwarf.animator.play(next_animation)
+	dwarf.animator.playback_speed = 1
+	dwarf.dust_particles.emitting = false
