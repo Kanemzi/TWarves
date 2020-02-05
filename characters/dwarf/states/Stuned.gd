@@ -9,6 +9,7 @@ var _velocity : Vector2
 
 func _physics_process(delta: float) -> void:
 	dwarf.move_and_slide(_velocity)
+	dwarf.emit_signal("moved", dwarf.position)
 	_velocity *= _friction
 
 
