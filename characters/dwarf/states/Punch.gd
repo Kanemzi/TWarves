@@ -8,8 +8,8 @@ class_name DwarfPunchState
 # x Le nain attend la disparition de son icone d'action pour commencer à attaquer
 # x Le nain commence à se déplacer vers sa cible.
 # 	x Particules de poussière
-#	- Icone de "Warning" clignote au dessus de la cible
-#		- Shader de glow pour l'icone
+#	x Icone de "Warning" clignote au dessus de la cible
+#		x Shader de glow pour l'icone
 # x Une fois assez proche de la cible, le nain s'arrête et frappe
 #	x (Area2D de proximité pour la détection de la cible)
 #	x Si la cible entre en contact avec la hitbox, il entre en état de stun
