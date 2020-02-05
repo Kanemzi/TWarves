@@ -11,7 +11,7 @@
 [ext_resource path="res://utils/managers/twitch/commands/Punch.gd" type="Script" id=9]
 [ext_resource path="res://utils/managers/twitch/commands/ExitMine.gd" type="Script" id=10]
 [ext_resource path="res://characters/dwarf/gui/display-names/DisplayNames.gd" type="Script" id=11]
-[ext_resource path="res://characters/dwarf/gui/action-icons/ActionIcons.gd" type="Script" id=12]
+[ext_resource path="res://characters/dwarf/gui/icons/Icons.gd" type="Script" id=12]
 [ext_resource path="res://characters/dwarf/gui/gold-counters/GoldCounters.gd" type="Script" id=13]
 [ext_resource path="res://environment/cave/Cave.tscn" type="PackedScene" id=14]
 
@@ -65,7 +65,7 @@ script = ExtResource( 11 )
 position = Vector2( 96, 270 )
 script = ExtResource( 13 )
 
-[node name="ActionIcons" type="Node2D" parent="GUI"]
+[node name="Icons" type="Node2D" parent="GUI"]
 position = Vector2( 96, 300 )
 script = ExtResource( 12 )
 

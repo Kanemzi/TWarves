@@ -1,10 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://characters/dwarf/gui/action-icons/ActionIcon.gd" type="Script" id=1]
-[ext_resource path="res://characters/dwarf/gui/action-icons/action-icons.png" type="Texture" id=2]
+[ext_resource path="res://characters/dwarf/gui/icons/ActionIcon.gd" type="Script" id=1]
+[ext_resource path="res://characters/dwarf/gui/icons/action-icons.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
-resource_name = "close"
 length = 0.2
 step = 0.05
 tracks/0/type = "value"

@@ -18,7 +18,7 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 	elif player.dwarf.can_action:
 		var dwarf := player.dwarf
 		var state := dwarf.state_machine.state
-		var icons := _game.gui.get_node("ActionIcons") as GUIActionIcons
+		var icons := _game.gui.get_node("Icons") as GUIIcons
 		var params := {}
 		
 		var target : Dwarf
@@ -42,6 +42,7 @@ func _action(cmd: CommandInfo, args: PoolStringArray) -> void:
 		
 		params.target = target
 		icons.spawn_action_icon_for(dwarf, "punch")
+		icons.spawn_alert_icon_for(target)
 		
 		if not state.is_in_group("locking_state"):
 			dwarf.state_machine.transition_to("Move/Punch", params)

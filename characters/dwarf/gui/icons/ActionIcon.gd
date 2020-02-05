@@ -17,7 +17,7 @@ onready var sprite := $Sprite as Sprite
 onready var animator := $AnimationPlayer as AnimationPlayer
 onready var timer := $Timer as Timer
 
-func _ready():
+func _ready() -> void:
 	animator.play("open")
 	timer.start()
 	_scale = int(ConfigManager.get_setting("graphics", "scene_scale_factor"))
@@ -44,7 +44,7 @@ func _on_Dwarf_moved(new_position: Vector2) -> void:
 
 
 func _on_Timer_timeout() -> void:
-	animator.play("close");
+	animator.play("close")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

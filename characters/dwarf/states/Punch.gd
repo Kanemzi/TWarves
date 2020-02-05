@@ -7,7 +7,7 @@ class_name DwarfPunchState
 # x Si le nom est incorrect, le nain le plus proche?/riche? est attaqué
 # x Le nain attend la disparition de son icone d'action pour commencer à attaquer
 # x Le nain commence à se déplacer vers sa cible.
-# 	- Particules de poussière
+# 	x Particules de poussière
 #	- Icone de "Warning" clignote au dessus de la cible
 #		- Shader de glow pour l'icone
 # x Une fois assez proche de la cible, le nain s'arrête et frappe

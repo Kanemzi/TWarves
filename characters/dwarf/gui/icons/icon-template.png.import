@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon-exit.png-4b5bbfcb3b102ff407653b27f26574da.stex"
+path="res://.import/icon-template.png-d1412bb48d8e56b8a3778197a3f7852c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/dwarf/gui/action-icons/icon-exit.png"
-dest_files=[ "res://.import/icon-exit.png-4b5bbfcb3b102ff407653b27f26574da.stex" ]
+source_file="res://characters/dwarf/gui/icons/icon-template.png"
+dest_files=[ "res://.import/icon-template.png-d1412bb48d8e56b8a3778197a3f7852c.stex" ]
 
 [params]
 
