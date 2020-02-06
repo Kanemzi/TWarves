@@ -37,15 +37,15 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
   - [ ] Les nains peuvent ramasser les trésors au sol
 - [ ] Combat
   - [ ] Animer la perte de pépites sur l'UI
-  - [ ] Créer l'état d'attaque du nain
-    - [ ] Déplacement rapide vers la cible
-    - [ ] Création de particules de poussière aux pieds du nain
-    - [ ] Animer l'attaque du nain
+  - [x] Créer l'état d'attaque du nain
+    - [x] Déplacement rapide vers la cible
+    - [x] Création de particules de poussière aux pieds du nain
+    - [x] Animer l'attaque du nain
     - [ ] Le nain n'a qu'une attaque par session dans la mine (à utiliser correctement donc)
-    - [ ] Affichage d'un marker "Danger" sur le nain pris pour cible
+    - [x] Affichage d'un marker "Danger" sur le nain pris pour cible
     - [ ] Transition vers l'état de fatigue quand la cible est ratée
-  - [ ] Créer l'état de stun du nain
-    - [ ] Animation du stun
+  - [x] Créer l'état de stun du nain
+    - [x] Animation du stun
     - [ ] Sauvegarde de l'état précédent pour y retourner après la période de stun
     - [ ] Le nain drop un certain nombre de pépites en entrant dans cet état
     - [ ] Le nombre de pépites droppées dépend de la force du coup (passé en paramètre de la transition)
