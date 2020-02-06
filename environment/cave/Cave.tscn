@@ -29,7 +29,7 @@ __meta__ = {
 position = Vector2( 16, 32 )
 z_index = 1
 script = ExtResource( 3 )
-max_allowed_in_mine = 4
+max_allowed_in_mine = 6
 
 [node name="Places" type="Node2D" parent="DwarfQueue"]
 __meta__ = {
