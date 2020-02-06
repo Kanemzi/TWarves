@@ -159,11 +159,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gift/gift_node.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "Node2D",
 "class": "GoldCounter",
 "language": "GDScript",
@@ -335,7 +330,6 @@ _global_script_class_icons={
 "GUIIcons": "",
 "Game": "",
 "Gift": "",
-"GitAPI": "",
 "GoldCounter": "",
 "GoldenNugget": "",
 "HelperTools": "",
@@ -392,7 +386,7 @@ enabled=PoolStringArray( "gift" )
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 
 [importer_defaults]
 

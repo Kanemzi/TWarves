@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://characters/dwarf/states/Locked.gd" type="Script" id=23]
 [ext_resource path="res://characters/dwarf/states/Stuned.gd" type="Script" id=24]
 [ext_resource path="res://characters/dwarf/particles/dust.png" type="Texture" id=25]
+[ext_resource path="res://characters/dwarf/animations/exhausted.tres" type="Animation" id=26]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -37,20 +38,20 @@ shader_param/chest = null
 shader_param/pants = null
 shader_param/boots = null
 
-[sub_resource type="Gradient" id=29]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.15625, 0.820313, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.784314, 1, 1, 1, 0.784314, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=30]
-gradient = SubResource( 29 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=31]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 5.3942, 0, 0, Vector2( 0.3, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.594306, 0.709821 ), -2.59853, -2.59853, 0, 0, Vector2( 1, 0.0133929 ), 0.69921, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=32]
-curve = SubResource( 31 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=33]
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -59,40 +60,37 @@ initial_velocity = 6.0
 initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 32 )
-color_ramp = SubResource( 30 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="ParticlesMaterial" id=7]
+lifetime_randomness = 0.43
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 126.41
+gravity = Vector3( 0, 30, 0 )
+initial_velocity = 40.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0, 0.596078, 0.862745, 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "dwarf-bend-down"
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "dwarf-dig"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "dwarf-idle"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "dwarf-punch"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "dwarf-run"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "dwarf-stun"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
@@ -101,14 +99,12 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
@@ -119,30 +115,46 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=25]
-states/bend-down/node = SubResource( 2 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/bend-down/node = SubResource( 8 )
 states/bend-down/position = Vector2( 394, -131 )
-states/dig/node = SubResource( 3 )
+states/dig/node = SubResource( 9 )
 states/dig/position = Vector2( 394, 236 )
-states/idle/node = SubResource( 4 )
+states/idle/node = SubResource( 10 )
 states/idle/position = Vector2( 458, 46 )
-states/punch/node = SubResource( 5 )
+states/punch/node = SubResource( 11 )
 states/punch/position = Vector2( 968, -131 )
-states/run/node = SubResource( 6 )
+states/run/node = SubResource( 12 )
 states/run/position = Vector2( 839, 46 )
-states/stun/node = SubResource( 7 )
+states/stun/node = SubResource( 13 )
 states/stun/position = Vector2( 968, 236 )
-transitions = [ "idle", "dig", SubResource( 8 ), "dig", "idle", SubResource( 9 ), "idle", "bend-down", SubResource( 10 ), "bend-down", "idle", SubResource( 11 ), "idle", "run", SubResource( 12 ), "run", "idle", SubResource( 13 ), "run", "bend-down", SubResource( 14 ), "run", "dig", SubResource( 15 ), "run", "punch", SubResource( 16 ), "idle", "punch", SubResource( 17 ), "punch", "idle", SubResource( 18 ), "stun", "idle", SubResource( 19 ), "dig", "stun", SubResource( 20 ), "punch", "stun", SubResource( 21 ), "run", "stun", SubResource( 22 ), "idle", "stun", SubResource( 23 ), "bend-down", "stun", SubResource( 24 ) ]
+transitions = [ "idle", "dig", SubResource( 14 ), "dig", "idle", SubResource( 15 ), "idle", "bend-down", SubResource( 16 ), "bend-down", "idle", SubResource( 17 ), "idle", "run", SubResource( 18 ), "run", "idle", SubResource( 19 ), "run", "bend-down", SubResource( 20 ), "run", "dig", SubResource( 21 ), "run", "punch", SubResource( 22 ), "idle", "punch", SubResource( 23 ), "punch", "idle", SubResource( 24 ), "stun", "idle", SubResource( 25 ), "dig", "stun", SubResource( 26 ), "punch", "stun", SubResource( 27 ), "run", "stun", SubResource( 28 ), "idle", "stun", SubResource( 29 ), "bend-down", "stun", SubResource( 30 ) ]
 start_node = "idle"
 graph_offset = Vector2( 156, -98 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 4, 7 )
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 4, 7 )
 
 [node name="Dwarf" type="KinematicBody2D"]
@@ -159,11 +171,11 @@ use_parent_material = true
 texture = ExtResource( 4 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 6
+frame = 1
 
 [node name="Cosmetics" type="Node2D" parent="Sprite"]
 use_parent_material = true
-position = Vector2( 0, -1 )
+position = Vector2( 0, 1 )
 
 [node name="Beard" type="Sprite" parent="Sprite/Cosmetics"]
 use_parent_material = true
@@ -178,11 +190,11 @@ use_parent_material = true
 texture = ExtResource( 6 )
 offset = Vector2( 0, -8 )
 hframes = 29
-frame = 6
+frame = 3
 
 [node name="Tool" type="Node2D" parent="Sprite"]
-position = Vector2( 6, -9 )
-rotation = 5.49779
+position = Vector2( 5, -4 )
+rotation = 0.436332
 
 [node name="Pickaxe" type="Sprite" parent="Sprite/Tool"]
 texture = ExtResource( 7 )
@@ -192,13 +204,15 @@ __meta__ = {
 }
 
 [node name="Particles" type="Node2D" parent="Sprite"]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Stun" type="Sprite" parent="Sprite/Particles"]
 visible = false
 texture = ExtResource( 8 )
 offset = Vector2( -1, -12 )
 hframes = 3
-frame = 2
 
 [node name="Dust" type="Particles2D" parent="Sprite/Particles"]
 position = Vector2( 4, -1 )
@@ -206,26 +220,38 @@ emitting = false
 amount = 3
 lifetime = 0.6
 local_coords = false
-process_material = SubResource( 33 )
+process_material = SubResource( 6 )
 texture = ExtResource( 25 )
+
+[node name="Sweat" type="Particles2D" parent="Sprite/Particles"]
+position = Vector2( 0, -12 )
+emitting = false
+amount = 4
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.84
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+process_material = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/bend-down = ExtResource( 9 )
 anims/dig = ExtResource( 10 )
+anims/exhausted = ExtResource( 26 )
 anims/idle = ExtResource( 11 )
 anims/punch = ExtResource( 12 )
 anims/run = ExtResource( 13 )
 anims/stun = ExtResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 25 )
+tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 26 )
+parameters/playback = SubResource( 32 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -7 )
-shape = SubResource( 27 )
+shape = SubResource( 33 )
 
 [node name="Punchbox" type="Area2D" parent="."]
 visible = false
@@ -233,7 +259,7 @@ collision_layer = 0
 
 [node name="DetectionArea" type="CollisionShape2D" parent="Punchbox"]
 position = Vector2( 0, -7 )
-shape = SubResource( 28 )
+shape = SubResource( 34 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 15 )
