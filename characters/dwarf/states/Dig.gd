@@ -17,11 +17,12 @@ func enter(params := {}) -> void:
 		var index := int(clamp(int(params.spot), 1, veins.size()) - 1)
 		vein = veins[index]
 	
-	_parent.target(_find_place_around_vein(vein))
+	var mining_spot := _find_place_around_vein(vein)
+	_parent.target(mining_spot)
 	_parent.connect("target_reached", self, "_on_Dwarf_target_reached")
 
 	dwarf.animator.play("run")
-	dwarf.sprite.set_direction(vein.position.x - dwarf.position.x)
+	dwarf.sprite.set_direction(mining_spot.x - dwarf.position.x)
 	dwarf.connect("pickaxe_used", self, "_on_Dwarf_pickaxe_used")
 	dwarf.connect("pickaxe_used", vein, "_on_Dwarf_pickaxe_used")
 
