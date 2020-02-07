@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://characters/dwarf/Dwarf.gd" type="Script" id=1]
 [ext_resource path="res://characters/dwarf/cosmetics/color.shader" type="Shader" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://characters/dwarf/states/Stuned.gd" type="Script" id=24]
 [ext_resource path="res://characters/dwarf/particles/dust.png" type="Texture" id=25]
 [ext_resource path="res://characters/dwarf/animations/exhausted.tres" type="Animation" id=26]
+[ext_resource path="res://characters/dwarf/states/Exhausted.gd" type="Script" id=27]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -213,6 +214,7 @@ visible = false
 texture = ExtResource( 8 )
 offset = Vector2( -1, -12 )
 hframes = 3
+frame = 2
 
 [node name="Dust" type="Particles2D" parent="Sprite/Particles"]
 position = Vector2( 4, -1 )
@@ -230,7 +232,6 @@ amount = 4
 lifetime = 0.25
 one_shot = true
 explosiveness = 0.84
-visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 process_material = SubResource( 7 )
 
@@ -291,6 +292,9 @@ script = ExtResource( 23 )
 
 [node name="Stuned" type="Node" parent="StateMachine/Locked"]
 script = ExtResource( 24 )
+
+[node name="Exhausted" type="Node" parent="StateMachine/Locked"]
+script = ExtResource( 27 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 20 )

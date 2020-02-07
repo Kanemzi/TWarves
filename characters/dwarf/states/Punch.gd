@@ -23,10 +23,10 @@ class_name DwarfPunchState
 # x En frappant le nain, les pépites sont droppées en respectant le sens du coup
 # - Système de force définissant la durée du stun de la cible et la quantité de pépites droppées
 
-export(float) var chase_speed := 48.0
+export(float) var chase_speed := 24.0
 export(int) var min_chase_position := 22
 export(int) var max_chase_position := 200
-export(float) var max_chase_distance := 200.0
+export(float) var max_chase_distance := 0.0
 
 var target : WeakRef
 
@@ -74,7 +74,8 @@ func exit() -> void:
 
 # S'exécute lorsque le nain a atteint le filon qu'il doit exploiter
 func _on_Dwarf_target_reached() -> void:
-	_stop_running("idle")
+	_stop_running()
+	dwarf.state_machine.transition_to("Locked/Exhausted")
 
 
 func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:

@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://characters/dwarf/states/Dig.gd"
 }, {
+"base": "DwarfLockingState",
+"class": "DwarfExhaustedState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Exhausted.gd"
+}, {
 "base": "DwarfState",
 "class": "DwarfExitState",
 "language": "GDScript",
@@ -158,6 +163,11 @@ _global_script_classes=[ {
 "class": "Gift",
 "language": "GDScript",
 "path": "res://addons/gift/gift_node.gd"
+}, {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
 }, {
 "base": "Node2D",
 "class": "GoldCounter",
@@ -313,6 +323,7 @@ _global_script_class_icons={
 "DisplayNameLabel": "",
 "Dwarf": "",
 "DwarfDigState": "",
+"DwarfExhaustedState": "",
 "DwarfExitState": "",
 "DwarfIdleState": "",
 "DwarfLockingState": "",
@@ -330,6 +341,7 @@ _global_script_class_icons={
 "GUIIcons": "",
 "Game": "",
 "Gift": "",
+"GitAPI": "",
 "GoldCounter": "",
 "GoldenNugget": "",
 "HelperTools": "",
@@ -386,7 +398,7 @@ enabled=PoolStringArray( "gift" )
 
 [gdnative]
 
-singletons=[  ]
+singletons=[ "res://git_api.gdnlib" ]
 
 [importer_defaults]
 
