@@ -152,7 +152,7 @@ graph_offset = Vector2( 156, -98 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
-[sub_resource type="RectangleShape2D" id=33]
+[sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 4, 7 )
 
 [sub_resource type="RectangleShape2D" id=34]
@@ -250,12 +250,10 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 32 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -7 )
-shape = SubResource( 33 )
+shape = SubResource( 35 )
 
 [node name="Punchbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="DetectionArea" type="CollisionShape2D" parent="Punchbox"]
@@ -283,6 +281,7 @@ script = ExtResource( 21 )
 
 [node name="Punch" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 22 )
+max_chase_distance = 20.0
 
 [node name="AttackDelay" type="Timer" parent="StateMachine/Move/Punch"]
 one_shot = true

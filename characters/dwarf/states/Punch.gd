@@ -79,11 +79,10 @@ func _on_Dwarf_target_reached() -> void:
 
 
 func _on_Dwarf_dwarf_touched(other : Dwarf) -> void:
-	_stop_running()
 	if other != target.get_ref():
 		return
+	_stop_running()
 	_punch_target()
-
 
 
 # S'exécute lorsque coup du nain atteint sa cible
@@ -135,5 +134,6 @@ func _stop_running(next_animation := "") -> void:
 	_parent.forget_target()
 	if next_animation != "":
 		dwarf.animator.play(next_animation)
+	print("stop running : " + dwarf.display_name)
 	dwarf.animator.playback_speed = 1
 	dwarf.dust_particles.emitting = false
