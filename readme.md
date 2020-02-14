@@ -3,7 +3,7 @@
 
 TWarves est un mini-jeu connecté à un chat Twitch et affiché sur l'overlay du streamer.
   
-Dans ce jeu, les joueurs incarnent des nains devant travailler dans une mine afin de ramener chez eux le plus d'or et de trésors possible. Ils peuvent pour cela miner ou bien attaquer/tendre des pièges aux autres nains présents dans la mine afin de voler leurs ressources.
+Dans ce jeu, les joueurs incarnent des nains devant travailler dans une mine afin de ramener chez eux le plus d'or possible. Ils peuvent pour cela miner ou bien attaquer/tendre des pièges aux autres nains présents dans la mine afin de voler leurs ressources.
   
 A tout moment, un spectateur du stream pourra décider de rejoindre la partie et contrôler un nain en entrant des commandes dans le chat. Il verra ainsi son nain s'animer directement sur le stream avec les autres joueurs présents dans la partie.
 
@@ -12,6 +12,25 @@ A tout moment, un spectateur du stream pourra décider de rejoindre la partie et
 Le jeu est développé en utilisant le moteur [Godot Engine 3.2](https://github.com/godotengine/godot) et les assets réalisés avec [Aseprite](https://github.com/aseprite/aseprite).
 
 Il est possible de suivre le développement du jeu et de participer aux tests sur la chaîne Twitch [https://www.twitch.tv/kanemzi](https://www.twitch.tv/kanemzi).
+
+## Extension Twitch
+
+Une extension Twitch associée au jeu permet au joueur de consulter le classement des joueurs (nombre de pépites d'or collectées au total).
+
+### Customisation du nain
+
+L'extension permet également au joueur de customiser son nain en achetant de nouveaux éléments (couleurs, barbes, équipements, objets, emotes, ...) avec les pépites d'or qu'il a récolté dans la mine.
+
+La customisation du nain prend effet lorsque celui-ci entre à nouveau dans la mine.
+
+### Système de sauvegarde des données
+
+Dans la version actuelle du jeu, les données sont stockées localement sur la machine faisant tourner le jeu.
+
+Pour des raisons de flexibilité, l'intégralité des données de sauvegarde se trouveront sur le serveur distant dans la version finale du jeu.
+
+Les données du joueur sont sauvegardées lorsque le nain sort de la mine (le nombre de pépites d'or récoltées sont envoyés au serveur)
+
 
 ## To do
 
@@ -27,14 +46,9 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
   - [x] Affichage du nombre de pépites sur l'UI du nain
   - [x] Animer la récolte de pépites sur l'UI
   - [ ] Balance des différents filons
-  - [ ] Créer la classe *"Treasure"* (extends Drop)
-  - [ ] Ajout des probabilités de drop des trésors dans les filons
-  - [ ] Création d'une classe listant tous les trésors non obtenus pour le moment
-  - [ ] Les trésors ne sont pas collectés immédiatement mais droppés au sol
 - [ ] Collecte (état)
   - [x] Les nains peuvent ramasser les pépites au sol
   - [x] Lorsque toutes les pépites ont été prises, le nain part miner sur le filon le plus proche
-  - [ ] Les nains peuvent ramasser les trésors au sol
 - [ ] Combat
   - [ ] Animer la perte de pépites sur l'UI
   - [x] Créer l'état d'attaque du nain
@@ -46,21 +60,44 @@ Il est possible de suivre le développement du jeu et de participer aux tests su
     - [ ] Transition vers l'état de fatigue quand la cible est ratée
   - [x] Créer l'état de stun du nain
     - [x] Animation du stun
-    - [ ] Sauvegarde de l'état précédent pour y retourner après la période de stun
+    - [x] Le nain retourne miner au filon le plus proche après le stun
+    - [x] Si une commande est donnée pendant le stun, elle est prise en compte à la fin du stun
     - [ ] Le nain drop un certain nombre de pépites en entrant dans cet état
     - [ ] Le nombre de pépites droppées dépend de la force du coup (passé en paramètre de la transition)
-    - [ ] Le nain drop tous ses trésors en entrant dans cet état
-  - [ ] Etat de fatigue
-    - [ ] Créer l'animation de fatigue
-    - [ ] Particules de fatigue
-    - [ ] Si une action est demandée pendant la fatigue, elle est prise en compte à la fin de la fatigue
+  - [x] Etat de fatigue
+    - [x] Créer l'animation de fatigue
+    - [x] Particules de fatigue
+    - [x] Si une action est demandée pendant la fatigue, elle est prise en compte à la fin de la fatigue
   - [x] Créer l'objet *"GoldNugget"* (extends Drop)
     - [x] Sprite aléatoire pour chaque pépite
   - [ ] *Augmentation progressive de la force d'attaque pendant que le nain mine*
 - [ ] Joueur
   - [x] Sauver les pépites récoltées par le nain lorsqu'il sort de la mine
-  - [ ] Sauver les trésors trouvés par le nain lorsqu'il sort de la mine
   - [x] Sauvegarde des données des joueurs lorsque le jeu est quitté (ou qu'un bouton de sauvegarde est pressé)
   - [x] Chargement des données des joueurs lorsque le jeu est lancé
-- [ ] Customisation
+- [ ] *Customisation*
 - [ ] Commandes MJ
+     - [ ] *Eboulement au niveau d'un filon d'or (les nains touchés sont stun et droppent des pépites)*
+     - [ ] *Douche de pépites d'or au niveau d'un filon ou d'un joueur (nombre de pépites précisé ou par défaut)*
+- [ ] Serveur distant
+     - [ ] Base de données
+          - [ ] Table des joueurs
+          - [ ] *Table des éléments de customisation*
+          - [ ] *Table des transactions (achats d'éléments de customisation)*
+     - [ ] Connexion websocket serveur - jeu
+          - [ ] **Libraries de communication côté client et serveur**
+               - [ ] **Définition des types de message**
+               - [ ] **Helpers pour créer les messages**
+          - [ ] **Refactoring complet du système des joueurs**
+               - [ ] Lorsqu'un joueur rejoint la mine, il est créé à partir des données du serveur
+                    - [ ] Si il s'agit de sa première connexion, ses données sont initialisées sur le serveur et retournées au jeu
+               - [ ] Lorsqu'un nain quitte la mine, ses données sont envoyées au serveur
+                    - [ ] Le joueur est supprimé lorsque le nain quitte la mine
+     - [ ] Backend extension Twitch
+          - [ ] Un utilisateur de l'extension peut récupérer les données liées à son compte
+               - [ ] Erreur lorsque l'utilisateur ne s'est jamais connecté au jeu.
+          - [ ] Un utilisateur peut récupérer les informations de base des premiers joueurs du classement (display_name, golden_nuggets, badges)
+     - [ ] Extension Twitch
+          - [ ] Choix du framework à utiliser (Vue.js ?)
+          - [ ] Les données du classement sont mises à jour régulièrement
+          - [ ] Les informations du joueur sont mises à jour quand son nain quitte la mine via PubSub
