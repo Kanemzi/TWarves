@@ -42,7 +42,7 @@ func _get_veins() -> Array:
 func _find_place_around_vein(vein: Vein) -> Vector2:
 	var offset := rand_range(vein.mining_distance / 2, vein.mining_distance)
 	var side := pow(-1, randi() % 2)
-	return vein.position + Vector2(offset * side, 0)
+	return vein.position + Vector2(round(offset * side), 0)
 
 
 # Retourne la veine la plus proche du nain
