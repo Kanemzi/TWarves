@@ -1,0 +1,28 @@
+{
+  "name": "extension-twarves-panel",
+  "version": "1.0.0",
+  "description": "A leaderboard and Dwarf customization extension for TWarves",
+  "main": "index.js",
+  "scripts": {
+    "cert": "node bin/generate_cert.js server",
+    "start": "node services/backend"
+  },
+  "keywords": [
+    "twitch",
+    "extension"
+  ],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "boom": "^7.2.0",
+    "commander": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "hapi": "^18.1.0",
+    "inert": "^5.1.0",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.8.11",
+    "request": "^2.85.0",
+    "selfsigned": "^1.10.2",
+    "ws": "^7.2.1"
+  }
+}
