@@ -383,6 +383,7 @@ config/icon="res://icon.png"
 
 ConfigManager="*res://utils/managers/config/ConfigManager.gd"
 Strings="*res://utils/managers/game/Strings.gd"
+DistantServer="*res://utils/managers/distant-server/DistantServer.gd"
 
 [display]
 
