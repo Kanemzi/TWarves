@@ -92,5 +92,8 @@ margin_top = 480.0
 margin_right = 1380.0
 margin_bottom = 540.0
 color = Color( 0.223529, 0.121569, 0.129412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="popup_hide" from="CredentialsPopup" to="ChatInterface" method="_start"]
 [connection signal="timeout" from="AutosaveTimer" to="." method="save_game"]

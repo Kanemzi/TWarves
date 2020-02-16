@@ -164,11 +164,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gift/gift_node.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://git_api.gdns"
-}, {
 "base": "Node2D",
 "class": "GoldCounter",
 "language": "GDScript",
@@ -274,6 +269,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utils/state-machine/StateMachine.gd"
 }, {
+"base": "Reference",
+"class": "TDLMessage",
+"language": "GDScript",
+"path": "res://utils/managers/server-link/TDLMessage.gd"
+}, {
+"base": "Reference",
+"class": "TDLMessageBuilder",
+"language": "GDScript",
+"path": "res://utils/managers/server-link/TDLMessageBuilder.gd"
+}, {
 "base": "IrcClientSecure",
 "class": "TwiCIL",
 "language": "GDScript",
@@ -341,7 +346,6 @@ _global_script_class_icons={
 "GUIIcons": "",
 "Game": "",
 "Gift": "",
-"GitAPI": "",
 "GoldCounter": "",
 "GoldenNugget": "",
 "HelperTools": "",
@@ -363,6 +367,8 @@ _global_script_class_icons={
 "SenderData": "",
 "State": "",
 "StateMachine": "",
+"TDLMessage": "",
+"TDLMessageBuilder": "",
 "TwiCIL": "",
 "TwitchApiWrapper": "",
 "TwitchEmotesCache": "",
@@ -383,7 +389,7 @@ config/icon="res://icon.png"
 
 ConfigManager="*res://utils/managers/config/ConfigManager.gd"
 Strings="*res://utils/managers/game/Strings.gd"
-DistantServer="*res://utils/managers/distant-server/DistantServer.gd"
+TDLClient="*res://utils/managers/server-link/TDLClient.gd"
 
 [display]
 
@@ -399,7 +405,7 @@ enabled=PoolStringArray( "gift" )
 
 [gdnative]
 
-singletons=[ "res://git_api.gdnlib" ]
+singletons=[  ]
 
 [importer_defaults]
 
