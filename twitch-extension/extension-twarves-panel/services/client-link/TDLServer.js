@@ -27,7 +27,7 @@ wsServer.on('connection', (ws) => {
 	client = ws
 	
 	let message = new TDLMessage(Type.PLAYER_INFORMATION, {test: '123'})
-	message.send()
+  message.send()
 
   ws.on('message', (message) => {
     handleMessage(message)
@@ -40,25 +40,32 @@ wsServer.on('connection', (ws) => {
 })
 
 
-const handleMessage = message => {
+/**
+ * Route un message TDL reçu vers le bon handler
+ * (définis dans le fichier handlers.js)
+ * @param {String} data 
+ */
+const handleMessage = data => {
   let json
   try {
-    json = JSON.parse(message)
+    json = JSON.parse(data)
   } catch (e) {
     return console.error(e)
   }
 
-  if (handlers[json.type] !== undefined)
+  if (handlers[json.type] !== undefined
+      && json.message !== undefined)
     handlers[json.type](json.message)
 }
 
 
 /**
- * @param {String} message 
+ * Envoie un message via le protocole TDL
+ * @param {TDLMessage} message 
  */
 const sendMessage = (message) => {
   if (client !== null)
-		client.send(message)
+		client.send(message.build_message())
 }
 
 exports.sendMessage = sendMessage

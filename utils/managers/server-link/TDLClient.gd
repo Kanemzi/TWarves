@@ -1,5 +1,7 @@
 extends Node
 
+signal message_received(type, message)
+
 export var distant_server_url := "127.0.0.1:5700"
 
 var _client := WebSocketClient.new()
@@ -27,7 +29,15 @@ func _connected(proto = "") -> void:
 
 
 func _on_data() -> void:
-	print("Got data from server: ", _client.get_peer(1).get_packet().get_string_from_utf8())
+	var data := _client.get_peer(1).get_packet().get_string_from_utf8()
+	var dict = parse_json(data)
+
+	# Check if the message structure is valid
+	if dict != null \
+			and dict.type != null \
+			and dict.message != null:
+		var m := TDLMessage.new(dict.type, dict.message)
+		emit_signal("message_received", m)
 
 
 func _process(_delta) -> void:
@@ -35,5 +45,4 @@ func _process(_delta) -> void:
 
 
 func send_message(message : String) -> int :
-	print("sending : " + message)
 	return _client.get_peer(1).put_packet(message.to_utf8())

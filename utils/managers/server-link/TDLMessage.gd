@@ -18,21 +18,21 @@ enum Status {
   SENT = 1
 }
 
-var _type : int
-var _message : Dictionary
-var _status : int
+var type : int
+var message : Dictionary
+var status : int
 
 func _init(type := Type.UNDEFINED, message := {}) -> void:
-  _message = message
-  _type = type
-  _status = Status.NOT_SENT
+  self.message = message
+  self.type = type
+  self.status = Status.NOT_SENT
   
 
 # Retourne un string json correspondant au message
 func build_message() -> String:
   return to_json({
-	type = _type,
-	message = _message
+    type = self.type,
+    message = self.message
   })
 
 
@@ -40,5 +40,5 @@ func build_message() -> String:
 func send() -> int:
   var m = build_message()
   var error : int = TDLClient.send_message(m)
-  _status = Status.SENT if error == 0 else Status.ERROR
-  return _status
+  self.status = Status.SENT if error == 0 else Status.ERROR
+  return self.status

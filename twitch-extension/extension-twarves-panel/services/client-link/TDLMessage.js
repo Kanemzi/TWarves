@@ -66,8 +66,7 @@ class TDLMessage {
 	}
 
 	send() {
-		let m = this.build_message()
-		TDLServer.sendMessage(m)
+		TDLServer.sendMessage(this)
 		this.status = Status.SENT
 		return this.status
 	}
