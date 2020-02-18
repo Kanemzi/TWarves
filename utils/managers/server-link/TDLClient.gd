@@ -15,24 +15,24 @@ func _ready() -> void:
 
 	var err = _client.connect_to_url(distant_server_url)
 	if err != OK:
-		print("Unable to connect")
+		print("[TDL] Erreur de connexion au serveur TDL")
 		set_process(false)
 
 
 func _closed(was_clean = false) -> void:
-	print("Closed, clean: ", was_clean)
+	print("[TDL] Connexion fermée, clean: ", was_clean)
 	set_process(false)
 
 
-func _connected(proto = "") -> void:
-	print("Connected with protocol: ", proto)
+func _connected(_proto = "") -> void:
+	print("[TDL] Connecté au serveur TDL")
 
 
 func _on_data() -> void:
 	var data := _client.get_peer(1).get_packet().get_string_from_utf8()
 	var dict = parse_json(data)
 
-	# Check if the message structure is valid
+	# Vérifie la structure du message
 	if dict != null \
 			and dict.type != null \
 			and dict.message != null:

@@ -2,9 +2,9 @@ class_name TDLMessageBuilder
 # Classe permettant de générer les différents messages gérés par le 
 # protocole TDL
 
-# Crée un message de type REQUEST_PLAYER
-static func create_request_player(user_id: String, display_name: String) -> TDLMessage:
-	return TDLMessage.new(TDLMessage.Type.REQUEST_PLAYER, {
+# Crée un message de type REQUEST_PLAYER_FOR_JOIN
+static func create_request_player_for_join(user_id: String, display_name: String) -> TDLMessage:
+	return TDLMessage.new(TDLMessage.Type.REQUEST_PLAYER_FOR_JOIN, {
 		user_id = user_id,
 		display_name = display_name
 	})

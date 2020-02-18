@@ -6,7 +6,6 @@
 const ws = require('ws').Server
 require('dotenv').config()
 
-const {Type, TDLMessage} = require('./TDLMessage')
 const handlers = require('./handlers')
 
 /*
@@ -14,29 +13,26 @@ const handlers = require('./handlers')
   il ne peut exister qu'un seul client connecté au serveur à la fois 
 */
 let client = null
-let wsServer = new ws({port: 5700})
+let wsServer = new ws({port: process.env.TDL_PORT})
 
+/**
+ * Exécuté lors d'une nouvelle connexion au serveur TDL
+ */
 wsServer.on('connection', (ws) => {
-  console.log('new connection')
+  console.log('[TDL] Nouvelle connexion')
+  
   // si le serveur est déjà connecté à un client, on interdit les nouvelles connexions
   if (client != null) {
-    console.log('new connection refused')
+    console.log('[TDL] Connexion refusée')
     ws.close()
     return
   }
-	client = ws
-	
-	let message = new TDLMessage(Type.PLAYER_INFORMATION, {test: '123'})
-  message.send()
 
-  ws.on('message', (message) => {
-    handleMessage(message)
-  })
-  
-  ws.onclose = () => {
-    console.log("closed");
-    client = null
-  };
+	client = ws
+
+  ws.on('message', message => handleMessage(message))
+
+  ws.onclose = () => client = null
 })
 
 
@@ -47,12 +43,14 @@ wsServer.on('connection', (ws) => {
  */
 const handleMessage = data => {
   let json
+
   try {
     json = JSON.parse(data)
   } catch (e) {
-    return console.error(e)
+    return e
   }
 
+  // Vérifie la structure du message
   if (handlers[json.type] !== undefined
       && json.message !== undefined)
     handlers[json.type](json.message)

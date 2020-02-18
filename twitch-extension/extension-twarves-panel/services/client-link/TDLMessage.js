@@ -12,26 +12,28 @@ const Type = {
   /* * * * Messages serveur * * * */
   
   /**
-   * Retourne les informations concernant un joueur
+   * Retourne les informations concernant un joueur qui demande
+   * à entrer dans la mine
    * 
    * {
-   *    player: Player // les informations du joueur contenues dans la bdd
+   *    player: [Player] // les informations du joueur contenues dans la bdd
    * }
    */
-  PLAYER_INFORMATION: 0,
+  PLAYER_INFORMATION_FOR_JOIN: 0,
 
 
   /* * * * Messages client * * * */
 
   /**
    * Demande d'informations concernant un joueur (id, nom, golds, custom, ...)
+   * qui demande à entrer dans la mine
    * 
    * {
    *    user_id: [id] // id du joueur dont il faut récupérer les informations
    *    display_name: [name] // le nom Twitch affiché du joueur
    * }
    */
-  REQUEST_PLAYER: 10,
+  REQUEST_PLAYER_FOR_JOIN: 10,
 
   /**
    * Envoie au serveur le nombre de pépites d'or récoltées 
@@ -52,9 +54,9 @@ const Status = {
 }
 
 class TDLMessage {
-	constructor(_type, _message) {
-		this.message = _message
-		this.type = _type
+	constructor(t, m) {
+		this.message = m
+		this.type = t
 		this.status = Status.NOT_SENT
 	}
 
