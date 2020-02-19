@@ -4,6 +4,9 @@ class_name PlayersManager
 
 export(float) var max_time_in_caves := 20.0
 
+func _ready() -> void:
+	TDLClient.connect("message_received", self, "_on_TDLClient_message_received")
+
 # Retourne true si le joueur joueur a déjà joué au jeu
 func exists(user_id: String) -> bool:
 	return has_node(user_id)
@@ -27,3 +30,10 @@ func add(user_id: String, display_name: String) -> Player:
 # Retourne un joueur du jeu en fonction de son user id
 func get(user_id: String) -> Player:
 	return get_node(user_id) as Player
+
+
+func _on_TDLClient_message_received(message: TDLMessage) -> void:
+	if message.type != TDLMessage.Type.PLAYER_INFORMATION_FOR_JOIN:
+		return
+
+	print("player joined : " + str(message.message))

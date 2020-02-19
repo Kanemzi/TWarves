@@ -1,6 +1,6 @@
 extends Node
 
-signal message_received(type, message)
+signal message_received(message)
 
 export var distant_server_url := "127.0.0.1:5700"
 
