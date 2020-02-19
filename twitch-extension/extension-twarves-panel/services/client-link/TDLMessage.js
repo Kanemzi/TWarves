@@ -44,7 +44,7 @@ const Type = {
    *    golden_nuggets: [amount] // quantité de pépites d'or récoltées dans la mine
    * }
    */
-  SAVE_PLAYER_DATA: 11,
+  SAVE_PLAYER_DATA_WHEN_EXIT: 11,
 }
 
 const Status = {

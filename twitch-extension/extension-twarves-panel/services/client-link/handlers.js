@@ -35,13 +35,42 @@ handlers[Type.REQUEST_PLAYER_FOR_JOIN] = message => {
     
     // Si le joueur existe déjà dans la base de données
     } else {
-      console.log('[MongoDB] Joueur trouvé : ' + player)
+      console.log('[TWarves Server] Joueur trouvé : ' + player)
       updateDisplayName(player, display_name)
       let playerData = new TDLMessage(Type.PLAYER_INFORMATION_FOR_JOIN, {player})
       playerData.send()
     }
   })
 }
+
+
+/**
+ * Réaction à une réception de données d'un joueur quittant la mine
+ * 
+ * golden_nuggets
+ */
+handlers[Type.SAVE_PLAYER_DATA_WHEN_EXIT] = message => {
+  let user_id = message.user_id
+  let golden_nuggets = message.golden_nuggets
+
+  if (!user_id || !golden_nuggets || golden_nuggets < 0) return
+
+  // Recherche un joueur dont l'user_id correspond à l'user_id passé dans le message
+  new Promise((resolve, reject) => {
+    Player.findOne({user_id: user_id}).then(resolve, reject)
+  })
+  .then(player => {
+    // Si le joueur n'est pas enregistré dans la base de données
+    if (!player) {
+      console.log(`[TWarves Server] Erreur: le joueur [${user_id}] n'est pas enregistré`)
+    
+    // Si le joueur existe dans la base de données
+    } else {
+      player.golden_nuggets += golden_nuggets
+      player.save() 
+      console.log(`[TWarves Server] Les données de ${player.display_name} ont été sauvegardées (${player.golden_nuggets} pépites)`)
+    }
+  })
 
 module.exports = handlers
 

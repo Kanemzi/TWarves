@@ -11,7 +11,7 @@ enum Type {
 
   # Messages client
   REQUEST_PLAYER_FOR_JOIN = 10
-  SAVE_PLAYER_DATA = 11
+  SAVE_PLAYER_DATA_WHEN_EXIT = 11
 }
 
 enum Status {
