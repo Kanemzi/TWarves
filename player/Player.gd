@@ -35,11 +35,19 @@ func create_dwarf() -> Dwarf:
 
 # Supprime le nain associé au joueur
 func remove_dwarf() -> void:
+
+	var golden_nuggets := dwarf.golden_nuggets
 	# save golds to player
-	golden_nuggets_total += dwarf.golden_nuggets
-	print("total : " + str(golden_nuggets_total))
+	golden_nuggets_total += golden_nuggets
 	dwarf.queue_free()
 	dwarf = null
+	save(golden_nuggets)
+	queue_free()
+
+
+func save(golden_nuggets: int) -> void:
+	var message := TDLMessageBuilder.create_save_player_data(user_id, golden_nuggets)
+	var _status := message.send()
 
 
 func get_save_data() -> Dictionary:

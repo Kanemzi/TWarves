@@ -16,6 +16,11 @@ func _ready() -> void:
 	_game = owner as Game
 	_chat = _game.chat_interface
 	_players = _game.players_manager
+	_on_ready()
+
+func _on_ready() -> void:
+	pass
+
 
 func prepare(cmd: CommandInfo, args: PoolStringArray) -> void:
 	_action(cmd, args)

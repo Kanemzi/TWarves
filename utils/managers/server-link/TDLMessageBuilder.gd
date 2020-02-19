@@ -12,7 +12,7 @@ static func create_request_player_for_join(user_id: String, display_name: String
 
 # Crée un message de type SAVE_PLAYER_DATA
 static func create_save_player_data(user_id: String, golden_nuggets: int) -> TDLMessage:
-	return TDLMessage.new(TDLMessage.Type.SAVE_PLAYER_DATA, {
+	return TDLMessage.new(TDLMessage.Type.SAVE_PLAYER_DATA_WHEN_EXIT, {
 		user_id = user_id,
 		golden_nuggets = golden_nuggets
 	})

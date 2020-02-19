@@ -31,15 +31,16 @@ handlers[Type.REQUEST_PLAYER_FOR_JOIN] = message => {
     // Si le joueur n'est pas encore enregistré dans la base de données
     if (!player) {
       console.log('[TWarves Server] Nouveau joueur créé')
-      new Player({user_id: user_id, display_name: display_name}).save()
-    
+			player = new Player({user_id: user_id, display_name: display_name})
+			player.save()
     // Si le joueur existe déjà dans la base de données
     } else {
-      console.log('[TWarves Server] Joueur trouvé : ' + player)
+      console.log('[TWarves Server] Joueur trouvé')
       updateDisplayName(player, display_name)
-      let playerData = new TDLMessage(Type.PLAYER_INFORMATION_FOR_JOIN, {player})
-      playerData.send()
-    }
+		}
+		console.log(player)
+		let playerData = new TDLMessage(Type.PLAYER_INFORMATION_FOR_JOIN, {player})
+    playerData.send()
   })
 }
 
@@ -66,11 +67,21 @@ handlers[Type.SAVE_PLAYER_DATA_WHEN_EXIT] = message => {
     
     // Si le joueur existe dans la base de données
     } else {
-      player.golden_nuggets += golden_nuggets
+			player.golden_nuggets += golden_nuggets
+		
+			/**
+			 * TODO : évaluer la nécessité de ce bloc
+			 */
+			if (player.display_name == "iskrivv") {
+				console.log(player.golden_nuggets)
+				// player.golden_nuggets = 0
+			}
+
       player.save() 
       console.log(`[TWarves Server] Les données de ${player.display_name} ont été sauvegardées (${player.golden_nuggets} pépites)`)
     }
   })
+}
 
 module.exports = handlers
 
