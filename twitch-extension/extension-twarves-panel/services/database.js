@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 module.exports = {
   connect: () => {
-		// console.log(process.env.DB_NAME)ssssssssssssssssssssssss
+		// console.log(process.env.DB_NAME)sssssssss
 		// ${process.env.DB_USER}:${process.env.DB_PASS}@
-    let connectString = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/`
+    let connectString = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?authSource=admin`
     // let connectString2 = `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
 		mongoose.connect(connectString, {useNewUrlParser: true, useUnifiedTopology: true})
       .then(() => {
