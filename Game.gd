@@ -22,7 +22,7 @@ func _ready() -> void:
 		credentials_popup.popup()
 		yield(credentials_popup, "popup_hide")
 	chat_interface.start()
-	load_game()
+#	load_game()
 	autosave_timer.wait_time = _autosave_delay
 	autosave_timer.start()
 	randomize()
