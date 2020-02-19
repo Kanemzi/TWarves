@@ -30,12 +30,12 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/base_skin = Color( 0.667, 0.667, 0.667, 1 )
-shader_param/base_chest = Color( 0.733, 0.733, 0.733, 1 )
+shader_param/base_skin = Color( 0.666667, 0.666667, 0.666667, 1 )
+shader_param/base_chest = Color( 0.0745098, 0.298039, 0.298039, 1 )
 shader_param/base_pants = Color( 0.8, 0.8, 0.8, 1 )
 shader_param/base_boots = Color( 0.867, 0.867, 0.867, 1 )
-shader_param/skin = Color( 0, 0, 0, 1 )
-shader_param/chest = null
+shader_param/skin = Color( 0.486275, 0.12549, 0.12549, 1 )
+shader_param/chest = Color( 0.298039, 0.207843, 0.294118, 1 )
 shader_param/pants = null
 shader_param/boots = null
 
@@ -152,7 +152,7 @@ graph_offset = Vector2( 156, -98 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 4, 7 )
 
 [sub_resource type="RectangleShape2D" id=34]
@@ -251,13 +251,13 @@ parameters/playback = SubResource( 32 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -7 )
-shape = SubResource( 35 )
+shape = SubResource( 33 )
 
 [node name="Punchbox" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="DetectionArea" type="CollisionShape2D" parent="Punchbox"]
-position = Vector2( 0, -7 )
+position = Vector2( -0.0415764, -7 )
 shape = SubResource( 34 )
 
 [node name="StateMachine" type="Node" parent="."]
