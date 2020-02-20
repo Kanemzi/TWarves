@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cert": "node bin/generate_cert.js server",
-    "start": "node services/backend"
+    "start": "node services/api/backend"
   },
   "keywords": [
     "twitch",

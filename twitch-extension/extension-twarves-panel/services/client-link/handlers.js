@@ -2,8 +2,6 @@ const db = require('../database')
 const Player = require('../models/player')
 const {Type, TDLMessage} = require('./TDLMessage')
 
-db.connect()
-
 let handlers = {}
 
 /**

@@ -7,16 +7,15 @@ var twitch = window.Twitch.ext;
 
 // create the request options for our Twitch API calls
 var requests = {
-    set: createRequest('POST', 'cycle'),
-    get: createRequest('GET', 'query')
+    get: createRequest('GET', 'refresh-leaderboard', receivedLeaderboard)
 };
 
-function createRequest(type, method) {
+function createRequest(type, method, callback) {
 
     return {
         type: type,
-        url: location.protocol + '//localhost:8081/color/' + method,
-        success: updateBlock,
+        url: location.protocol + '//localhost:3000/' + method,
+        success: receivedLeaderboard,
         error: logError
     }
 }
@@ -33,6 +32,7 @@ twitch.onContext(function(context) {
 });
 
 twitch.onAuthorized(function(auth) {
+		twitch.rig.log("Authorized", JSON.stringify(auth))
     // save our credentials
     token = auth.token;
     tuid = auth.userId;
@@ -43,6 +43,10 @@ twitch.onAuthorized(function(auth) {
     setAuth(token);
     $.ajax(requests.get);
 });
+
+function receivedLeaderboard(data) {
+	twitch.rig.log(data)
+}
 
 function updateBlock(hex) {
     twitch.rig.log('Updating block color');

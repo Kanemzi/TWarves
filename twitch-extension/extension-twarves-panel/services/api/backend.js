@@ -1,6 +1,9 @@
 const Hapi = require('hapi')
 const ext = require('commander')
-require('dotenv').config({path: '../.env'})
+require('dotenv').config()
+
+const db = require('../database')
+db.connect()
 
 const globals = require('../globals')
 const tdlServer = require('../client-link/TDLServer')
