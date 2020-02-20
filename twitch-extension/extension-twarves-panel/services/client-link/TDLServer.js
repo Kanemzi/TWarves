@@ -4,7 +4,10 @@
  */
 
 const ws = require('ws').Server
-require('dotenv').config()
+
+// Si le serveur est lancé sans le backend
+if (!process.env.DB_NAME)
+  require('dotenv').config()
 
 const handlers = require('./handlers')
 

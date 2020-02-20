@@ -1,8 +1,9 @@
 const Hapi = require('hapi')
 const ext = require('commander')
-require('dotenv').config()
+require('dotenv').config({path: '../.env'})
 
 const globals = require('../globals')
+const tdlServer = require('../client-link/TDLServer')
 
 ext.
   version(require('../../package.json').version).
@@ -34,13 +35,6 @@ const serverOptions = {
       path: '/refresh-leaderboard',
       method: 'GET',
       handler: require('./handlers/refreshLeaderboard')
-  })
-
-  // met à jour les données du leaderboard
-  server.route({
-      path: '/update-leaderboard',
-      method: 'POST',
-      handler: require('./handlers/updateLeaderboard')  
   })
 
   await server.start()
