@@ -5,7 +5,7 @@ require('dotenv').config()
 const globals = require('../globals')
 
 ext.
-  version(require('../package.json').version).
+  version(require('../../package.json').version).
   option('-s, --secret <secret>', 'Extension secret').
   option('-c, --client-id <client_id>', 'Extension client ID').
   option('-o, --owner-id <owner_id>', 'Extension owner ID').

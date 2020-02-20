@@ -1,4 +1,4 @@
-const Boom = require('Boom')
+const Boom = require('boom')
 const jwt = require('jsonwebtoken')
 const request = require('request')
 const globals = require('./globals')
