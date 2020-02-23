@@ -1,6 +1,7 @@
 #leaderboard table {
     width: 100%;
-    color: white;
+		color: white;
+		table-layout: fixed;
 }
 
 #leaderboard table th {
@@ -13,8 +14,8 @@
 }
 
 #leaderboard table td {
-    height: 30px;
-    /* letter-spacing: 1.2px; */
+		height: 30px;
+		font-size: 0.9em;
 }
 
 #leaderboard table td.place .bubble {
@@ -58,21 +59,24 @@
 	background-image: url('../img/shop-icon.png');
 	background-repeat: no-repeat;
 	background-size: 30px;
-	background-position-x: 110px;
+	background-position-x: 95%;
 	font-weight: lighter;
 }
 
 #leaderboard table th:first-of-type {
-    text-align: center;
+		text-align: center;
+		width: 15%;
 }
 
 #leaderboard table th:nth-child(2) {
 	padding-left: 10px;
+	width:  40%;
 }
 
 #leaderboard table th:last-of-type {
     text-align: right;
-    padding-right: 10px;
+		padding-right: 10px;
+		width: 45%;
 }
 
 
@@ -88,6 +92,10 @@
 
 #leaderboard table tr:hover .display-name {
 	transform: scale(1.2);
+}
+
+#leaderboard .loader-container {
+	padding-top: 50%;
 }
 
 

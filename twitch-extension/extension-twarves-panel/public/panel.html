@@ -3,7 +3,8 @@
 <head>
 		<title>Viewer Page</title>
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/layout.css" />
+		<link rel="stylesheet" href="style/loader.css" />
+		<link rel="stylesheet" href="style/layout.css" />
 		<link rel="stylesheet" href="style/leaderboard.css" />
 		<link rel="stylesheet" href="style/tavern.css" />
 </head>
@@ -28,8 +29,11 @@
     <script src="https://localhost.rig.twitch.tv:3000/twitch-ext.js"></script>
 
     <!-- libraries -->
-    <script src="lib/vue.js" type="text/javascript"></script>
+		<script src="lib/vue.js" type="text/javascript"></script>
+		
+		<script src="request.js" type="text/javascript"></script>
 
+		<script src="components/loader.js" type="text/javascript"></script>
     <script src="components/leaderboard.js" type="text/javascript"></script>
 		<script src="components/tavern.js" type="text/javascript"></script>
 		<script src="app.js" type="text/javascript"></script>
@@ -38,7 +42,7 @@
     <!-- If you use any external libraries, such as jQuery, you must include
       them as part of your extension.  Twitch does not allow extensions to link
       to external libraries. -->
-    <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="viewer.js" type="text/javascript"></script>
+    <!-- <script src="jquery-3.3.1.min.js" type="text/javascript"></script> -->
+    <!-- <script src="viewer.js" type="text/javascript"></script> -->
 </body>
 </html>
