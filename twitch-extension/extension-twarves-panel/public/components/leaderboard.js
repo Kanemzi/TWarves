@@ -38,6 +38,7 @@ Vue.component('leaderboard', {
 		
 		mounted: function() {
 				this.$eventBus.$on('twitch-authorized', this.onAuthorized)
+				this.$eventBus.$on('received-leaderboard-update', this.onLeaderboardUpdate)
 		},
 		
 		methods: {
@@ -49,6 +50,10 @@ Vue.component('leaderboard', {
 										this.loaded = true
 								}, 2000) // délai artificiel pour l'affichage du loader
 						})
+				},
+
+				onLeaderboardUpdate: function(leaderboard) {
+					this.leaderboard = leaderboard
 				}
 		}
 })

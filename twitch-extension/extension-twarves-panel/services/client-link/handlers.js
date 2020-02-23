@@ -1,6 +1,8 @@
 const db = require('../database')
 const Player = require('../models/player')
 const {Type, TDLMessage} = require('./TDLMessage')
+const {pubsubBroadcast} = require('../helper')
+const {getLeaderboard} = require('../models/leaderboard')
 
 let handlers = {}
 
@@ -58,7 +60,7 @@ handlers[Type.SAVE_PLAYER_DATA_WHEN_EXIT] = message => {
   new Promise((resolve, reject) => {
     Player.findOne({user_id: user_id}).then(resolve, reject)
   })
-  .then(player => {
+  .then( player => {
     // Si le joueur n'est pas enregistré dans la base de données
     if (!player) {
       console.log(`[TWarves Server] Erreur: le joueur [${user_id}] n'est pas enregistré`)
@@ -75,8 +77,17 @@ handlers[Type.SAVE_PLAYER_DATA_WHEN_EXIT] = message => {
 				// player.golden_nuggets = 0
 			}
 
-      player.save() 
-      console.log(`[TWarves Server] Les données de ${player.display_name} ont été sauvegardées (${player.golden_nuggets} pépites)`)
+			player.save( async err => {
+				if (err) {
+					console.log(`[TWarves Server] Erreur lors de l'enregistrement du joueur ${player.display_name} : ${err}`)
+					return
+				}
+				console.log(`[TWarves Server] Les données de ${player.display_name} ont été sauvegardées (${player.golden_nuggets} pépites)`)
+
+				// Envoi du leaderboard mis à jour aux utilisateurs de l'extension
+				let leaderboard = await getLeaderboard()
+				pubsubBroadcast(process.env.CHANNEL_ID, 'leaderboard-update', leaderboard)
+			})
     }
   })
 }
