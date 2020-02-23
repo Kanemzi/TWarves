@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Viewer Page</title>
+		<title>Viewer Page</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/layout.css" />
-    <link rel="stylesheet" href="style/leaderboard.css" />
+		<link rel="stylesheet" href="style/leaderboard.css" />
+		<link rel="stylesheet" href="style/tavern.css" />
 </head>
 <!-- background-color: #201c2b -->
 <body>
@@ -14,10 +16,8 @@
                 TWarves
             </h1>
         </header>
-        <leaderboard></leaderboard>
-        <footer>
-            <button class="bottom-custom">Cust</button>
-        </footer>
+				<leaderboard></leaderboard>
+				<tavern></tavern>
     </div>
 
 
@@ -31,7 +31,8 @@
     <script src="lib/vue.js" type="text/javascript"></script>
 
     <script src="components/leaderboard.js" type="text/javascript"></script>
-    <script src="app.js" type="text/javascript"></script>
+		<script src="components/tavern.js" type="text/javascript"></script>
+		<script src="app.js" type="text/javascript"></script>
 
 
     <!-- If you use any external libraries, such as jQuery, you must include
