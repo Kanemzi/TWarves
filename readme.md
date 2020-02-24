@@ -80,24 +80,24 @@ Les données du joueur sont sauvegardées lorsque le nain sort de la mine (le no
      - [ ] *Eboulement au niveau d'un filon d'or (les nains touchés sont stun et droppent des pépites)*
      - [ ] *Douche de pépites d'or au niveau d'un filon ou d'un joueur (nombre de pépites précisé ou par défaut)*
 - [ ] Serveur distant
-     - [ ] Base de données
-          - [ ] Table des joueurs
+     - [x] Base de données
+          - [x] Table des joueurs
           - [ ] *Table des éléments de customisation*
           - [ ] *Table des transactions (achats d'éléments de customisation)*
-     - [ ] Connexion websocket serveur - jeu
-          - [ ] **Libraries de communication côté client et serveur**
-               - [ ] **Définition des types de message**
-               - [ ] **Helpers pour créer les messages**
-          - [ ] **Refactoring complet du système des joueurs**
+     - [x] Connexion websocket serveur - jeu
+          - [x] **Libraries de communication côté client et serveur**
+               - [x] **Définition des types de message**
+               - [x] **Helpers pour créer les messages**
+          - [x] **Refactoring complet du système des joueurs**
                - [ ] Lorsqu'un joueur rejoint la mine, il est créé à partir des données du serveur
-                    - [ ] Si il s'agit de sa première connexion, ses données sont initialisées sur le serveur et retournées au jeu
-               - [ ] Lorsqu'un nain quitte la mine, ses données sont envoyées au serveur
-                    - [ ] Le joueur est supprimé lorsque le nain quitte la mine
+                    - [x] Si il s'agit de sa première connexion, ses données sont initialisées sur le serveur et retournées au jeu
+               - [x] Lorsqu'un nain quitte la mine, ses données sont envoyées au serveur
+                    - [x] Le joueur est supprimé lorsque le nain quitte la mine
      - [ ] Backend extension Twitch
           - [ ] Un utilisateur de l'extension peut récupérer les données liées à son compte
                - [ ] Erreur lorsque l'utilisateur ne s'est jamais connecté au jeu.
-          - [ ] Un utilisateur peut récupérer les informations de base des premiers joueurs du classement (display_name, golden_nuggets, badges)
+          - [x] Un utilisateur peut récupérer les informations de base des premiers joueurs du classement (display_name, golden_nuggets)
      - [ ] Extension Twitch
-          - [ ] Choix du framework à utiliser (Vue.js ?)
+          - [x] Choix du framework à utiliser (Vue.js ?)
           - [ ] Les données du classement sont mises à jour régulièrement
           - [ ] Les informations du joueur sont mises à jour quand son nain quitte la mine via PubSub
