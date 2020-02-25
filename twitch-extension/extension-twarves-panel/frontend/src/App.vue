@@ -7,7 +7,7 @@
 			</header>
 			<Leaderboard></Leaderboard>
 		<Tavern></Tavern>
-	<div>
+	</div>
 </template>
 
 <script>

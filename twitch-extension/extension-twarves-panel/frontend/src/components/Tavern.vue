@@ -58,7 +58,7 @@ export default {
 	color: white;
 	/* border: none; */
 	border-radius: 20px;
-	background-image: url('../../assets/shop-icon.png');
+	background-image: url('../assets/shop-icon.png');
 	background-repeat: no-repeat;
 	background-position-x: 75px;
 	background-color: #1c121c;

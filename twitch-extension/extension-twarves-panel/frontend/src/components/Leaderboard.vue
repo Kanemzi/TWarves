@@ -126,7 +126,7 @@ export default {
 #leaderboard table td.golden-nuggets {
 	text-align: right;
 	padding-right: 40px;
-	background-image: url('../../assets/shop-icon.png');
+	background-image: url('../assets/shop-icon.png');
 	background-repeat: no-repeat;
 	background-size: 30px;
 	background-position-x: 95%;
