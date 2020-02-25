@@ -41,3 +41,5 @@ class Request {
 		return fetch(this.url + route, options).then(res => res.json())
 	}
 }
+
+module.exports = Request

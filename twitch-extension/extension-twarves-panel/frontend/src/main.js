@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Request from './request'
 
 Vue.prototype.$twitch = window.Twitch.ext
 Vue.prototype.$request = new Request()
