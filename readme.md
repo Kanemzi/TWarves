@@ -7,6 +7,19 @@ Dans ce jeu, les joueurs incarnent des nains devant travailler dans une mine afi
   
 A tout moment, un spectateur du stream pourra décider de rejoindre la partie et contrôler un nain en entrant des commandes dans le chat. Il verra ainsi son nain s'animer directement sur le stream avec les autres joueurs présents dans la partie.
 
+## Contrôle du nain
+Les commandes permettant de jouer et de contrôler son nain sont les suivante:
+
+`!joinmine` le nain rejoint la mine et commence à miner au filon le plus proche. Si le joueur n'a jamais joué avant, un profil est automatiquement créé.
+
+`!mine [1, 2, 3]` demande au nain de miner à un filon particulier. Si aucun numéro n'est précisé, le nain part miner sur le filon le plus proche.
+
+`!punch @[nom twitch]` demande au nain de frapper un autre nain. Si il parvient à donner un coup, la cible est immobilisée pendant quelques secondes et laisse tomber des pépites au sol. Si la cible parvient à s'enfuir, le nain est fatigué pendant quelques secondes. Si des pépites sont tombées au sol, le nain les ramasse automatiquement.
+
+`!pick` demande au nain de ramasser les pépites tombées au sol. Lorsque toutes les pépites sont ramassées, il part miner sur le filon le plus proche.
+
+`!exitmine` demande au nain de quitter immédiatement la mine avant la fin de son temps autorisé.
+
 ## Développement
 
 Le jeu est développé en utilisant le moteur [Godot Engine 3.2](https://github.com/godotengine/godot) et les assets réalisés avec [Aseprite](https://github.com/aseprite/aseprite).
