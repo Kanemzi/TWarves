@@ -1,0 +1,323 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "ActionIcon",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/icons/ActionIcon.gd"
+}, {
+"base": "Node2D",
+"class": "Cave",
+"language": "GDScript",
+"path": "res://environment/cave/Cave.gd"
+}, {
+"base": "Node",
+"class": "ChatCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/ChatCommand.gd"
+}, {
+"base": "Gift",
+"class": "ChatInterface",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/ChatInterface.gd"
+}, {
+"base": "Reference",
+"class": "CommandData",
+"language": "GDScript",
+"path": "res://addons/gift/util/cmd_data.gd"
+}, {
+"base": "Reference",
+"class": "CommandInfo",
+"language": "GDScript",
+"path": "res://addons/gift/util/cmd_info.gd"
+}, {
+"base": "Node2D",
+"class": "DisplayNameLabel",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/display-names/DisplayNameLabel.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Dwarf",
+"language": "GDScript",
+"path": "res://characters/dwarf/Dwarf.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfDigState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Dig.gd"
+}, {
+"base": "DwarfLockingState",
+"class": "DwarfExhaustedState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Exhausted.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfExitState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Exit.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfIdleState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Idle.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfLockingState",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfLockingState.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfPickState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Pick.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfPunchState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Punch.gd"
+}, {
+"base": "Node2D",
+"class": "DwarfQueue",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfQueue.gd"
+}, {
+"base": "DwarfState",
+"class": "DwarfQueueState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Queue.gd"
+}, {
+"base": "Node2D",
+"class": "DwarfSprite",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfSprite.gd"
+}, {
+"base": "State",
+"class": "DwarfState",
+"language": "GDScript",
+"path": "res://characters/dwarf/DwarfState.gd"
+}, {
+"base": "DwarfLockingState",
+"class": "DwarfStunedState",
+"language": "GDScript",
+"path": "res://characters/dwarf/states/Stuned.gd"
+}, {
+"base": "ChatCommand",
+"class": "ExitMineCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/ExitMine.gd"
+}, {
+"base": "Node2D",
+"class": "GUIDisplayNames",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/display-names/DisplayNames.gd"
+}, {
+"base": "Node2D",
+"class": "GUIGoldCounters",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/gold-counters/GoldCounters.gd"
+}, {
+"base": "Node2D",
+"class": "GUIIcons",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/icons/Icons.gd"
+}, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Game.gd"
+}, {
+"base": "Node",
+"class": "Gift",
+"language": "GDScript",
+"path": "res://addons/gift/gift_node.gd"
+}, {
+"base": "Node2D",
+"class": "GoldCounter",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/gold-counters/GoldCounter.gd"
+}, {
+"base": "ItemDrop",
+"class": "GoldenNugget",
+"language": "GDScript",
+"path": "res://environment/items/nugget/GoldenNugget.gd"
+}, {
+"base": "ChatCommand",
+"class": "HelpCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Help.gd"
+}, {
+"base": "RigidBody2D",
+"class": "ItemDrop",
+"language": "GDScript",
+"path": "res://environment/items/ItemDrop.gd"
+}, {
+"base": "ChatCommand",
+"class": "JoinMineCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/JoinMine.gd"
+}, {
+"base": "ChatCommand",
+"class": "MineCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Mine.gd"
+}, {
+"base": "ChatCommand",
+"class": "PickCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Pick.gd"
+}, {
+"base": "Node",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/Player.gd"
+}, {
+"base": "Node",
+"class": "PlayersManager",
+"language": "GDScript",
+"path": "res://utils/managers/game/PlayersManager.gd"
+}, {
+"base": "ChatCommand",
+"class": "PunchCommand",
+"language": "GDScript",
+"path": "res://utils/managers/twitch/commands/Punch.gd"
+}, {
+"base": "Reference",
+"class": "SenderData",
+"language": "GDScript",
+"path": "res://addons/gift/util/sender_data.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://utils/state-machine/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://utils/state-machine/StateMachine.gd"
+}, {
+"base": "Reference",
+"class": "TDLMessage",
+"language": "GDScript",
+"path": "res://utils/managers/server-link/TDLMessage.gd"
+}, {
+"base": "Reference",
+"class": "TDLMessageBuilder",
+"language": "GDScript",
+"path": "res://utils/managers/server-link/TDLMessageBuilder.gd"
+}, {
+"base": "Area2D",
+"class": "Vein",
+"language": "GDScript",
+"path": "res://environment/vein/Vein.gd"
+}, {
+"base": "Node2D",
+"class": "WarningIcon",
+"language": "GDScript",
+"path": "res://characters/dwarf/gui/icons/WarningIcon.gd"
+} ]
+_global_script_class_icons={
+"ActionIcon": "",
+"Cave": "",
+"ChatCommand": "",
+"ChatInterface": "",
+"CommandData": "",
+"CommandInfo": "",
+"DisplayNameLabel": "",
+"Dwarf": "",
+"DwarfDigState": "",
+"DwarfExhaustedState": "",
+"DwarfExitState": "",
+"DwarfIdleState": "",
+"DwarfLockingState": "",
+"DwarfPickState": "",
+"DwarfPunchState": "",
+"DwarfQueue": "",
+"DwarfQueueState": "",
+"DwarfSprite": "",
+"DwarfState": "",
+"DwarfStunedState": "",
+"ExitMineCommand": "",
+"GUIDisplayNames": "",
+"GUIGoldCounters": "",
+"GUIIcons": "",
+"Game": "",
+"Gift": "",
+"GoldCounter": "",
+"GoldenNugget": "",
+"HelpCommand": "",
+"ItemDrop": "",
+"JoinMineCommand": "",
+"MineCommand": "",
+"PickCommand": "",
+"Player": "",
+"PlayersManager": "",
+"PunchCommand": "",
+"SenderData": "",
+"State": "",
+"StateMachine": "",
+"TDLMessage": "",
+"TDLMessageBuilder": "",
+"Vein": "",
+"WarningIcon": ""
+}
+
+[application]
+
+config/name="TWarves"
+run/main_scene="res://Scene.tscn"
+boot_splash/image="res://banner.png"
+config/icon="res://icon.png"
+
+[autoload]
+
+ConfigManager="*res://utils/managers/config/ConfigManager.gd"
+Strings="*res://utils/managers/game/Strings.gd"
+TDLClient="*res://utils/managers/server-link/TDLClient.gd"
+
+[display]
+
+window/size/width=1380
+window/size/height=540
+window/size/resizable=false
+window/vsync/use_vsync=false
+window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "gift" )
+
+[gdnative]
+
+singletons=[  ]
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}

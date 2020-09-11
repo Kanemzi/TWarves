@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://environment/cave/Cave.gd" type="Script" id=1]
+[ext_resource path="res://environment/cave/background.png" type="Texture" id=2]
+[ext_resource path="res://characters/dwarf/DwarfQueue.gd" type="Script" id=3]
+[ext_resource path="res://environment/vein/Vein.tscn" type="PackedScene" id=4]
+[ext_resource path="res://environment/cave/foreground.png" type="Texture" id=5]
+[ext_resource path="res://environment/items/nugget/GoldenNugget.tscn" type="PackedScene" id=6]
+[ext_resource path="res://environment/items/ItemsPool.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 104, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3, 24 )
+
+[node name="Cave" type="Node2D"]
+position = Vector2( 0, 140 )
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DwarfQueue" type="Node2D" parent="."]
+position = Vector2( 16, 32 )
+z_index = 1
+script = ExtResource( 3 )
+max_allowed_in_mine = 6
+
+[node name="Places" type="Node2D" parent="DwarfQueue"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="4" type="Position2D" parent="DwarfQueue/Places"]
+
+[node name="3" type="Position2D" parent="DwarfQueue/Places"]
+position = Vector2( -7, -6 )
+
+[node name="2" type="Position2D" parent="DwarfQueue/Places"]
+position = Vector2( -14, -12 )
+
+[node name="1" type="Position2D" parent="DwarfQueue/Places"]
+position = Vector2( -21, -18 )
+
+[node name="0" type="Position2D" parent="DwarfQueue/Places"]
+position = Vector2( -28, -24 )
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2( 16, 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Veins" type="Node2D" parent="Objects"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="1" parent="Objects/Veins" groups=[
+"vein",
+] instance=ExtResource( 4 )]
+position = Vector2( 68, 0 )
+tier = 1
+mining_distance = 16.0
+mining_drop_rate = 0.3
+mining_nugget_min = 1
+mining_nugget_max = 3
+
+[node name="2" parent="Objects/Veins" groups=[
+"vein",
+] instance=ExtResource( 4 )]
+position = Vector2( 116, 0 )
+tier = 2
+mining_distance = 16.0
+mining_drop_rate = 0.3
+mining_nugget_min = 2
+mining_nugget_max = 5
+
+[node name="3" parent="Objects/Veins" groups=[
+"vein",
+] instance=ExtResource( 4 )]
+position = Vector2( 164, 0 )
+tier = 3
+mining_distance = 16.0
+mining_drop_rate = 0.3
+mining_nugget_min = 4
+mining_nugget_max = 8
+
+[node name="Dwarfs" type="YSort" parent="Objects"]
+
+[node name="Items" type="Node2D" parent="Objects"]
+z_index = 1
+script = ExtResource( 7 )
+GoldenNuggetScene = ExtResource( 6 )
+
+[node name="GoldenNugget" parent="Objects/Items" instance=ExtResource( 6 )]
+position = Vector2( 42, -13 )
+
+[node name="CollisionsZones" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ground" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 126, 36 )
+shape = SubResource( 1 )
+
+[node name="Ceiling" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 126, -4 )
+shape = SubResource( 1 )
+
+[node name="RightWall" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 227, 16 )
+shape = SubResource( 2 )
+
+[node name="LeftWall" type="CollisionShape2D" parent="CollisionsZones"]
+position = Vector2( 25, 16 )
+shape = SubResource( 2 )
+
+[node name="Foreground" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
