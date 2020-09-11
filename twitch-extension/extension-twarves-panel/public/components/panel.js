@@ -1,5 +1,0 @@
-Vue.component('panel', {
-	template: `
-
-	`
-})
