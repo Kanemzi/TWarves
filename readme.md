@@ -1,5 +1,4 @@
-[Twarves](#presentation)
-## Présentation
+## Presentation
 <img src="https://github.com/SimonROZEC/TWarves/blob/master/banner.png" height="256">
 
 TWarves est un mini-jeu connecté à un chat Twitch et affiché sur l'overlay du streamer.
