@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/banner.png-d098cc586a99e4d41fd7247d86eb8b25.stex"
+path="res://.import/banner.png-a89348d3da0c34b21189431060146aca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://twitch-extension/extension-twarves-panel/public-old/img/banner.png"
-dest_files=[ "res://.import/banner.png-d098cc586a99e4d41fd7247d86eb8b25.stex" ]
+source_file="res://twitch-extension/extension-twarves-panel/public/img/banner.png"
+dest_files=[ "res://.import/banner.png-a89348d3da0c34b21189431060146aca.stex" ]
 
 [params]
 

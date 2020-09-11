@@ -18,7 +18,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      host: 'http://localhost:3000'//'https://kanemzi.tk'
     }
 	},
 	
@@ -28,7 +28,7 @@ export default {
 
 	created: function() {
 		this.$twitch.onAuthorized((auth) => {
-			this.$request.init('http://kanemzi.tk:8080', auth.token)
+			this.$request.init(this.host, auth.token)
 			this.$userId = auth.userId
 			this.$eventBus.$emit('twitch-authorized')
 		})

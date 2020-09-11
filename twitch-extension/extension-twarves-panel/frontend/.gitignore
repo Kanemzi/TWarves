@@ -1,8 +1,7 @@
 .DS_Store
 node_modules/
 *.zip
-dist/app.js
-dist/style.css
+dist/*
 npm-debug.log
 yarn-error.log
 

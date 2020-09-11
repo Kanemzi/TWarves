@@ -3,7 +3,7 @@ Vue.component('tavern', {
 <section id="tavern" :class="{ opened : panelOpened }">
 	<div class="tavern-button" @click="onButtonClick">Taverne</div>
 	<div class="tavern-panel">
-		Rien à voir ici pour le moment !
+		Rien à voir ici pour le moment ...
 	</div>
 </section>
 	`,

@@ -3,6 +3,7 @@
 		<div class="tavern-button" @click="onButtonClick">Taverne</div>
 		<div class="tavern-panel">
 			Rien à voir ici pour le moment !
+			azd
 		</div>
 	</section>
 </template>
