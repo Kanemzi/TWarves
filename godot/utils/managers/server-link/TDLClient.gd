@@ -2,9 +2,8 @@ extends Node
 
 signal message_received(message)
 
-# export var distant_server_url := "127.0.0.1:5700"
-export var distant_server_url := "ws://kanemzi.tk:5700"
-
+export var distant_server_url := "127.0.0.1:5700"
+# ws://kanemzi.tk:5700
 
 
 var _client := WebSocketClient.new()

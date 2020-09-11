@@ -1,6 +1,6 @@
-const Boom = require('boom')
+const Boom = require('@hapi/boom')
 const jwt = require('jsonwebtoken')
-const request = require('request')
+const axios = require('axios')
 const globals = require('./globals')
 
 const decodeJWT = header => {
@@ -43,21 +43,31 @@ const pubsubBroadcast = (channelId, type, data) => {
 		targets: ['broadcast']
 	})
 
-	request(
-		`https://api.twitch.tv/extensions/message/${channelId}`,
-		{
-			method: 'POST',
-			headers,
-			body,
-		}
-		, (err, res) => {
-			if (err) {
-				console.log('Error sending message to channel %s: %s', channelId, err)
-			} else {
-				console.log('Message to c:%s returned %s', channelId, res.statusCode)
-			}
-		}
-	)
+	axios.post(`https://api.twitch.tv/extensions/message/${channelId}`, body, {
+		headers: headers
+	})
+	.then(res => {
+		console.log('Message to c:%s returned %s', channelId, res)
+	})
+	.catch(err => {
+		console.log('Error sending message to channel %s: %s', channelId, err)
+	})
+
+	// request(
+	// 	`https://api.twitch.tv/extensions/message/${channelId}`,
+	// 	{
+	// 		method: 'POST',
+	// 		headers,
+	// 		body,
+	// 	}
+	// 	, (err, res) => {
+	// 		if (err) {
+	// 			console.log('Error sending message to channel %s: %s', channelId, err)
+	// 		} else {
+	// 			console.log('Message to c:%s returned %s', channelId, res.statusCode)
+	// 		}
+	// 	}
+	// )
 }
 
 exports.decodeJWT = decodeJWT; 
