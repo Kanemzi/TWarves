@@ -21,7 +21,7 @@
     "axios": "^0.20.0",
     "commander": "^6.1.0",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.10.5",
     "save-dev": "0.0.1-security",
     "vue": "^2.6.12",
